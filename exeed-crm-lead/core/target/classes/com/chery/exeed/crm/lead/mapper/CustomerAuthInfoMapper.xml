@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CustomerAuthInfoMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="wx_open_id" jdbcType="VARCHAR" property="wxOpenId" />
+    <result column="wx_union_id" jdbcType="VARCHAR" property="wxUnionId" />
+    <result column="qq_open_id" jdbcType="VARCHAR" property="qqOpenId" />
+    <result column="sina_open_id" jdbcType="VARCHAR" property="sinaOpenId" />
+    <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_id, password, salt, wx_open_id, wx_union_id, qq_open_id, sina_open_id, 
+    bind_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_auth_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_auth_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+    insert into customer_auth_info (id, customer_id, password, 
+      salt, wx_open_id, wx_union_id, 
+      qq_open_id, sina_open_id, bind_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{wxOpenId,jdbcType=VARCHAR}, #{wxUnionId,jdbcType=VARCHAR}, 
+      #{qqOpenId,jdbcType=VARCHAR}, #{sinaOpenId,jdbcType=VARCHAR}, #{bindTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+    insert into customer_auth_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="wxOpenId != null">
+        wx_open_id,
+      </if>
+      <if test="wxUnionId != null">
+        wx_union_id,
+      </if>
+      <if test="qqOpenId != null">
+        qq_open_id,
+      </if>
+      <if test="sinaOpenId != null">
+        sina_open_id,
+      </if>
+      <if test="bindTime != null">
+        bind_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null">
+        #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null">
+        #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqOpenId != null">
+        #{qqOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaOpenId != null">
+        #{sinaOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="bindTime != null">
+        #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+    update customer_auth_info
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null">
+        wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null">
+        wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqOpenId != null">
+        qq_open_id = #{qqOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaOpenId != null">
+        sina_open_id = #{sinaOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="bindTime != null">
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+    update customer_auth_info
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      wx_union_id = #{wxUnionId,jdbcType=VARCHAR},
+      qq_open_id = #{qqOpenId,jdbcType=VARCHAR},
+      sina_open_id = #{sinaOpenId,jdbcType=VARCHAR},
+      bind_time = #{bindTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

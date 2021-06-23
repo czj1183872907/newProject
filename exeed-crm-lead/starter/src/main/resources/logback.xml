@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <property name="log.path" value="/ap/deploy/logs" />
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到文件-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天归档 -->
+            <fileNamePattern>${log.path}/exeed-crm-lead-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+            <!--7天的日志周期-->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <Pattern>[%date] [%thread] [%-5level] %c{40} %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="springTxAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天归档 -->
+            <fileNamePattern>${log.path}/spring-tx-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+            <!--7天的日志周期-->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <Pattern>[%date] [%thread] [%-5level] %c{40} %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="springDataAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天归档 -->
+            <fileNamePattern>${log.path}/spring-data-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+            <!--7天的日志周期-->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <Pattern>[%date] [%thread] [%-5level] %c{40} %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="springAmqpAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天归档 -->
+            <fileNamePattern>${log.path}/spring-amqp-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <maxFileSize>200MB</maxFileSize>
+            <!--7天的日志周期-->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <Pattern>[%date] [%thread] [%-5level] %c{40} %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <logger name="org.springframework.amqp" level="INFO">
+        <appender-ref ref="springAmqpAppender"/>
+    </logger>
+    <logger name="org.springframework.transaction" level="TRACE">
+        <appender-ref ref="springTxAppender"/>
+    </logger>
+    <logger name="org.springframework.data" level="TRACE">
+        <appender-ref ref="springDataAppender"/>
+    </logger>
+    <logger name="redis.clients.jedis" level="TRACE">
+        <appender-ref ref="springDataAppender"/>
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+
+</configuration>

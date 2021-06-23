@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.LeadFollowupMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.LeadFollowup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="distribute_to" jdbcType="INTEGER" property="distributeTo" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="follow_type" jdbcType="INTEGER" property="followType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="follow_plan" jdbcType="TIMESTAMP" property="followPlan" />
+    <result column="follow_date" jdbcType="TIMESTAMP" property="followDate" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, distribute_to, create_by, create_time, name, follow_type, status, follow_plan, 
+    follow_date, lead_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lead_followup
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lead_followup
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.LeadFollowup" useGeneratedKeys="true"  keyProperty="id">
+    insert into lead_followup (id, lead_id, distribute_to,
+      create_by, create_time, name, 
+      follow_type, status, follow_plan, 
+      follow_date, lead_status)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{distributeTo,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{followType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{followPlan,jdbcType=TIMESTAMP}, 
+      #{followDate,jdbcType=TIMESTAMP}, #{leadStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.LeadFollowup">
+    insert into lead_followup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="leadId != null">
+        lead_id,
+      </if>
+      <if test="distributeTo != null">
+        distribute_to,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="followType != null">
+        follow_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="followPlan != null">
+        follow_plan,
+      </if>
+      <if test="followDate != null">
+        follow_date,
+      </if>
+      <if test="leadStatus != null">
+        lead_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="leadId != null">
+        #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="distributeTo != null">
+        #{distributeTo,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="followType != null">
+        #{followType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="followPlan != null">
+        #{followPlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followDate != null">
+        #{followDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leadStatus != null">
+        #{leadStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.LeadFollowup">
+    update lead_followup
+    <set>
+      <if test="leadId != null">
+        lead_id = #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="distributeTo != null">
+        distribute_to = #{distributeTo,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="followType != null">
+        follow_type = #{followType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="followPlan != null">
+        follow_plan = #{followPlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followDate != null">
+        follow_date = #{followDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leadStatus != null">
+        lead_status = #{leadStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.LeadFollowup">
+    update lead_followup
+    set lead_id = #{leadId,jdbcType=INTEGER},
+      distribute_to = #{distributeTo,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      follow_type = #{followType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      follow_plan = #{followPlan,jdbcType=TIMESTAMP},
+      follow_date = #{followDate,jdbcType=TIMESTAMP},
+      lead_status = #{leadStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByLeadId" parameterType="java.lang.Integer" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+    select
+    <include refid="Base_Column_List" />
+    from lead_followup
+    where lead_id = #{leadId,jdbcType=INTEGER}
+  </select>
+</mapper>

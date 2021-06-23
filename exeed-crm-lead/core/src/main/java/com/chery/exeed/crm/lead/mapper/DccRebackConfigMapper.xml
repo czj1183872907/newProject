@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.DccRebackConfigMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.DccRebackConfig">
+    <result column="chanal_code" jdbcType="VARCHAR" property="chanalCode" />
+    <result column="need_send" jdbcType="VARCHAR" property="needSend" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.DccRebackConfig">
+    insert into dcc_reback_config (chanal_code, need_send)
+    values (#{chanalCode,jdbcType=VARCHAR}, #{needSend,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.DccRebackConfig">
+    insert into dcc_reback_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chanalCode != null">
+        chanal_code,
+      </if>
+      <if test="needSend != null">
+        need_send,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chanalCode != null">
+        #{chanalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="needSend != null">
+        #{needSend,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

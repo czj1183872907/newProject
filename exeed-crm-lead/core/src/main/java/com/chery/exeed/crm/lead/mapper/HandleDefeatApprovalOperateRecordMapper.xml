@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.HandleDefeatApprovalOperateRecordMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.DefeatApprovalOperateRecord">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+        <result column="approval_result" jdbcType="INTEGER" property="approvalResult" />
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+        <result column="operate_by" jdbcType="INTEGER" property="operateBy" />
+        <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, lead_id, approval_result, operate_time, operate_by, lead_status
+    </sql>
+
+    <insert id="insertSelectiveReturn" parameterType="com.chery.exeed.crm.lead.model.DefeatApprovalOperateRecord" useGeneratedKeys="true" keyProperty="id">
+        insert into defeat_approval_operate_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="leadId != null">
+                lead_id,
+            </if>
+            <if test="approvalResult != null">
+                approval_result,
+            </if>
+            <if test="operateTime != null">
+                operate_time,
+            </if>
+            <if test="operateBy != null">
+                operate_by,
+            </if>
+            <if test="leadStatus != null">
+                lead_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="leadId != null">
+                #{leadId,jdbcType=INTEGER},
+            </if>
+            <if test="approvalResult != null">
+                #{approvalResult,jdbcType=INTEGER},
+            </if>
+            <if test="operateTime != null">
+                #{operateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="operateBy != null">
+                #{operateBy,jdbcType=INTEGER},
+            </if>
+            <if test="leadStatus != null">
+                #{leadStatus,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    
+    <select id="queryByLeadId" parameterType="java.lang.Integer" resultType="com.chery.exeed.crm.lead.dto.DefeatApprovalOperateRecordDTO">
+      select
+        tt.lose_type as loseType ,
+        tt.feedback as feedback
+      from defeat_approval_operate_record t left join defeat_operate_record tt on tt.lead_id = t.lead_id
+      where t.lead_id =  #{leadId,jdbcType=INTEGER}
+      order by t.operate_time desc LIMIT 1
+    </select>
+</mapper>

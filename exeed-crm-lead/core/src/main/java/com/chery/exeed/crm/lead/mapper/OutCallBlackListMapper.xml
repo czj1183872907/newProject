@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.OutCallBlackListMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.dto.OutCallBlackListDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="operate_name" jdbcType="VARCHAR" property="operateName" />
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+        <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    </resultMap>
+    <select id="getOutCallBlackList" resultMap="BaseResultMap">
+        select id,phone,operate_name,operate_time,remarks from out_call_blacklist
+        <where>
+            <if test="phone != null">
+                and phone like concat('%',#{phone},'%')
+            </if>
+        </where>
+        order by id desc
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="getOutCallBlackListTotal" resultType="integer">
+        select count(1) from out_call_blacklist
+        <where>
+            <if test="phone != null">
+                and phone like concat('%',#{phone},'%')
+            </if>
+        </where>
+    </select>
+    <insert id="insertOutCallBlackList">
+        insert into out_call_blacklist(phone,operate_name,operate_time,remarks) values(#{phone},#{operateName},now(),#{remarks})
+    </insert>
+
+    <delete id="deleteOutCallBlackListById">
+        delete from out_call_blacklist where id=#{id}
+    </delete>
+</mapper>

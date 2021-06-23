@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.OfferOperateRecordSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.OfferOperateRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="feedback" jdbcType="VARCHAR" property="feedback" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operate_by" jdbcType="INTEGER" property="operateBy" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id,series_name, model_name, feedback, operate_time, operate_by, lead_status
+  </sql>
+
+
+  <insert id="insertOfferOperation" parameterType="com.chery.exeed.crm.lead.model.OfferOperateRecord" useGeneratedKeys="true"  keyProperty="id">
+    insert into offer_operate_record (id, lead_id, series_name,model_name,
+      feedback, operate_time, operate_by,
+      lead_status)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR},#{modelName,jdbcType=VARCHAR},
+      #{feedback,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operateBy,jdbcType=INTEGER},
+      #{leadStatus,jdbcType=INTEGER})
+  </insert>
+</mapper>

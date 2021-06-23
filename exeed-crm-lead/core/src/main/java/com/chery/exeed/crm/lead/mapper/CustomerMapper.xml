@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dms_code" jdbcType="VARCHAR" property="dmsCode" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+    <result column="customer_status" jdbcType="INTEGER" property="customerStatus" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="nation" jdbcType="INTEGER" property="nation" />
+    <result column="person_birthdate" jdbcType="DATE" property="personBirthdate" />
+    <result column="head_image" jdbcType="VARCHAR" property="headImage" />
+    <result column="credential_type" jdbcType="INTEGER" property="credentialType" />
+    <result column="credential_number" jdbcType="VARCHAR" property="credentialNumber" />
+    <result column="driver_license_no" jdbcType="VARCHAR" property="driverLicenseNo" />
+    <result column="customer_level" jdbcType="INTEGER" property="customerLevel" />
+    <result column="phone_two" jdbcType="VARCHAR" property="phoneTwo" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="person_email" jdbcType="VARCHAR" property="personEmail" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="subcity" jdbcType="INTEGER" property="subcity" />
+    <result column="subcity_name" jdbcType="VARCHAR" property="subcityName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+    <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="send_modify_time" jdbcType="TIMESTAMP" property="sendModifyTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+    <result column="marital_status" jdbcType="INTEGER" property="maritalStatus" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="education_level" jdbcType="INTEGER" property="educationLevel" />
+    <result column="revenue_level" jdbcType="INTEGER" property="revenueLevel" />
+    <result column="household_registration" jdbcType="INTEGER" property="householdRegistration" />
+    <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+    <result column="purchae_frequency" jdbcType="INTEGER" property="purchaeFrequency" />
+    <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+    <result column="driving_skill" jdbcType="INTEGER" property="drivingSkill" />
+    <result column="automotive_expertise" jdbcType="INTEGER" property="automotiveExpertise" />
+    <result column="communication_difficulty" jdbcType="INTEGER" property="communicationDifficulty" />
+    <result column="treasure_car_level" jdbcType="INTEGER" property="treasureCarLevel" />
+    <result column="vehicle_no" jdbcType="INTEGER" property="vehicleNo" />
+    <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="person_title" jdbcType="VARCHAR" property="personTitle" />
+    <result column="is_special_customer" jdbcType="INTEGER" property="isSpecialCustomer" />
+    <result column="special_customer_type" jdbcType="INTEGER" property="specialCustomerType" />
+    <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+    <result column="lead_frequency" jdbcType="INTEGER" property="leadFrequency" />
+    <result column="owning_car_age" jdbcType="INTEGER" property="owningCarAge" />
+    <result column="recomender" jdbcType="VARCHAR" property="recomender" />
+    <result column="recomender_phone" jdbcType="VARCHAR" property="recomenderPhone" />
+    <result column="if_married" jdbcType="INTEGER" property="ifMarried" />
+    <result column="occupation_phone" jdbcType="VARCHAR" property="occupationPhone" />
+    <result column="occupation_type" jdbcType="INTEGER" property="occupationType" />
+    <result column="customer_type" jdbcType="INTEGER" property="customerType" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+    <result column="phone_three" jdbcType="VARCHAR" property="phoneThree" />
+    <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+    <result column="post" jdbcType="INTEGER" property="post" />
+    <result column="first_time_car_purchase" jdbcType="INTEGER" property="firstTimeCarPurchase" />
+    <result column="choose_reason" jdbcType="VARCHAR" property="chooseReason" />
+    <result column="choose_reason_detail" jdbcType="VARCHAR" property="chooseReasonDetail" />
+    <result column="choose_reason_remarks" jdbcType="VARCHAR" property="chooseReasonRemarks" />
+    <result column="know_channel" jdbcType="VARCHAR" property="knowChannel" />
+    <result column="know_channel_detail" jdbcType="VARCHAR" property="knowChannelDetail" />
+    <result column="know_channel_remarks" jdbcType="VARCHAR" property="knowChannelRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dms_code, last_name, first_name, wechat_openid, customer_status, gender, nation, 
+    person_birthdate, head_image, credential_type, credential_number, driver_license_no, 
+    customer_level, phone_two, phone, person_email, province, province_name, city, city_name, 
+    subcity, subcity_name, address, age, owner, created_by, customer_car_date, modify_by, 
+    modify_date, send_modify_time, description, person_donotcall, marital_status, hobby, 
+    education_level, revenue_level, household_registration, consumption_characteristics, 
+    purchae_frequency, interior_yearly_budget, driving_skill, automotive_expertise, communication_difficulty, 
+    treasure_car_level, vehicle_no, customer_characteristics_des, company_name, industry, 
+    person_title, is_special_customer, special_customer_type, special_care_comments, 
+    lead_frequency, owning_car_age, recomender, recomender_phone, if_married, occupation_phone, 
+    occupation_type, customer_type, contact, contact_phone, consulting_frequency, phone_three, 
+    follow_car, follow_info, follow_remarks, post, first_time_car_purchase, choose_reason, 
+    choose_reason_detail, choose_reason_remarks, know_channel, know_channel_detail, know_channel_remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.Customer" useGeneratedKeys="true"  keyProperty="id">
+    insert into customer (id, dms_code, last_name, 
+      first_name, wechat_openid, customer_status, 
+      gender, nation, person_birthdate, 
+      head_image, credential_type, credential_number, 
+      driver_license_no, customer_level, phone_two, 
+      phone, person_email, province, 
+      province_name, city, city_name, 
+      subcity, subcity_name, address, 
+      age, owner, created_by, 
+      customer_car_date, modify_by, modify_date, 
+      send_modify_time, description, person_donotcall, 
+      marital_status, hobby, education_level, 
+      revenue_level, household_registration, consumption_characteristics, 
+      purchae_frequency, interior_yearly_budget, 
+      driving_skill, automotive_expertise, communication_difficulty, 
+      treasure_car_level, vehicle_no, customer_characteristics_des, 
+      company_name, industry, person_title, 
+      is_special_customer, special_customer_type, 
+      special_care_comments, lead_frequency, owning_car_age, 
+      recomender, recomender_phone, if_married, 
+      occupation_phone, occupation_type, customer_type, 
+      contact, contact_phone, consulting_frequency, 
+      phone_three, follow_car, follow_info, 
+      follow_remarks, post, first_time_car_purchase, 
+      choose_reason, choose_reason_detail, choose_reason_remarks, 
+      know_channel, know_channel_detail, know_channel_remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{dmsCode,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
+      #{firstName,jdbcType=VARCHAR}, #{wechatOpenid,jdbcType=VARCHAR}, #{customerStatus,jdbcType=INTEGER}, 
+      #{gender,jdbcType=INTEGER}, #{nation,jdbcType=INTEGER}, #{personBirthdate,jdbcType=DATE}, 
+      #{headImage,jdbcType=VARCHAR}, #{credentialType,jdbcType=INTEGER}, #{credentialNumber,jdbcType=VARCHAR}, 
+      #{driverLicenseNo,jdbcType=VARCHAR}, #{customerLevel,jdbcType=INTEGER}, #{phoneTwo,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{personEmail,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER}, 
+      #{provinceName,jdbcType=VARCHAR}, #{city,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, 
+      #{subcity,jdbcType=INTEGER}, #{subcityName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{owner,jdbcType=INTEGER}, #{createdBy,jdbcType=INTEGER}, 
+      #{customerCarDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=INTEGER}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{sendModifyTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{personDonotcall,jdbcType=INTEGER}, 
+      #{maritalStatus,jdbcType=INTEGER}, #{hobby,jdbcType=VARCHAR}, #{educationLevel,jdbcType=INTEGER}, 
+      #{revenueLevel,jdbcType=INTEGER}, #{householdRegistration,jdbcType=INTEGER}, #{consumptionCharacteristics,jdbcType=VARCHAR}, 
+      #{purchaeFrequency,jdbcType=INTEGER}, #{interiorYearlyBudget,jdbcType=VARCHAR}, 
+      #{drivingSkill,jdbcType=INTEGER}, #{automotiveExpertise,jdbcType=INTEGER}, #{communicationDifficulty,jdbcType=INTEGER}, 
+      #{treasureCarLevel,jdbcType=INTEGER}, #{vehicleNo,jdbcType=INTEGER}, #{customerCharacteristicsDes,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{personTitle,jdbcType=VARCHAR}, 
+      #{isSpecialCustomer,jdbcType=INTEGER}, #{specialCustomerType,jdbcType=INTEGER}, 
+      #{specialCareComments,jdbcType=VARCHAR}, #{leadFrequency,jdbcType=INTEGER}, #{owningCarAge,jdbcType=INTEGER}, 
+      #{recomender,jdbcType=VARCHAR}, #{recomenderPhone,jdbcType=VARCHAR}, #{ifMarried,jdbcType=INTEGER}, 
+      #{occupationPhone,jdbcType=VARCHAR}, #{occupationType,jdbcType=INTEGER}, #{customerType,jdbcType=INTEGER}, 
+      #{contact,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{consultingFrequency,jdbcType=INTEGER}, 
+      #{phoneThree,jdbcType=VARCHAR}, #{followCar,jdbcType=VARCHAR}, #{followInfo,jdbcType=VARCHAR}, 
+      #{followRemarks,jdbcType=VARCHAR}, #{post,jdbcType=INTEGER}, #{firstTimeCarPurchase,jdbcType=INTEGER}, 
+      #{chooseReason,jdbcType=VARCHAR}, #{chooseReasonDetail,jdbcType=VARCHAR}, #{chooseReasonRemarks,jdbcType=VARCHAR}, 
+      #{knowChannel,jdbcType=VARCHAR}, #{knowChannelDetail,jdbcType=VARCHAR}, #{knowChannelRemarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.Customer" useGeneratedKeys="true"  keyProperty="id">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dmsCode != null">
+        dms_code,
+      </if>
+      <if test="lastName != null">
+        last_name,
+      </if>
+      <if test="firstName != null">
+        first_name,
+      </if>
+      <if test="wechatOpenid != null">
+        wechat_openid,
+      </if>
+      <if test="customerStatus != null">
+        customer_status,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="personBirthdate != null">
+        person_birthdate,
+      </if>
+      <if test="headImage != null">
+        head_image,
+      </if>
+      <if test="credentialType != null">
+        credential_type,
+      </if>
+      <if test="credentialNumber != null">
+        credential_number,
+      </if>
+      <if test="driverLicenseNo != null">
+        driver_license_no,
+      </if>
+      <if test="customerLevel != null">
+        customer_level,
+      </if>
+      <if test="phoneTwo != null">
+        phone_two,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="personEmail != null">
+        person_email,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="provinceName != null">
+        province_name,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="subcity != null">
+        subcity,
+      </if>
+      <if test="subcityName != null">
+        subcity_name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="customerCarDate != null">
+        customer_car_date,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="sendModifyTime != null">
+        send_modify_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="personDonotcall != null">
+        person_donotcall,
+      </if>
+      <if test="maritalStatus != null">
+        marital_status,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="educationLevel != null">
+        education_level,
+      </if>
+      <if test="revenueLevel != null">
+        revenue_level,
+      </if>
+      <if test="householdRegistration != null">
+        household_registration,
+      </if>
+      <if test="consumptionCharacteristics != null">
+        consumption_characteristics,
+      </if>
+      <if test="purchaeFrequency != null">
+        purchae_frequency,
+      </if>
+      <if test="interiorYearlyBudget != null">
+        interior_yearly_budget,
+      </if>
+      <if test="drivingSkill != null">
+        driving_skill,
+      </if>
+      <if test="automotiveExpertise != null">
+        automotive_expertise,
+      </if>
+      <if test="communicationDifficulty != null">
+        communication_difficulty,
+      </if>
+      <if test="treasureCarLevel != null">
+        treasure_car_level,
+      </if>
+      <if test="vehicleNo != null">
+        vehicle_no,
+      </if>
+      <if test="customerCharacteristicsDes != null">
+        customer_characteristics_des,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="personTitle != null">
+        person_title,
+      </if>
+      <if test="isSpecialCustomer != null">
+        is_special_customer,
+      </if>
+      <if test="specialCustomerType != null">
+        special_customer_type,
+      </if>
+      <if test="specialCareComments != null">
+        special_care_comments,
+      </if>
+      <if test="leadFrequency != null">
+        lead_frequency,
+      </if>
+      <if test="owningCarAge != null">
+        owning_car_age,
+      </if>
+      <if test="recomender != null">
+        recomender,
+      </if>
+      <if test="recomenderPhone != null">
+        recomender_phone,
+      </if>
+      <if test="ifMarried != null">
+        if_married,
+      </if>
+      <if test="occupationPhone != null">
+        occupation_phone,
+      </if>
+      <if test="occupationType != null">
+        occupation_type,
+      </if>
+      <if test="customerType != null">
+        customer_type,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="consultingFrequency != null">
+        consulting_frequency,
+      </if>
+      <if test="phoneThree != null">
+        phone_three,
+      </if>
+      <if test="followCar != null">
+        follow_car,
+      </if>
+      <if test="followInfo != null">
+        follow_info,
+      </if>
+      <if test="followRemarks != null">
+        follow_remarks,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="firstTimeCarPurchase != null">
+        first_time_car_purchase,
+      </if>
+      <if test="chooseReason != null">
+        choose_reason,
+      </if>
+      <if test="chooseReasonDetail != null">
+        choose_reason_detail,
+      </if>
+      <if test="chooseReasonRemarks != null">
+        choose_reason_remarks,
+      </if>
+      <if test="knowChannel != null">
+        know_channel,
+      </if>
+      <if test="knowChannelDetail != null">
+        know_channel_detail,
+      </if>
+      <if test="knowChannelRemarks != null">
+        know_channel_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dmsCode != null">
+        #{dmsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatOpenid != null">
+        #{wechatOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null">
+        #{customerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=INTEGER},
+      </if>
+      <if test="personBirthdate != null">
+        #{personBirthdate,jdbcType=DATE},
+      </if>
+      <if test="headImage != null">
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialType != null">
+        #{credentialType,jdbcType=INTEGER},
+      </if>
+      <if test="credentialNumber != null">
+        #{credentialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicenseNo != null">
+        #{driverLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLevel != null">
+        #{customerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="phoneTwo != null">
+        #{phoneTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personEmail != null">
+        #{personEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcity != null">
+        #{subcity,jdbcType=INTEGER},
+      </if>
+      <if test="subcityName != null">
+        #{subcityName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="customerCarDate != null">
+        #{customerCarDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendModifyTime != null">
+        #{sendModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="personDonotcall != null">
+        #{personDonotcall,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="educationLevel != null">
+        #{educationLevel,jdbcType=INTEGER},
+      </if>
+      <if test="revenueLevel != null">
+        #{revenueLevel,jdbcType=INTEGER},
+      </if>
+      <if test="householdRegistration != null">
+        #{householdRegistration,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionCharacteristics != null">
+        #{consumptionCharacteristics,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaeFrequency != null">
+        #{purchaeFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="interiorYearlyBudget != null">
+        #{interiorYearlyBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingSkill != null">
+        #{drivingSkill,jdbcType=INTEGER},
+      </if>
+      <if test="automotiveExpertise != null">
+        #{automotiveExpertise,jdbcType=INTEGER},
+      </if>
+      <if test="communicationDifficulty != null">
+        #{communicationDifficulty,jdbcType=INTEGER},
+      </if>
+      <if test="treasureCarLevel != null">
+        #{treasureCarLevel,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleNo != null">
+        #{vehicleNo,jdbcType=INTEGER},
+      </if>
+      <if test="customerCharacteristicsDes != null">
+        #{customerCharacteristicsDes,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="personTitle != null">
+        #{personTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="isSpecialCustomer != null">
+        #{isSpecialCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="specialCustomerType != null">
+        #{specialCustomerType,jdbcType=INTEGER},
+      </if>
+      <if test="specialCareComments != null">
+        #{specialCareComments,jdbcType=VARCHAR},
+      </if>
+      <if test="leadFrequency != null">
+        #{leadFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="owningCarAge != null">
+        #{owningCarAge,jdbcType=INTEGER},
+      </if>
+      <if test="recomender != null">
+        #{recomender,jdbcType=VARCHAR},
+      </if>
+      <if test="recomenderPhone != null">
+        #{recomenderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ifMarried != null">
+        #{ifMarried,jdbcType=INTEGER},
+      </if>
+      <if test="occupationPhone != null">
+        #{occupationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationType != null">
+        #{occupationType,jdbcType=INTEGER},
+      </if>
+      <if test="customerType != null">
+        #{customerType,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="consultingFrequency != null">
+        #{consultingFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="phoneThree != null">
+        #{phoneThree,jdbcType=VARCHAR},
+      </if>
+      <if test="followCar != null">
+        #{followCar,jdbcType=VARCHAR},
+      </if>
+      <if test="followInfo != null">
+        #{followInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followRemarks != null">
+        #{followRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=INTEGER},
+      </if>
+      <if test="firstTimeCarPurchase != null">
+        #{firstTimeCarPurchase,jdbcType=INTEGER},
+      </if>
+      <if test="chooseReason != null">
+        #{chooseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDetail != null">
+        #{chooseReasonDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonRemarks != null">
+        #{chooseReasonRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannel != null">
+        #{knowChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelDetail != null">
+        #{knowChannelDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelRemarks != null">
+        #{knowChannelRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.Customer">
+    update customer
+    <set>
+      <if test="dmsCode != null">
+        dms_code = #{dmsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        first_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatOpenid != null">
+        wechat_openid = #{wechatOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null">
+        customer_status = #{customerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=INTEGER},
+      </if>
+      <if test="personBirthdate != null">
+        person_birthdate = #{personBirthdate,jdbcType=DATE},
+      </if>
+      <if test="headImage != null">
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialType != null">
+        credential_type = #{credentialType,jdbcType=INTEGER},
+      </if>
+      <if test="credentialNumber != null">
+        credential_number = #{credentialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicenseNo != null">
+        driver_license_no = #{driverLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLevel != null">
+        customer_level = #{customerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="phoneTwo != null">
+        phone_two = #{phoneTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personEmail != null">
+        person_email = #{personEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null">
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="subcity != null">
+        subcity = #{subcity,jdbcType=INTEGER},
+      </if>
+      <if test="subcityName != null">
+        subcity_name = #{subcityName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=INTEGER},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=INTEGER},
+      </if>
+      <if test="customerCarDate != null">
+        customer_car_date = #{customerCarDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendModifyTime != null">
+        send_modify_time = #{sendModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="personDonotcall != null">
+        person_donotcall = #{personDonotcall,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null">
+        marital_status = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="educationLevel != null">
+        education_level = #{educationLevel,jdbcType=INTEGER},
+      </if>
+      <if test="revenueLevel != null">
+        revenue_level = #{revenueLevel,jdbcType=INTEGER},
+      </if>
+      <if test="householdRegistration != null">
+        household_registration = #{householdRegistration,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionCharacteristics != null">
+        consumption_characteristics = #{consumptionCharacteristics,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaeFrequency != null">
+        purchae_frequency = #{purchaeFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="interiorYearlyBudget != null">
+        interior_yearly_budget = #{interiorYearlyBudget,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingSkill != null">
+        driving_skill = #{drivingSkill,jdbcType=INTEGER},
+      </if>
+      <if test="automotiveExpertise != null">
+        automotive_expertise = #{automotiveExpertise,jdbcType=INTEGER},
+      </if>
+      <if test="communicationDifficulty != null">
+        communication_difficulty = #{communicationDifficulty,jdbcType=INTEGER},
+      </if>
+      <if test="treasureCarLevel != null">
+        treasure_car_level = #{treasureCarLevel,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleNo != null">
+        vehicle_no = #{vehicleNo,jdbcType=INTEGER},
+      </if>
+      <if test="customerCharacteristicsDes != null">
+        customer_characteristics_des = #{customerCharacteristicsDes,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="personTitle != null">
+        person_title = #{personTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="isSpecialCustomer != null">
+        is_special_customer = #{isSpecialCustomer,jdbcType=INTEGER},
+      </if>
+      <if test="specialCustomerType != null">
+        special_customer_type = #{specialCustomerType,jdbcType=INTEGER},
+      </if>
+      <if test="specialCareComments != null">
+        special_care_comments = #{specialCareComments,jdbcType=VARCHAR},
+      </if>
+      <if test="leadFrequency != null">
+        lead_frequency = #{leadFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="owningCarAge != null">
+        owning_car_age = #{owningCarAge,jdbcType=INTEGER},
+      </if>
+      <if test="recomender != null">
+        recomender = #{recomender,jdbcType=VARCHAR},
+      </if>
+      <if test="recomenderPhone != null">
+        recomender_phone = #{recomenderPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ifMarried != null">
+        if_married = #{ifMarried,jdbcType=INTEGER},
+      </if>
+      <if test="occupationPhone != null">
+        occupation_phone = #{occupationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationType != null">
+        occupation_type = #{occupationType,jdbcType=INTEGER},
+      </if>
+      <if test="customerType != null">
+        customer_type = #{customerType,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="consultingFrequency != null">
+        consulting_frequency = #{consultingFrequency,jdbcType=INTEGER},
+      </if>
+      <if test="phoneThree != null">
+        phone_three = #{phoneThree,jdbcType=VARCHAR},
+      </if>
+      <if test="followCar != null">
+        follow_car = #{followCar,jdbcType=VARCHAR},
+      </if>
+      <if test="followInfo != null">
+        follow_info = #{followInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followRemarks != null">
+        follow_remarks = #{followRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=INTEGER},
+      </if>
+      <if test="firstTimeCarPurchase != null">
+        first_time_car_purchase = #{firstTimeCarPurchase,jdbcType=INTEGER},
+      </if>
+      <if test="chooseReason != null">
+        choose_reason = #{chooseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDetail != null">
+        choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonRemarks != null">
+        choose_reason_remarks = #{chooseReasonRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannel != null">
+        know_channel = #{knowChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelDetail != null">
+        know_channel_detail = #{knowChannelDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelRemarks != null">
+        know_channel_remarks = #{knowChannelRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.Customer">
+    update customer
+    set dms_code = #{dmsCode,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      first_name = #{firstName,jdbcType=VARCHAR},
+      wechat_openid = #{wechatOpenid,jdbcType=VARCHAR},
+      customer_status = #{customerStatus,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=INTEGER},
+      person_birthdate = #{personBirthdate,jdbcType=DATE},
+      head_image = #{headImage,jdbcType=VARCHAR},
+      credential_type = #{credentialType,jdbcType=INTEGER},
+      credential_number = #{credentialNumber,jdbcType=VARCHAR},
+      driver_license_no = #{driverLicenseNo,jdbcType=VARCHAR},
+      customer_level = #{customerLevel,jdbcType=INTEGER},
+      phone_two = #{phoneTwo,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      person_email = #{personEmail,jdbcType=VARCHAR},
+      province = #{province,jdbcType=INTEGER},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=INTEGER},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      subcity = #{subcity,jdbcType=INTEGER},
+      subcity_name = #{subcityName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      owner = #{owner,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=INTEGER},
+      customer_car_date = #{customerCarDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=INTEGER},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      send_modify_time = #{sendModifyTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      person_donotcall = #{personDonotcall,jdbcType=INTEGER},
+      marital_status = #{maritalStatus,jdbcType=INTEGER},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      education_level = #{educationLevel,jdbcType=INTEGER},
+      revenue_level = #{revenueLevel,jdbcType=INTEGER},
+      household_registration = #{householdRegistration,jdbcType=INTEGER},
+      consumption_characteristics = #{consumptionCharacteristics,jdbcType=VARCHAR},
+      purchae_frequency = #{purchaeFrequency,jdbcType=INTEGER},
+      interior_yearly_budget = #{interiorYearlyBudget,jdbcType=VARCHAR},
+      driving_skill = #{drivingSkill,jdbcType=INTEGER},
+      automotive_expertise = #{automotiveExpertise,jdbcType=INTEGER},
+      communication_difficulty = #{communicationDifficulty,jdbcType=INTEGER},
+      treasure_car_level = #{treasureCarLevel,jdbcType=INTEGER},
+      vehicle_no = #{vehicleNo,jdbcType=INTEGER},
+      customer_characteristics_des = #{customerCharacteristicsDes,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      person_title = #{personTitle,jdbcType=VARCHAR},
+      is_special_customer = #{isSpecialCustomer,jdbcType=INTEGER},
+      special_customer_type = #{specialCustomerType,jdbcType=INTEGER},
+      special_care_comments = #{specialCareComments,jdbcType=VARCHAR},
+      lead_frequency = #{leadFrequency,jdbcType=INTEGER},
+      owning_car_age = #{owningCarAge,jdbcType=INTEGER},
+      recomender = #{recomender,jdbcType=VARCHAR},
+      recomender_phone = #{recomenderPhone,jdbcType=VARCHAR},
+      if_married = #{ifMarried,jdbcType=INTEGER},
+      occupation_phone = #{occupationPhone,jdbcType=VARCHAR},
+      occupation_type = #{occupationType,jdbcType=INTEGER},
+      customer_type = #{customerType,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      consulting_frequency = #{consultingFrequency,jdbcType=INTEGER},
+      phone_three = #{phoneThree,jdbcType=VARCHAR},
+      follow_car = #{followCar,jdbcType=VARCHAR},
+      follow_info = #{followInfo,jdbcType=VARCHAR},
+      follow_remarks = #{followRemarks,jdbcType=VARCHAR},
+      post = #{post,jdbcType=INTEGER},
+      first_time_car_purchase = #{firstTimeCarPurchase,jdbcType=INTEGER},
+      choose_reason = #{chooseReason,jdbcType=VARCHAR},
+      choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR},
+      choose_reason_remarks = #{chooseReasonRemarks,jdbcType=VARCHAR},
+      know_channel = #{knowChannel,jdbcType=VARCHAR},
+      know_channel_detail = #{knowChannelDetail,jdbcType=VARCHAR},
+      know_channel_remarks = #{knowChannelRemarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

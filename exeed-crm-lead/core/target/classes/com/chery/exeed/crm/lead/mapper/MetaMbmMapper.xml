@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.MetaMbmMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.MetaMbm">
+    <id column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <id column="brand" jdbcType="VARCHAR" property="brand" />
+    <id column="model" jdbcType="VARCHAR" property="model" />
+    <result column="manufacturer_name" jdbcType="VARCHAR" property="manufacturerName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    manufacturer, brand, model, manufacturer_name, brand_name, model_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaMbmKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meta_mbm
+    where manufacturer = #{manufacturer,jdbcType=VARCHAR}
+      and brand = #{brand,jdbcType=VARCHAR}
+      and model = #{model,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaMbmKey">
+    delete from meta_mbm
+    where manufacturer = #{manufacturer,jdbcType=VARCHAR}
+      and brand = #{brand,jdbcType=VARCHAR}
+      and model = #{model,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.MetaMbm">
+    insert into meta_mbm (manufacturer, brand, model, 
+      manufacturer_name, brand_name, model_name
+      )
+    values (#{manufacturer,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
+      #{manufacturerName,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{modelName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.MetaMbm">
+    insert into meta_mbm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="manufacturer != null">
+        manufacturer,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="manufacturerName != null">
+        manufacturer_name,
+      </if>
+      <if test="brandName != null">
+        brand_name,
+      </if>
+      <if test="modelName != null">
+        model_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturerName != null">
+        #{manufacturerName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.MetaMbm">
+    update meta_mbm
+    <set>
+      <if test="manufacturerName != null">
+        manufacturer_name = #{manufacturerName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where manufacturer = #{manufacturer,jdbcType=VARCHAR}
+      and brand = #{brand,jdbcType=VARCHAR}
+      and model = #{model,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaMbm">
+    update meta_mbm
+    set manufacturer_name = #{manufacturerName,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      model_name = #{modelName,jdbcType=VARCHAR}
+    where manufacturer = #{manufacturer,jdbcType=VARCHAR}
+      and brand = #{brand,jdbcType=VARCHAR}
+      and model = #{model,jdbcType=VARCHAR}
+  </update>
+</mapper>

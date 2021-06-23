@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.DefeatOperateRecordSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.DefeatOperateRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="lose_type" jdbcType="INTEGER" property="loseType" />
+    <result column="competing_goods" jdbcType="VARCHAR" property="competingGoods" />
+    <result column="feedback" jdbcType="VARCHAR" property="feedback" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operate_by" jdbcType="INTEGER" property="operateBy" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+     id, lead_id, lose_type, competing_goods,feedback, operate_time, operate_by, lead_status
+  </sql>
+  <insert id="insertDefeatOperateRecord" parameterType="com.chery.exeed.crm.lead.model.DefeatOperateRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into defeat_operate_record (id, lead_id, lose_type,lose_type2, competing_goods,
+      feedback, operate_time, operate_by, 
+      lead_status)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{loseType,jdbcType=INTEGER}, #{loseType2,jdbcType=INTEGER},  #{competingGoods,jdbcType=VARCHAR},
+      #{feedback,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operateBy,jdbcType=INTEGER}, 
+      #{leadStatus,jdbcType=INTEGER})
+  </insert>
+
+  <select id="getLoseTypeList" resultType="map">
+    SELECT meta_code as metaCode,description FROM meta_lead
+    where parent_meta_code=#{parentCode}
+    and meta_name='defeat_lost_type'
+  </select>
+
+  <select id="queryByLeadId" parameterType="java.lang.Integer" resultType="com.chery.exeed.crm.lead.dto.DefeatOperateRecordDTO">
+    SELECT
+      t.id as id,
+      t.lead_id as leadId,
+      t.lose_type as loseType,
+      t.competing_goods as competingGoods,
+      t.feedback as feedback,
+      t.operate_time as operateTime,
+      t.operate_by as operateBy,
+      t.lead_status as leadStatus,
+      ( SELECT approval_result FROM defeat_approval_operate_record tt WHERE tt.lead_id = t.lead_id ORDER BY tt.operate_time DESC LIMIT 1 ) AS approvalResult
+    FROM
+	defeat_operate_record t
+    WHERE
+	lead_id = #{leadId,jdbcType=VARCHAR}
+    ORDER BY
+	operate_time DESC
+	LIMIT 1
+  </select>
+
+
+</mapper>

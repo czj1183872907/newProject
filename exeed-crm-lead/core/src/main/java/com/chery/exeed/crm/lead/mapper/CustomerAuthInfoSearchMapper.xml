@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CustomerAuthInfoSearchMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.CustomerAuthInfo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="salt" jdbcType="VARCHAR" property="salt" />
+        <result column="wx_open_id" jdbcType="VARCHAR" property="wxOpenId" />
+        <result column="wx_union_id" jdbcType="VARCHAR" property="wxUnionId" />
+        <result column="qq_open_id" jdbcType="VARCHAR" property="qqOpenId" />
+        <result column="sina_open_id" jdbcType="VARCHAR" property="sinaOpenId" />
+        <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, customer_id, password, salt, wx_open_id, wx_union_id, qq_open_id, sina_open_id,
+        bind_time
+    </sql>
+
+    <select id="selectByCustomerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from customer_auth_info
+        where customer_id = #{customerId,jdbcType=INTEGER}
+        order by bind_time desc limit 1
+    </select>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CustomerDealerMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.CustomerDealer">
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <id column="dealer_id" jdbcType="VARCHAR" property="dealerId" />
+    <result column="send_flag" jdbcType="TINYINT" property="sendFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, dealer_id, send_flag, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.CustomerDealerKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_dealer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and dealer_id = #{dealerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.CustomerDealerKey">
+    delete from customer_dealer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and dealer_id = #{dealerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.CustomerDealer">
+    insert into customer_dealer (customer_id, dealer_id, send_flag, 
+      create_time)
+    values (#{customerId,jdbcType=INTEGER}, #{dealerId,jdbcType=VARCHAR}, #{sendFlag,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.CustomerDealer">
+    insert into customer_dealer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="dealerId != null">
+        dealer_id,
+      </if>
+      <if test="sendFlag != null">
+        send_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="dealerId != null">
+        #{dealerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendFlag != null">
+        #{sendFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.CustomerDealer">
+    update customer_dealer
+    <set>
+      <if test="sendFlag != null">
+        send_flag = #{sendFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and dealer_id = #{dealerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.CustomerDealer">
+    update customer_dealer
+    set send_flag = #{sendFlag,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and dealer_id = #{dealerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

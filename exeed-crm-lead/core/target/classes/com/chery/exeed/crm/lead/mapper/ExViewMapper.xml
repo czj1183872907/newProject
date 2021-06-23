@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.ExViewMapper">
+
+    <select id="selectSysUserByUserId" resultType="com.chery.exeed.crm.common.dto.SysUserViewDTO">
+        SELECT
+            user_id AS userId,
+            nick_name AS nickname
+        FROM v_all_sys_user
+        WHERE user_id = #{userId}
+    </select>
+    <select id="selectCampaignChannelByChannelCode" resultType="com.chery.exeed.crm.common.dto.CampaignChannelViewDTO">
+        SELECT
+            ChannelCode AS channelCode,
+            EntityFullName AS entityFullName
+        FROM v_campaign_channel
+        WHERE ChannelCode = #{channelCode}
+        LIMIT 1
+    </select>
+    <select id="selectCampaignActByActCode" resultType="com.chery.exeed.crm.common.dto.CampaignActViewDTO">
+        SELECT
+            ActCode AS actCode,
+            ActName AS actName
+        FROM v_campaign_act
+        WHERE ActCode = #{actCode}
+        LIMIT 1
+    </select>
+    <select id="selectRegionByRegionId" resultType="com.chery.exeed.crm.common.dto.RegionViewDTO">
+        SELECT
+            region_id AS regionId,
+            region_name AS regionName
+        FROM v_region
+        WHERE region_id = #{regionId}
+        LIMIT 1
+    </select>
+    <select id="selectCarSeries" resultType="com.chery.exeed.crm.common.dto.CarSeriesViewDTO">
+        SELECT
+            series_code AS seriesCode,
+            series_name AS seriesName
+        FROM v_car_series
+    </select>
+    <select id="selectCarModelBySeriesCode" resultType="com.chery.exeed.crm.common.dto.CarModelViewDTO">
+        SELECT
+            series_code AS seriesCode,
+            model_code AS modelCode,
+            model_name AS modelName
+        FROM v_car_model
+        WHERE series_code = #{seriesCode}
+    </select>
+    <select id="selectDealerByDealerCode" resultType="com.chery.exeed.crm.common.dto.DealerViewDTO">
+        SELECT
+            DEALER_CODE AS dealerCode,
+            DEALER_NAME AS dealerName,
+            PROVINCE_NAME AS provinceName,
+            CITY_NAME AS cityName
+        FROM v_dealers
+        WHERE DEALER_CODE = #{dealerCode}
+    </select>
+    <select id="selectCallSummaryByTaskId" resultType="com.chery.exeed.crm.common.dto.CallSummaryViewDTO">
+        SELECT
+            TASK_ID AS taskId,
+            CREATE_TIME AS createTime,
+            CALL_RESULT AS callResult
+        FROM v_call_summary
+        WHERE TASK_ID = #{taskId}
+        ORDER BY CREATE_TIME DESC
+    </select>
+</mapper>

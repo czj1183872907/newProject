@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.FollowupHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.FollowupHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="biz_type" jdbcType="INTEGER" property="bizType" />
+    <result column="biz_id" jdbcType="INTEGER" property="bizId" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operate_desc" jdbcType="VARCHAR" property="operateDesc" />
+    <result column="operate_by" jdbcType="VARCHAR" property="operateBy" />
+    <result column="operate_result_status" jdbcType="INTEGER" property="operateResultStatus" />
+    <result column="operate_result_desc" jdbcType="VARCHAR" property="operateResultDesc" />
+    <result column="extra_info" jdbcType="VARCHAR" property="extraInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, biz_type, biz_id, operate_time, operate_desc, operate_by, operate_result_status, 
+    operate_result_desc, extra_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from followup_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from followup_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.FollowupHistory">
+    insert into followup_history (id, lead_id, biz_type,
+      biz_id, operate_time, operate_desc, 
+      operate_by, operate_result_status, operate_result_desc, 
+      extra_info)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{bizType,jdbcType=INTEGER}, 
+      #{bizId,jdbcType=INTEGER}, #{operateTime,jdbcType=TIMESTAMP}, #{operateDesc,jdbcType=VARCHAR}, 
+      #{operateBy,jdbcType=VARCHAR}, #{operateResultStatus,jdbcType=INTEGER}, #{operateResultDesc,jdbcType=VARCHAR}, 
+      #{extraInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.FollowupHistory">
+    insert into followup_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="leadId != null">
+        lead_id,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="bizId != null">
+        biz_id,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+      <if test="operateDesc != null">
+        operate_desc,
+      </if>
+      <if test="operateBy != null">
+        operate_by,
+      </if>
+      <if test="operateResultStatus != null">
+        operate_result_status,
+      </if>
+      <if test="operateResultDesc != null">
+        operate_result_desc,
+      </if>
+      <if test="extraInfo != null">
+        extra_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="leadId != null">
+        #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null">
+        #{bizId,jdbcType=INTEGER},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateDesc != null">
+        #{operateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operateBy != null">
+        #{operateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="operateResultStatus != null">
+        #{operateResultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="operateResultDesc != null">
+        #{operateResultDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="extraInfo != null">
+        #{extraInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.FollowupHistory">
+    update followup_history
+    <set>
+      <if test="leadId != null">
+        lead_id = #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null">
+        biz_id = #{bizId,jdbcType=INTEGER},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateDesc != null">
+        operate_desc = #{operateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operateBy != null">
+        operate_by = #{operateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="operateResultStatus != null">
+        operate_result_status = #{operateResultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="operateResultDesc != null">
+        operate_result_desc = #{operateResultDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="extraInfo != null">
+        extra_info = #{extraInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.FollowupHistory">
+    update followup_history
+    set lead_id = #{leadId,jdbcType=INTEGER},
+      biz_type = #{bizType,jdbcType=INTEGER},
+      biz_id = #{bizId,jdbcType=INTEGER},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      operate_desc = #{operateDesc,jdbcType=VARCHAR},
+      operate_by = #{operateBy,jdbcType=VARCHAR},
+      operate_result_status = #{operateResultStatus,jdbcType=INTEGER},
+      operate_result_desc = #{operateResultDesc,jdbcType=VARCHAR},
+      extra_info = #{extraInfo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByLeadId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from followup_history
+    where lead_id = #{leadId,jdbcType=INTEGER}
+    group by operate_time desc
+  </select>
+</mapper>

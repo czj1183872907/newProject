@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CallHistorySearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.dto.CallHistoryDTO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="call_category" jdbcType="INTEGER" property="callCategory" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
+    <result column="call_time" jdbcType="TIMESTAMP" property="callTime" />
+    <result column="call_content" jdbcType="VARCHAR" property="callContent" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+    <result column="call_duration" jdbcType="INTEGER" property="callDuration" />
+    <result column="sms_content" jdbcType="VARCHAR" property="smsContent" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+  </resultMap>
+  <select id="getCallHistory" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    id,
+    (select description from meta_lead where call_category=meta_code and meta_name='lead_call_category') as callCategoryName,
+    contact, contact_information, call_time, call_content, create_by,
+    call_duration, sms_content, comment, task_id, case_id
+    from call_history
+    where task_id = #{taskId,jdbcType=BIGINT}
+  </select>
+</mapper>

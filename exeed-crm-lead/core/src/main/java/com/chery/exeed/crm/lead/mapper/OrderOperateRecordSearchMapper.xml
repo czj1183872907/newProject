@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.OrderOperateRecordSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.OrderOperateRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="cert_type" jdbcType="INTEGER" property="certType" />
+    <result column="cert_no" jdbcType="VARCHAR" property="certNo" />
+    <result column="car_apply_date" jdbcType="TIMESTAMP" property="carApplyDate" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operate_by" jdbcType="INTEGER" property="operateBy" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="order_money" jdbcType="VARCHAR" property="orderMoney"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, customer_name, phone, cert_type, cert_no, car_apply_date, operate_time, 
+    operate_by, lead_status,address,order_money
+  </sql>
+  <insert id="insertOrderOperatRecord" parameterType="com.chery.exeed.crm.lead.model.OrderOperateRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into order_operate_record (id, lead_id, customer_name, 
+      phone, cert_type, cert_no, 
+      car_apply_date, operate_time, operate_by, 
+      lead_status,address,order_money,material_code)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{certType,jdbcType=INTEGER}, #{certNo,jdbcType=VARCHAR}, 
+      #{carApplyDate,jdbcType=TIMESTAMP}, #{operateTime,jdbcType=TIMESTAMP}, #{operateBy,jdbcType=INTEGER}, 
+      #{leadStatus,jdbcType=INTEGER},#{address,jdbcType=VARCHAR},#{orderMoney,jdbcType=VARCHAR},#{materialCode,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="selectByCertNo" parameterType="String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from order_operate_record
+    where cert_no = #{certNo,jdbcType=INTEGER}
+  </select>
+
+  <select  id="selectByOperateTime" resultType="com.chery.exeed.crm.lead.model.OrderOperateRecord">
+    select
+        lead_id as leadId,customer_name as customerName,phone,cert_type as certType,car_apply_date as carApplyDate,operate_time as operateTime,
+        operate_by as operateBy,lead_status as leadStatus,address,order_money as orderMoney,material_code as materialCode,
+        (select dealer from exeed_crm_lead.lead where lead_id=id) as erpNo,
+        (select DEALER_NAME from lead inner join v_dealers on dealer=DEALER_CODE where id=lead_id) as dealerName,  -- 经销商名称
+        (select (select region_name from exeed_crm_lead.v_region where province=region_id limit 1) from exeed_crm_lead.lead where lead_id=id) as provinceName,
+        (select (select region_name from exeed_crm_lead.v_region where city=region_id limit 1) from exeed_crm_lead.lead where lead_id=id) as cityName,material_code,
+        (select carType from v_ifs_material where material_code=code) as orderModel, -- 下订车型
+        (select series_name from v_car_series where series_code=(select series_name from lead where id=lead_id)) as modelCarName,-- 意向车型
+        cert_no as certNo   -- 身份证号
+    from order_operate_record
+    <where>
+      <if test="startOperateTime!=null">
+        and operate_time >= #{startOperateTime}
+      </if>
+      <if test="endOperateTime!=null">
+        and operate_time &lt;= #{endOperateTime}
+      </if>
+    </where>
+  </select>
+</mapper>

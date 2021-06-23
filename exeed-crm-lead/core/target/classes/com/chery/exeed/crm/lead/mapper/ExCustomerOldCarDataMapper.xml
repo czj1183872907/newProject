@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.ExCustomerOldCarDataMapper">
+
+    <resultMap id="DtoResultMap" type="com.chery.exeed.crm.lead.dto.CustomerOldCarDataDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+        <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+        <result column="manufacturer_name" jdbcType="VARCHAR" property="manufacturerName" />
+        <result column="brand" jdbcType="VARCHAR" property="brand" />
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+        <result column="model" jdbcType="VARCHAR" property="model" />
+        <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, customer_id, manufacturer, manufacturer_name, brand, brand_name, model, model_name
+    </sql>
+
+    <select id="listByCustomer" resultMap="DtoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from customer_old_car_data
+        where customer_id = #{customerId,jdbcType=INTEGER}
+    </select>
+
+</mapper>

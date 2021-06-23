@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.MetaKnowChannelMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.MetaKnowChannel">
+    <result column="know_channel" jdbcType="VARCHAR" property="knowChannel" />
+    <result column="know_channel_desc" jdbcType="VARCHAR" property="knowChannelDesc" />
+    <result column="know_channel_detail" jdbcType="VARCHAR" property="knowChannelDetail" />
+    <result column="know_channel_detail_desc" jdbcType="VARCHAR" property="knowChannelDetailDesc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.MetaKnowChannel">
+    insert into meta_know_channel (know_channel, know_channel_desc, know_channel_detail, 
+      know_channel_detail_desc)
+    values (#{knowChannel,jdbcType=VARCHAR}, #{knowChannelDesc,jdbcType=VARCHAR}, #{knowChannelDetail,jdbcType=VARCHAR}, 
+      #{knowChannelDetailDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.MetaKnowChannel">
+    insert into meta_know_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="knowChannel != null">
+        know_channel,
+      </if>
+      <if test="knowChannelDesc != null">
+        know_channel_desc,
+      </if>
+      <if test="knowChannelDetail != null">
+        know_channel_detail,
+      </if>
+      <if test="knowChannelDetailDesc != null">
+        know_channel_detail_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="knowChannel != null">
+        #{knowChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelDesc != null">
+        #{knowChannelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelDetail != null">
+        #{knowChannelDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="knowChannelDetailDesc != null">
+        #{knowChannelDetailDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

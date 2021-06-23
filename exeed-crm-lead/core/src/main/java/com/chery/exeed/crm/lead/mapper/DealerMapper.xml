@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.DealerMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.Dealer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="dealer_type" jdbcType="INTEGER" property="dealerType" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="coordinates_long" jdbcType="VARCHAR" property="coordinatesLong" />
+    <result column="coordinates_lateral" jdbcType="VARCHAR" property="coordinatesLateral" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="chng_by" jdbcType="INTEGER" property="chngBy" />
+    <result column="chng_date" jdbcType="TIMESTAMP" property="chngDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, dealer_type, dealer_name, contact, phone, city, address, coordinates_long,coordinates_lateral, create_by,
+    create_date, chng_by, chng_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.chery.exeed.crm.lead.model.Dealer" useGeneratedKeys="true">
+    insert into dealer (id, code, dealer_type, 
+      dealer_name, contact, phone, 
+      city, address, coordinates,
+      create_by, create_date, chng_by, 
+      chng_date)
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{dealerType,jdbcType=INTEGER}, 
+      #{dealerName,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{coordinates,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{chngBy,jdbcType=INTEGER}, 
+      #{chngDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.chery.exeed.crm.lead.model.Dealer" useGeneratedKeys="true">
+    insert into dealer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="dealerType != null">
+        dealer_type,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="coordinates != null">
+        coordinates,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="chngBy != null">
+        chng_by,
+      </if>
+      <if test="chngDate != null">
+        chng_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerType != null">
+        #{dealerType,jdbcType=INTEGER},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinates != null">
+        #{coordinates,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chngBy != null">
+        #{chngBy,jdbcType=INTEGER},
+      </if>
+      <if test="chngDate != null">
+        #{chngDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.Dealer">
+    update dealer
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerType != null">
+        dealer_type = #{dealerType,jdbcType=INTEGER},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinates != null">
+        coordinates = #{coordinates,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chngBy != null">
+        chng_by = #{chngBy,jdbcType=INTEGER},
+      </if>
+      <if test="chngDate != null">
+        chng_date = #{chngDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.Dealer">
+    update dealer
+    set code = #{code,jdbcType=VARCHAR},
+      dealer_type = #{dealerType,jdbcType=INTEGER},
+      dealer_name = #{dealerName,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      coordinates = #{coordinates,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      chng_by = #{chngBy,jdbcType=INTEGER},
+      chng_date = #{chngDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <!--<select id="getDealerInfo" resultType="java.util.List">-->
+         <!--SELECT-->
+		<!--dd.id,-->
+		<!--dd.dealer_code as dealerCode,-->
+        <!--dd.apply_name as applyName,-->
+        <!--dd.dealer_name as dealerName,-->
+        <!--dd.type,-->
+        <!--dd.province_id as provinceId,-->
+        <!--dd.province_name as provinceName,-->
+        <!--dd.city_id as cityId,-->
+        <!--dd.city_name as cityName,-->
+        <!--dd.district_id as districtId,-->
+        <!--dd.district_name as districtName,-->
+        <!--dd.shop_address as shopAddress,-->
+        <!--dd.workshop_address as workshopAddress,-->
+        <!--dd.opening_date as openingDate,-->
+        <!--dd.is_open as isOpen,-->
+		<!--dd.sales_phone as salesPhone,-->
+        <!--dd.service_phone as servicePhone,-->
+        <!--dd.shop_coordinates as shopCoordinates,-->
+        <!--dd.after_sales_coordinates as workshopCoordinates,-->
+		<!--dd.is_distribute as isDistribute,-->
+		<!--dd.is_sales as isSales,-->
+		<!--dd.IS_LINK as isLink-->
+		<!--FROM-->
+		<!--mdm_dealers dd left join mdm_series_dealer dsd on dd.ID = dsd.DEALER_ID-->
+		<!--WHERE dd.dealer_code is not null-->
+		<!--order by dd.shop_coordinates desc-->
+    <!--</select>-->
+</mapper>

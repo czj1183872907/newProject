@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.LeadFollowupSearchMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.LeadFollowup">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+        <result column="distribute_to" jdbcType="INTEGER" property="distributeTo" />
+        <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="follow_type" jdbcType="INTEGER" property="followType" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="follow_plan" jdbcType="TIMESTAMP" property="followPlan" />
+        <result column="follow_date" jdbcType="TIMESTAMP" property="followDate" />
+        <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, lead_id, distribute_to, create_by, create_time, name, follow_type, status, follow_plan,
+        follow_date, lead_status
+    </sql>
+
+    <select id="selectLeadFollowupByLeadId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM lead_followup
+        WHERE lead_id = #{leadId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByLeadIdInActive" parameterType="java.lang.Integer">
+        delete from lead_followup
+        where lead_id = #{leadId,jdbcType=INTEGER} and status = 0
+    </delete>
+
+    <delete id="updateLeadIdInActive" parameterType="java.lang.Integer">
+        update lead_followup set status = 1
+        where lead_id = #{leadId,jdbcType=INTEGER} and status = 0
+    </delete>
+
+    <insert id="insertSelectiveReturn" parameterType="com.chery.exeed.crm.lead.model.LeadFollowup" useGeneratedKeys="true" keyProperty="id">
+        insert into lead_followup
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="leadId != null">
+                lead_id,
+            </if>
+            <if test="distributeTo != null">
+                distribute_to,
+            </if>
+            <if test="createBy != null">
+                create_by,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="followType != null">
+                follow_type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="followPlan != null">
+                follow_plan,
+            </if>
+            <if test="followDate != null">
+                follow_date,
+            </if>
+            <if test="leadStatus != null">
+                lead_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="leadId != null">
+                #{leadId,jdbcType=INTEGER},
+            </if>
+            <if test="distributeTo != null">
+                #{distributeTo,jdbcType=INTEGER},
+            </if>
+            <if test="createBy != null">
+                #{createBy,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="followType != null">
+                #{followType,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="followPlan != null">
+                #{followPlan,jdbcType=TIMESTAMP},
+            </if>
+            <if test="followDate != null">
+                #{followDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="leadStatus != null">
+                #{leadStatus,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectByLeadIdAndStatus" resultType="com.chery.exeed.crm.lead.model.LeadFollowup">
+        select
+        id as id,
+        lead_id as leadId,
+        distribute_to as distributeTo,
+        create_by as createBy,
+        create_time as createTime,
+        NAME,
+        follow_type as followType,
+        STATUS as status,
+        follow_plan as followPlan,
+        follow_date as followDate,
+        lead_status as leadStatus
+        from lead_followup
+        WHERE 1 = 1
+        <if test="leadId != null">
+            AND lead_id = #{leadId,jdbcType=INTEGER}
+        </if>
+        <if test="status != null">
+            AND status = #{status,jdbcType=INTEGER}
+        </if>
+    </select>
+    
+    <select id="querySuperviseLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+      select
+            a.id as id,
+            a.lead_id as leadId,
+            a.distribute_to as distributeTo,
+            a.create_by as createBy,
+            a.create_time as createTime,
+            a.name as name,
+            b.model_name as modelName,
+            b.series_name as seriesName,
+            a.follow_type as followType,
+            a.status as status,
+            a.follow_plan as followPlan,
+            a.follow_date as followDate,
+            b.cust_id as custId,
+            b.first_name as custName,
+            b.owner as owner,
+            b.level as level,
+            b.lead_status as leadStatus,
+            (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+            (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+            (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+            (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+      from lead_followup a left join `exeed_crm_lead`.lead b on a.lead_id = b.id
+      where b.dealer =  #{dealerId,jdbcType=VARCHAR}
+      and a.status = 0 and b.lead_status in (7,8,10,11,12,13,18)
+      and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(a.follow_plan, '%Y-%m-%d %H:%i:%s')
+        <if test="leadType == 1">
+            and  b.lead_status in (7)
+        </if>
+        <if test="leadType == 2">
+            and  b.lead_status in (8,10,11,12,13,18)
+        </if>
+        <if test="createBy != null and createBy !=''">
+        and   b.follow_by   =  #{createBy,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and b.level = #{level}
+        </if>
+        <if test="dateType == 1">
+            and  left(a.follow_plan,11)  = CURRENT_DATE
+        </if>
+        <if test="dateType == 2">
+            and  a.follow_plan &gt; subdate(curdate(),date_format(curdate(),'%w')-1)
+            and  a.follow_plan &lt; subdate(curdate(),date_format(curdate(),'%w')-7)
+        </if>
+        <if test="dateType == 3">
+            and date_format(a.follow_plan,'%Y')=Year(CurDate()) and date_format(a.follow_plan,'%m')=month(CurDate())
+        </if>
+            order by a.follow_plan asc
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <!--<select id="queryDistributedLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select
+            a.id as id,
+            a.lead_id as leadId,
+            a.distribute_to as distributeTo,
+            a.create_by as createBy,
+            a.create_time as createTime,
+            a.name as name,
+            b.model_name as modelName,
+            b.series_name as seriesName,
+            a.follow_type as followType,
+            a.status as status,
+            a.follow_plan as followPlan,
+            a.follow_date as followDate,
+            b.cust_id as custId,
+            b.first_name as custName,
+            b.owner as owner,
+            b.level as level,
+            b.lead_status as leadStatus,
+            (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+            (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+            (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+            (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+        from lead_followup a left join `exeed_crm_lead`.lead b on a.lead_id = b.id
+        where b.dealer =  #{dealerId,jdbcType=VARCHAR}
+          and a.status = 0 and b.lead_status in (7)
+          and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(a.follow_plan, '%Y-%m-%d %H:%i:%s')
+        order by follow_plan asc
+            limit 500
+    </select>-->
+
+    <select id="queryDistributedLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select  * from ( select
+                             t.id,
+                             t.lead_number,
+                             t.lead_type,
+                             t.lead_status,
+                             t.brand_name,
+                             t.series_name,
+                             t. model_name,
+                             color_name,
+                             last_name,
+                             first_name,
+                             email,
+                             phone,
+                             province,
+                             city,
+                             sub_city,
+                             address,
+                             gender,
+                             age,
+                             description,
+                             purchase_time,
+                             rating,
+                             level,
+                             test_drive_plan,
+                             budget,
+                             consulting_frequency,
+                             wechat_openid,
+                             close_time,
+                             failure_reason,
+                             profile_url,
+                             t.dealer,
+                             dealer_order_manager,
+                             product_experience_manager,
+                             account,
+                             customer_car_date,
+                             t.owner,
+                             created_by,
+                             modify_by,
+                             modify_date,
+                             marital_status,
+                             revenue_level,
+                             household_registration,
+                             consumption_characteristics,
+                             purchae_frequency,
+                             driving_skill,
+                             treasure_car_level,
+                             tt.sub_channel_id,
+                             tt.channel_id,
+                             cust_id,
+                             h.create_time
+                         from `exeed_crm_lead`.lead t
+                                  left join lead_channel tt on t.id = tt.lead_id
+                                  left join lead_history h on h.lead_id=t.id
+                         where 1=1
+                           and t.dealer =  #{dealerId,jdbcType=VARCHAR}
+                           and t.lead_status =7
+                         group by t.id
+                       ) tt
+        where tt.id not in (select  lead_id  from arrival_operate_record)
+    </select>
+    <select id="queryAcceptLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select * from  ( select
+        b.id as leadId,
+        a.distribute_to as distributeTo,
+        a.create_by as createBy,
+        a.create_time as createTime,
+        a.name as name,
+        b.model_name as modelName,
+        b.series_name as seriesName,
+        a.follow_type as followType,
+        a.status as status,
+        a.follow_plan as followPlan,
+        a.follow_date as followDate,
+        b.cust_id as custId,
+        b.first_name as custName,
+        b.owner as owner,
+        b.level as level,
+        b.lead_status as leadStatus,
+        (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+        from  `exeed_crm_lead`.lead b left join   lead_followup a  on a.lead_id = b.id
+        where 1=1
+        and b.dealer = #{dealerId,jdbcType=VARCHAR}
+        and b.lead_status =4
+        <if test="createBy != null and createBy !=''">
+            and   b.follow_by   =  #{createBy,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and b.level = #{level}
+        </if>
+        <if test="dateType == 1">
+            and  left(b.update_record_time,11)  = CURRENT_DATE
+        </if>
+        <if test="dateType == 2">
+            and  b.update_record_time &gt; subdate(curdate(),date_format(curdate(),'%w')-1)
+            and  b.update_record_time &lt; subdate(curdate(),date_format(curdate(),'%w')-7)
+        </if>
+        <if test="dateType == 3">
+            and date_format(b.update_record_time,'%Y')=Year(CurDate()) and date_format(b.update_record_time,'%m')=month(CurDate())
+        </if>
+        order by  a.follow_plan desc) as x
+        group by x.leadId
+        ORDER BY x.followPlan desc
+    </select>
+
+    <select id="queryOrderLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select * from  ( select
+        b.id as leadId,
+        a.distribute_to as distributeTo,
+        a.create_by as createBy,
+        a.create_time as createTime,
+        a.name as name,
+        b.model_name as modelName,
+        b.series_name as seriesName,
+        a.follow_type as followType,
+        a.status as status,
+        a.follow_plan as followPlan,
+        a.follow_date as followDate,
+        b.cust_id as custId,
+        b.first_name as custName,
+        b.owner as owner,
+        b.level as level,
+        b.lead_status as leadStatus,
+
+        (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+        from  `exeed_crm_lead`.lead b left join   lead_followup a  on a.lead_id = b.id
+        where 1=1
+        and b.dealer = #{dealerId,jdbcType=VARCHAR}
+        and b.lead_status =14
+        <if test="createBy != null and createBy !=''">
+            and   b.follow_by   =  #{createBy,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and b.level = #{level}
+        </if>
+        <if test="dateType == 1">
+            and  left(b.update_record_time,11)  = CURRENT_DATE
+        </if>
+        <if test="dateType == 2">
+            and  b.update_record_time &gt; subdate(curdate(),date_format(curdate(),'%w')-1)
+            and  b.update_record_time &lt; subdate(curdate(),date_format(curdate(),'%w')-7)
+        </if>
+        <if test="dateType == 3">
+            and date_format(b.update_record_time,'%Y')=Year(CurDate()) and date_format(b.update_record_time,'%m')=month(CurDate())
+        </if>
+        order by  a.follow_plan desc) as x
+        group by x.leadId
+        ORDER BY x.followPlan desc
+
+    </select>
+
+    <select id="querySuperviseLeadListByConsultant" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+      select
+            a.id as id,
+            a.lead_id as leadId,
+            a.distribute_to as distributeTo,
+            a.create_by as createBy,
+            a.create_time as createTime,
+            a.name as name,
+            a.follow_type as followType,
+            a.status as status,
+            a.follow_plan as followPlan,
+            a.follow_date as followDate,
+            b.cust_id as custId,
+            b.first_name as custName,
+            b.owner as owner,
+            b.level as level
+      from lead_followup a left join `exeed_crm_lead`.lead b on a.lead_id = b.id
+      where b.dealer =  #{dealerId,jdbcType=VARCHAR}
+      and b.owner = #{userId,jdbcType=INTEGER}
+      and a.status = 0 and b.lead_status in (7,8,10,11,12,13,14,16,18)
+      and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(a.follow_plan, '%Y-%m-%d %H:%i:%s')
+    </select>
+
+    <select id="queryFollowupPlan" parameterType="java.lang.Integer" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+      select
+            t.id as id,
+            t.lead_id as leadId,
+            t.distribute_to as distributeTo,
+            t.create_by as createBy,
+            t.create_time as createTime,
+            t.name as name,
+            t.follow_type as followType,
+            t.status as status,
+            t.follow_plan as followPlan,
+            t.follow_date as followDate
+       from lead_followup t where t.lead_id = #{id,jdbcType=INTEGER} and t.status = 0 order by follow_plan asc
+    </select>
+
+    <select id="queryExpiredLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select
+            tt.id as id,
+            tt.lead_id as leadId,
+            tt.distribute_to as distributeTo,
+            tt.create_by as createBy,
+            tt.create_time as createTime,
+            tt.name as name,
+            tt.follow_type as followType,
+            tt.status as status,
+            tt.follow_plan as followPlan,
+            tt.follow_date as followDate,
+            t.level,
+            t.owner,
+            t.cust_id,
+            t.gender,
+            t.first_name as custName
+        from lead_followup tt left join `exeed_crm_lead`.lead t on t.id = tt.lead_id
+        WHERE  t.dealer = #{dealerId,jdbcType=VARCHAR}
+         AND t.owner = #{userId,jdbcType=INTEGER}
+         and tt.status = 0
+         and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(tt.follow_plan, '%Y-%m-%d %H:%i:%s')
+
+    </select>
+
+    <select id="queryFollowupTimes" parameterType="Integer" resultType="java.lang.Integer">
+        select
+           count(*)
+        from lead_followup t
+        WHERE  t.lead_id = #{leadId,jdbcType=INTEGER} and lead_status is not null and lead_status != 7
+    </select>
+
+    <select id="queryConsultantPerformance" resultType="java.lang.Integer">
+        select
+           count(*)
+        from lead_followup t
+        WHERE  t.distribute_to = #{distributeTo,jdbcType=INTEGER}
+        and t.status = #{status,jdbcType=INTEGER}
+        <if test="selectedTime == 1">
+            and  DATE_FORMAT(NOW(), '%Y-%m') =  DATE_FORMAT(t.create_time, '%Y-%m')
+        </if>
+        <if test="selectedTime == 2">
+            and  YEARWEEK(date_format(t.create_time,'%Y-%m-%d')) = YEARWEEK(now());
+        </if>
+        <if test="selectedTime == 3">
+            and  DATE_FORMAT(NOW(), '%Y-%m-%d') =  DATE_FORMAT(t.create_time, '%Y-%m-%d')
+        </if>
+    </select>
+
+    <select id="queryConsultantPerformanceNotFollow" resultType="java.lang.Integer">
+        select
+        count(1)
+        from lead_followup t
+        WHERE  t.distribute_to = #{distributeTo,jdbcType=INTEGER}
+        and t.status = 0
+        and DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') &lt; DATE_FORMAT(t.follow_plan, '%Y-%m-%d %H:%i:%s')
+        <if test="selectedTime == 1">
+            and  DATE_FORMAT(NOW(), '%Y-%m') =  DATE_FORMAT(t.create_time, '%Y-%m')
+        </if>
+        <if test="selectedTime == 2">
+            and  YEARWEEK(date_format(t.create_time,'%Y-%m-%d')) = YEARWEEK(now());
+        </if>
+        <if test="selectedTime == 3">
+            and  DATE_FORMAT(NOW(), '%Y-%m-%d') =  DATE_FORMAT(t.create_time, '%Y-%m-%d')
+        </if>
+    </select>
+
+    <select id="queryConsultantPerformanceFollow" resultType="java.lang.Integer">
+        select count(1)
+	    from lead_followup t where t.distribute_to = #{distributeTo,jdbcType=INTEGER} GROUP BY t.lead_id having count(1)=sum(status)
+    </select>
+
+    <select id="queryExpiredLeadOfConsultant" resultType="java.lang.Integer">
+        select
+        count(*)
+        from lead_followup t right join lead tt on tt.id = t.lead_id
+        WHERE  t.distribute_to = #{distributeTo,jdbcType=INTEGER}
+        and t.status = 0
+        and DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') &gt;=  DATE_FORMAT(t.follow_plan, '%Y-%m-%d %H:%i:%s')
+        <if test="selectedTime == 1">
+            and  DATE_FORMAT(NOW(), '%Y-%m') =  DATE_FORMAT(t.create_time, '%Y-%m')
+        </if>
+        <if test="selectedTime == 2">
+            and  YEARWEEK(date_format(t.create_time,'%Y-%m-%d')) = YEARWEEK(now());
+        </if>
+        <if test="selectedTime == 3">
+            and  DATE_FORMAT(NOW(), '%Y-%m-%d') =  DATE_FORMAT(t.create_time, '%Y-%m-%d')
+        </if>
+    </select>
+    <delete id="rollbackLastFollowup" parameterType="java.lang.Integer">
+        update lead_followup set status = 0
+        where lead_id = #{leadId,jdbcType=INTEGER} order by id desc limit 1
+    </delete>
+    <select id="getSuperviseLeadTotal" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+      select count(1) as total
+      from lead_followup a left join `exeed_crm_lead`.lead b on a.lead_id = b.id
+      where b.dealer =  #{dealerId,jdbcType=VARCHAR}
+      and a.status = 0 and b.lead_status in (7,8,10,11,12,13,18)
+      and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(a.follow_plan, '%Y-%m-%d %H:%i:%s')
+    </select>
+    <select id="queryOrderLeadListTotal" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select count(*) as total  from  ( select
+        b.id as leadId,
+        a.distribute_to as distributeTo,
+        a.create_by as createBy,
+        a.create_time as createTime,
+        a.name as name,
+        b.model_name as modelName,
+        b.series_name as seriesName,
+        a.follow_type as followType,
+        a.status as status,
+        a.follow_plan as followPlan,
+        a.follow_date as followDate,
+        b.cust_id as custId,
+        b.first_name as custName,
+        b.owner as owner,
+        b.level as level,
+        b.lead_status as leadStatus,
+        (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+        from  `exeed_crm_lead`.lead b left join   lead_followup a  on a.lead_id = b.id
+        where 1=1
+        and b.dealer = #{dealerId,jdbcType=VARCHAR}
+        and b.lead_status =14
+        group by lead_id) as x
+    </select>
+    <select id="queryAcceptLeadListTotal" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+       select count(1) as total  from  ( select
+        b.id as leadId,
+        a.distribute_to as distributeTo,
+        a.create_by as createBy,
+        a.create_time as createTime,
+        a.name as name,
+        b.model_name as modelName,
+        b.series_name as seriesName,
+        a.follow_type as followType,
+        a.status as status,
+        a.follow_plan as followPlan,
+        a.follow_date as followDate,
+        b.cust_id as custId,
+        b.first_name as custName,
+        b.owner as owner,
+        b.level as level,
+        b.lead_status as leadStatus,
+        (select count(1) from followup_history where followup_history.lead_id = b.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = b.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = b.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = b.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus
+        from  `exeed_crm_lead`.lead b left join   lead_followup a  on a.lead_id = b.id
+        where 1=1
+        and b.dealer = #{dealerId,jdbcType=VARCHAR}
+        and b.lead_status =4
+        order by  a.follow_plan desc) as x
+    </select>
+    <select id="queryFollowupPlannvalid" resultType="com.chery.exeed.crm.lead.dto.LeadFollowupDTO">
+        select
+            t.id as id,
+            t.lead_id as leadId,
+            t.distribute_to as distributeTo,
+            t.create_by as createBy,
+            t.create_time as createTime,
+            t.name as name,
+            t.follow_type as followType,
+            t.status as status,
+            t.follow_plan as followPlan,
+            t.follow_date as followDate
+       from lead_followup t where t.lead_id = #{id,jdbcType=INTEGER} and t.status = 1 order by follow_plan asc
+    </select>
+    <select id="querySuperviseLeadCount" resultType="java.lang.Integer">
+        select
+        count(1) as total
+        from lead_followup a left join `exeed_crm_lead`.lead b on a.lead_id = b.id
+        where b.dealer =  #{dealerId,jdbcType=VARCHAR}
+        and a.status = 0 and b.lead_status in (7,8,10,11,12,13,18)
+        and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(a.follow_plan, '%Y-%m-%d %H:%i:%s')
+        <if test="leadType == 1">
+            and  b.lead_status in (7)
+        </if>
+        <if test="leadType == 2">
+            and  b.lead_status in (8,10,11,12,13,18)
+        </if>
+        <if test="createBy != null and createBy !=''">
+            and   b.follow_by   =  #{createBy,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and b.level = #{level}
+        </if>
+        <if test="dateType == 1">
+            and  left(a.follow_plan,11)  = CURRENT_DATE
+        </if>
+        <if test="dateType == 2">
+            and  a.follow_plan &gt; subdate(curdate(),date_format(curdate(),'%w')-1)
+            and  a.follow_plan &lt; subdate(curdate(),date_format(curdate(),'%w')-7)
+        </if>
+        <if test="dateType == 3">
+            and date_format(a.follow_plan,'%Y')=Year(CurDate()) and date_format(a.follow_plan,'%m')=month(CurDate())
+        </if>
+        order by a.follow_plan asc
+    </select>
+</mapper>

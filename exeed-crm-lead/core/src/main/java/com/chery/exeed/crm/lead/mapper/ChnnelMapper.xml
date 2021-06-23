@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.ChnnelMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.Chnnel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="create_task" jdbcType="INTEGER" property="createTask" />
+    <result column="is_send" jdbcType="INTEGER" property="isSend" />
+    <result column="create_by" jdbcType="INTEGER" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="chng_by" jdbcType="INTEGER" property="chngBy" />
+    <result column="chng_date" jdbcType="TIMESTAMP" property="chngDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, pid, create_task, is_send, create_by, create_date, chng_by, chng_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chnnel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from chnnel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.Chnnel">
+    insert into chnnel (id, name, pid, 
+      create_task, is_send, create_by, 
+      create_date, chng_by, chng_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{createTask,jdbcType=INTEGER}, #{isSend,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{chngBy,jdbcType=INTEGER}, #{chngDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.Chnnel">
+    insert into chnnel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="createTask != null">
+        create_task,
+      </if>
+      <if test="isSend != null">
+        is_send,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="chngBy != null">
+        chng_by,
+      </if>
+      <if test="chngDate != null">
+        chng_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="createTask != null">
+        #{createTask,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        #{isSend,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chngBy != null">
+        #{chngBy,jdbcType=INTEGER},
+      </if>
+      <if test="chngDate != null">
+        #{chngDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.Chnnel">
+    update chnnel
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="createTask != null">
+        create_task = #{createTask,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null">
+        is_send = #{isSend,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chngBy != null">
+        chng_by = #{chngBy,jdbcType=INTEGER},
+      </if>
+      <if test="chngDate != null">
+        chng_date = #{chngDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.Chnnel">
+    update chnnel
+    set name = #{name,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
+      create_task = #{createTask,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      chng_by = #{chngBy,jdbcType=INTEGER},
+      chng_date = #{chngDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

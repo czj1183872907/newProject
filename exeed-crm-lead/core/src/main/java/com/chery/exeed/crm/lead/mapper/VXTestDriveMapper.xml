@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.VXTestDriveMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.dto.VXTestDriveDTO">
+    <result column="id" property="id" jdbcType="VARCHAR"></result>
+    <result column="cartype" property="cartype" jdbcType="VARCHAR"></result>
+    <result column="status" property="status" jdbcType="INTEGER"></result>
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP"></result>
+    <result column="update_time" property="update_time" jdbcType="TIMESTAMP"></result>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id,cartype,status,create_time,update_time
+  </sql>
+  <select id="list" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from exeed_crm_lead.vx_testdrive
+  </select>
+
+  <select id="queryMaxId" resultType="integer">
+    SELECT max(cast(substring(id,3) as SIGNED)) FROM exeed_crm_lead.vx_testdrive
+  </select>
+
+  <update id="updateVxTestDrive">
+    update exeed_crm_lead.vx_testdrive
+    <set>
+      <if test="carType!=null and carType!=''">
+        cartype=#{carType},
+      </if>
+      <if test="status!=null">
+        status=#{status},
+      </if>
+      update_time=now()
+    </set>
+    where id=#{id}
+  </update>
+
+  <insert id="addVxTestDrive">
+    insert into exeed_crm_lead.vx_testdrive(id,cartype,status,update_time,create_time) values(#{id},#{carType},#{status},now(),now())
+  </insert>
+</mapper>

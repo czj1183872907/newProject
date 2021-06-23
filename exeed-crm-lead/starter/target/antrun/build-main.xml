@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <unzip src="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/${project.name}-1.0-SNAPSHOT-${build.time}.jar" dest="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp"/>
+  <echo message="begin to copy application-SIT.properties + microservice-SIT.yaml to dist_dir, then rename as application.properties + microservice.yaml."/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/application-SIT.properties" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/application.properties" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/microservice-SIT.yaml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/microservice.yaml" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/logback-LEAD.xml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/logback.xml" overwrite="true"/>
+  <zip basedir="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp" destfile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/${project.name}-1.0-SNAPSHOT-SIT-${build.time}.jar" compress="false"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/application-UAT.properties" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/application.properties" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/microservice-UAT.yaml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/microservice.yaml" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/logback-LEAD.xml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/logback.xml" overwrite="true"/>
+  <zip basedir="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp" destfile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/${project.name}-1.0-SNAPSHOT-UAT-${build.time}.jar" compress="false"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/application-PROD.properties" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/application.properties" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/microservice-PROD.yaml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/microservice.yaml" overwrite="true"/>
+  <copy file="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter/src/main/resources/logback-LEAD.xml" tofile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp/logback.xml" overwrite="true"/>
+  <zip basedir="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp" destfile="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/${project.name}-1.0-SNAPSHOT-PROD-${build.time}.jar" compress="false"/>
+  <delete dir="E:\EXEED\CRM\exeed-crm-apis-parent\exeed-crm-lead\starter\target/tmp"/>
+</target>
+</project>

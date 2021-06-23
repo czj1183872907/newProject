@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>exeed-crm-lead</artifactId>
+        <groupId>com.chery.exeed.crm</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <version>${project.version}</version>
+
+    <artifactId>exeed-crm-lead-starter</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.chery.exeed.crm</groupId>
+            <artifactId>exeed-crm-lead-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.13.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.9.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                   <exclude>application-*.properties</exclude>
+                    <exclude>microservice-*.yaml</exclude>
+                    <exclude>logback-*.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <timestampFormat>yyyyMMddHHmmss</timestampFormat>
+                    <timestampPropertyName>build.time</timestampPropertyName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-timestamp</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create-timestamp</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Support our own plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.3.5.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.chery.exeed.crm.lead.entry.StartLeadApplication</mainClass>
+                    <finalName>${project.name}-${project.version}-${build.time}</finalName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <unzip src="${project.build.directory}/${project.name}-${project.version}-${build.time}.jar" dest="${project.build.directory}/tmp"/>
+
+                                <echo message="begin to copy application-SIT.properties + microservice-SIT.yaml to dist_dir, then rename as application.properties + microservice.yaml." />
+                                <copy overwrite="true" file="${basedir}/src/main/resources/application-SIT.properties"
+                                      tofile="${project.build.directory}/tmp/application.properties"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/microservice-SIT.yaml"
+                                      tofile="${project.build.directory}/tmp/microservice.yaml"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/logback-LEAD.xml"
+                                      tofile="${project.build.directory}/tmp/logback.xml"/>
+                                <zip compress="false" basedir="${project.build.directory}/tmp" destfile="${project.build.directory}/${project.name}-${project.version}-SIT-${build.time}.jar"/>
+
+                                <copy overwrite="true" file="${basedir}/src/main/resources/application-UAT.properties"
+                                      tofile="${project.build.directory}/tmp/application.properties"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/microservice-UAT.yaml"
+                                      tofile="${project.build.directory}/tmp/microservice.yaml"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/logback-LEAD.xml"
+                                      tofile="${project.build.directory}/tmp/logback.xml"/>
+                                <zip compress="false" basedir="${project.build.directory}/tmp" destfile="${project.build.directory}/${project.name}-${project.version}-UAT-${build.time}.jar"/>
+
+                                <copy overwrite="true" file="${basedir}/src/main/resources/application-PROD.properties"
+                                      tofile="${project.build.directory}/tmp/application.properties"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/microservice-PROD.yaml"
+                                      tofile="${project.build.directory}/tmp/microservice.yaml"/>
+                                <copy overwrite="true" file="${basedir}/src/main/resources/logback-LEAD.xml"
+                                      tofile="${project.build.directory}/tmp/logback.xml"/>
+                                <zip compress="false" basedir="${project.build.directory}/tmp" destfile="${project.build.directory}/${project.name}-${project.version}-PROD-${build.time}.jar"/>
+                                <delete dir="${project.build.directory}/tmp"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.PreLeadSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.PreLead">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="sub_city" jdbcType="VARCHAR" property="subCity" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+    <result column="budget" jdbcType="VARCHAR" property="budget" />
+    <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+    <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+    <result column="revenue_level" jdbcType="VARCHAR" property="revenueLevel" />
+    <result column="household_registration" jdbcType="VARCHAR" property="householdRegistration" />
+    <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+    <result column="purchae_frequency" jdbcType="VARCHAR" property="purchaeFrequency" />
+    <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+    <result column="driving_skill" jdbcType="VARCHAR" property="drivingSkill" />
+    <result column="automotive_expertise" jdbcType="VARCHAR" property="automotiveExpertise" />
+    <result column="communication_difficulty" jdbcType="VARCHAR" property="communicationDifficulty" />
+    <result column="treasure_car_level" jdbcType="VARCHAR" property="treasureCarLevel" />
+    <result column="vehicle_no" jdbcType="VARCHAR" property="vehicleNo" />
+    <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+    <result column="is_special_customer" jdbcType="VARCHAR" property="isSpecialCustomer" />
+    <result column="special_customer_type" jdbcType="VARCHAR" property="specialCustomerType" />
+    <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+    <result column="case_number" jdbcType="VARCHAR" property="caseNumber" />
+    <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+    <result column="sub_channel_id" jdbcType="INTEGER" property="subChannelId" />
+    <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+    <result column="if_married" jdbcType="VARCHAR" property="ifMarried" />
+    <result column="family_size" jdbcType="VARCHAR" property="familySize" />
+    <result column="owning_car_age" jdbcType="VARCHAR" property="owningCarAge" />
+    <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+    <result column="recomender" jdbcType="VARCHAR" property="recomender" />
+    <result column="recomender_phone" jdbcType="VARCHAR" property="recomenderPhone" />
+    <result column="occupation_type" jdbcType="VARCHAR" property="occupationType" />
+    <result column="occupation_phone" jdbcType="VARCHAR" property="occupationPhone" />
+    <result column="call_reason" jdbcType="VARCHAR" property="callReason" />
+    <result column="wechat_number" jdbcType="VARCHAR" property="wechatNumber" />
+    <result column="campaign_id" jdbcType="VARCHAR" property="campaignId" />
+    <result column="resource_id" jdbcType="VARCHAR" property="resourceId" />
+    <result column="campaign_code" jdbcType="VARCHAR" property="campaignCode" />
+    <result column="activity_code" jdbcType="VARCHAR" property="activityCode" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, last_name, first_name, status, brand_name, series_name, model_name,
+    color_name, phone, email, province, city, sub_city, address, gender, age, description,
+    purchase_time, budget, wechat_openid, customer_car_date, owner, created_by, modify_by,
+    modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+    household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+    driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+    vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+    special_customer_type, special_care_comments, case_number, channel_id, sub_channel_id,
+    dealer, if_married, family_size, owning_car_age, vehicle_purpose, recomender, recomender_phone,
+    occupation_type, occupation_phone, call_reason, wechat_number, campaign_id, resource_id,
+    campaign_code, activity_code, channel_code, follow_car,collect_time, follow_info, follow_remarks
+  </sql>
+  <select id="selectPreLeadBySourceId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pre_lead
+    where resource_id = #{sourceId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectPreLeadByLeadId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pre_lead
+    where lead_id = #{leadId,jdbcType=INTEGER}
+    and channel_code in (select d.chanal_code from dcc_reback_config d where d.need_send = 1)
+  </select>
+  <select id="selectChannelByLeadId"  parameterType="java.lang.Integer" resultType="java.lang.String">
+    select channel_code from pre_lead where lead_id = #{leadId,jdbcType=INTEGER} and status = 0
+  </select>
+
+</mapper>

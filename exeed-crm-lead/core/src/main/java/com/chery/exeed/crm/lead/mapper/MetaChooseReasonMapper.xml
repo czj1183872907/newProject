@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.MetaChooseReasonMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    <id column="choose_reason" jdbcType="VARCHAR" property="chooseReason" />
+    <id column="choose_reason_detail" jdbcType="VARCHAR" property="chooseReasonDetail" />
+    <result column="choose_reason_desc" jdbcType="VARCHAR" property="chooseReasonDesc" />
+    <result column="choose_reason_detail_desc" jdbcType="VARCHAR" property="chooseReasonDetailDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    choose_reason, choose_reason_detail, choose_reason_desc, choose_reason_detail_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReasonKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meta_choose_reason
+    where choose_reason = #{chooseReason,jdbcType=VARCHAR}
+      and choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReasonKey">
+    delete from meta_choose_reason
+    where choose_reason = #{chooseReason,jdbcType=VARCHAR}
+      and choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    insert into meta_choose_reason (choose_reason, choose_reason_detail, 
+      choose_reason_desc, choose_reason_detail_desc
+      )
+    values (#{chooseReason,jdbcType=VARCHAR}, #{chooseReasonDetail,jdbcType=VARCHAR}, 
+      #{chooseReasonDesc,jdbcType=VARCHAR}, #{chooseReasonDetailDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    insert into meta_choose_reason
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chooseReason != null">
+        choose_reason,
+      </if>
+      <if test="chooseReasonDetail != null">
+        choose_reason_detail,
+      </if>
+      <if test="chooseReasonDesc != null">
+        choose_reason_desc,
+      </if>
+      <if test="chooseReasonDetailDesc != null">
+        choose_reason_detail_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chooseReason != null">
+        #{chooseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDetail != null">
+        #{chooseReasonDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDesc != null">
+        #{chooseReasonDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDetailDesc != null">
+        #{chooseReasonDetailDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    update meta_choose_reason
+    <set>
+      <if test="chooseReasonDesc != null">
+        choose_reason_desc = #{chooseReasonDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseReasonDetailDesc != null">
+        choose_reason_detail_desc = #{chooseReasonDetailDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where choose_reason = #{chooseReason,jdbcType=VARCHAR}
+      and choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    update meta_choose_reason
+    set choose_reason_desc = #{chooseReasonDesc,jdbcType=VARCHAR},
+      choose_reason_detail_desc = #{chooseReasonDetailDesc,jdbcType=VARCHAR}
+    where choose_reason = #{chooseReason,jdbcType=VARCHAR}
+      and choose_reason_detail = #{chooseReasonDetail,jdbcType=VARCHAR}
+  </update>
+</mapper>

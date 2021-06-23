@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.FollowupHistorySearchMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.FollowupHistory">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+        <result column="biz_type" jdbcType="INTEGER" property="bizType" />
+        <result column="biz_id" jdbcType="INTEGER" property="bizId" />
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+        <result column="operate_desc" jdbcType="VARCHAR" property="operateDesc" />
+        <result column="operate_by" jdbcType="VARCHAR" property="operateBy" />
+        <result column="operate_result_status" jdbcType="INTEGER" property="operateResultStatus" />
+        <result column="operate_result_desc" jdbcType="VARCHAR" property="operateResultDesc" />
+        <result column="extra_info" jdbcType="VARCHAR" property="extraInfo" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, lead_id, biz_type, biz_id, operate_time, operate_desc, operate_by, operate_result_status,
+    operate_result_desc, extra_info
+    </sql>
+
+    <select id="selectLastRecordBeforeDefeatApply" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM followup_history
+        WHERE lead_id = #{leadId,jdbcType=INTEGER}
+        AND operate_result_status IN
+        <foreach collection="leadStatusList" index="index" item="leadStatus" separator="," open="(" close=")">
+            #{leadStatus}
+        </foreach>
+        ORDER BY id DESC LIMIT 1
+    </select>
+
+    <insert id="insertHistory" parameterType="com.chery.exeed.crm.lead.model.FollowupHistory" useGeneratedKeys="true"  keyProperty="id">
+    insert into followup_history (id, lead_id, biz_type,
+      biz_id, operate_time, operate_desc,
+      operate_by, operate_result_status, operate_result_desc,
+      extra_info)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{bizType,jdbcType=INTEGER},
+      #{bizId,jdbcType=INTEGER}, #{operateTime,jdbcType=TIMESTAMP}, #{operateDesc,jdbcType=VARCHAR},
+      #{operateBy,jdbcType=VARCHAR}, #{operateResultStatus,jdbcType=INTEGER}, #{operateResultDesc,jdbcType=VARCHAR},
+      #{extraInfo,jdbcType=VARCHAR})
+  </insert>
+
+    <select id="queryDefeatLeadApprovalResult" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+      lead_id
+    from followup_history tt left join lead t on t.id = tt.lead_id
+    where t.dealer = #{dealer,jdbcType=VARCHAR}
+    and tt.biz_type = 6
+    group by lead_id
+    </select>
+
+    <select id="selectByLeadId" parameterType="java.lang.Integer" resultType="com.chery.exeed.crm.lead.dto.FollowupHistoryDTO">
+        SELECT
+         a.id as id,
+         a.lead_id as leadId,
+         a.biz_type as bizType,
+         a.biz_id as bizId,
+         a.operate_time as operateTime,
+         a.operate_desc as operateDesc,
+         a.operate_by as operateBy,
+         a.operate_result_status as operateResultStatus,
+        (case when a.operate_result_status != 12 then (select description from v_mdm_meta_lead m where a.operate_result_status = m.meta_code and meta_name = 'lead_status')
+          else (case when (select operation_type from predict_operate_record b where a.biz_id = b.id) = 2 then '已试驾' when (select operation_type from predict_operate_record b where a.biz_id = b.id) =1 then '已试乘' else '' end) end ) as leadStatusDesc,
+         a.operate_result_desc as operateResultDesc,
+         a.extra_info as extraInfo,
+        (case when biz_type = 1 then (select name from lead_followup b where b.id = a.biz_id)
+        when biz_type = 2 then (select feedback from predict_operate_record b where b.id = a.biz_id)
+        when biz_type = 3 then (select feedback from offer_operate_record b where b.id = a.biz_id)
+        when biz_type = 5 then (select feedback from defeat_operate_record b where b.id = a.biz_id)
+        when biz_type = 8 then (select feedback from arrival_operate_record b where b.id = a.biz_id)
+        else '' end) as feedback,
+        vasu.nick_name as nikeName
+        FROM followup_history a
+        left join v_all_sys_user vasu on vasu.user_id=a.operate_by
+        WHERE a.lead_id = #{leadId,jdbcType=INTEGER}
+        ORDER BY id DESC
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <select id="selectByLeadIdTotal" resultType="integer">
+        SELECT
+            count(1)
+        FROM followup_history a
+        WHERE a.lead_id = #{leadId,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,31 @@
+APPLICATION_ID: exeed-crm-apis
+service_description:
+  name: exeed-crm-lead
+  version: 0.0.7
+  environment: development
+  description: CRM线索管理
+  properties:
+    allowCrossApp: true
+cse:
+  service:
+    registry:
+      address: http://localhost:30100
+      instance:
+        watch: false
+#  config:
+#    client:
+#      serverUri: http://localhost:30113
+#      refreshMode: 1
+#      refresh_interval: 5000
+  #monitor:
+    #client:
+      #serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+  rest:
+    address: 0.0.0.0:8088
+#  credentials:
+#    accessKey: yourak
+#    secretKey: yoursk
+#    akskCustomCipher: default
+#    project: cn-north-1
+#addressResolver:   ## windows下，域名无法解析，可配置addressResolver
+#  servers: 8.8.8.8

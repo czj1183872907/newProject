@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.ActivitiesDurationMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.ActivitiesDuration">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="activities_duration" jdbcType="VARCHAR" property="activitiesDuration" />
+    <result column="activities_name" jdbcType="VARCHAR" property="activitiesName" />
+    <result column="activities_type" jdbcType="INTEGER" property="activitiesType" />
+    <result column="activities_status" jdbcType="INTEGER" property="activitiesStatus" />
+    <result column="assigned_consultant" jdbcType="INTEGER" property="assignedConsultant" />
+    <result column="acitivities_time_plan" jdbcType="TIMESTAMP" property="acitivitiesTimePlan" />
+    <result column="acitivities_time_actual" jdbcType="TIMESTAMP" property="acitivitiesTimeActual" />
+    <result column="lead" jdbcType="INTEGER" property="lead" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activities_duration, activities_name, activities_type, activities_status, assigned_consultant, 
+    acitivities_time_plan, acitivities_time_actual, lead
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activities_duration
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from activities_duration
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.ActivitiesDuration" useGeneratedKeys="true" keyProperty="id">
+    insert into activities_duration (id, activities_duration, activities_name, 
+      activities_type, activities_status, assigned_consultant, 
+      acitivities_time_plan, acitivities_time_actual, 
+      lead)
+    values (#{id,jdbcType=INTEGER}, #{activitiesDuration,jdbcType=VARCHAR}, #{activitiesName,jdbcType=VARCHAR}, 
+      #{activitiesType,jdbcType=INTEGER}, #{activitiesStatus,jdbcType=INTEGER}, #{assignedConsultant,jdbcType=INTEGER}, 
+      #{acitivitiesTimePlan,jdbcType=TIMESTAMP}, #{acitivitiesTimeActual,jdbcType=TIMESTAMP}, 
+      #{lead,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.ActivitiesDuration" useGeneratedKeys="true" keyProperty="id">
+    insert into activities_duration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="activitiesDuration != null">
+        activities_duration,
+      </if>
+      <if test="activitiesName != null">
+        activities_name,
+      </if>
+      <if test="activitiesType != null">
+        activities_type,
+      </if>
+      <if test="activitiesStatus != null">
+        activities_status,
+      </if>
+      <if test="assignedConsultant != null">
+        assigned_consultant,
+      </if>
+      <if test="acitivitiesTimePlan != null">
+        acitivities_time_plan,
+      </if>
+      <if test="acitivitiesTimeActual != null">
+        acitivities_time_actual,
+      </if>
+      <if test="lead != null">
+        lead,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activitiesDuration != null">
+        #{activitiesDuration,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiesName != null">
+        #{activitiesName,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiesType != null">
+        #{activitiesType,jdbcType=INTEGER},
+      </if>
+      <if test="activitiesStatus != null">
+        #{activitiesStatus,jdbcType=INTEGER},
+      </if>
+      <if test="assignedConsultant != null">
+        #{assignedConsultant,jdbcType=INTEGER},
+      </if>
+      <if test="acitivitiesTimePlan != null">
+        #{acitivitiesTimePlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acitivitiesTimeActual != null">
+        #{acitivitiesTimeActual,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lead != null">
+        #{lead,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.ActivitiesDuration">
+    update activities_duration
+    <set>
+      <if test="activitiesDuration != null">
+        activities_duration = #{activitiesDuration,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiesName != null">
+        activities_name = #{activitiesName,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiesType != null">
+        activities_type = #{activitiesType,jdbcType=INTEGER},
+      </if>
+      <if test="activitiesStatus != null">
+        activities_status = #{activitiesStatus,jdbcType=INTEGER},
+      </if>
+      <if test="assignedConsultant != null">
+        assigned_consultant = #{assignedConsultant,jdbcType=INTEGER},
+      </if>
+      <if test="acitivitiesTimePlan != null">
+        acitivities_time_plan = #{acitivitiesTimePlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acitivitiesTimeActual != null">
+        acitivities_time_actual = #{acitivitiesTimeActual,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lead != null">
+        lead = #{lead,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.ActivitiesDuration">
+    update activities_duration
+    set activities_duration = #{activitiesDuration,jdbcType=VARCHAR},
+      activities_name = #{activitiesName,jdbcType=VARCHAR},
+      activities_type = #{activitiesType,jdbcType=INTEGER},
+      activities_status = #{activitiesStatus,jdbcType=INTEGER},
+      assigned_consultant = #{assignedConsultant,jdbcType=INTEGER},
+      acitivities_time_plan = #{acitivitiesTimePlan,jdbcType=TIMESTAMP},
+      acitivities_time_actual = #{acitivitiesTimeActual,jdbcType=TIMESTAMP},
+      lead = #{lead,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

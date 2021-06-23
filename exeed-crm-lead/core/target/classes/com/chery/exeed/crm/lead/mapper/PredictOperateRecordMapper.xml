@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.PredictOperateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.PredictOperateRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="is_self" jdbcType="INTEGER" property="isSelf" />
+    <result column="driving_license_url" jdbcType="VARCHAR" property="drivingLicenseUrl" />
+    <result column="driving_license" jdbcType="VARCHAR" property="drivingLicense" />
+    <result column="id_card_url" jdbcType="VARCHAR" property="idCardUrl" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="feedback" jdbcType="VARCHAR" property="feedback" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operate_by" jdbcType="INTEGER" property="operateBy" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="cust_name" jdbcType="VARCHAR" property="custName" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, series_name, model_name, is_self, driving_license_url, driving_license, 
+    id_card_url, id_card, feedback, operate_time, operate_by, lead_status, address, cust_name, 
+    gender, operation_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from predict_operate_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from predict_operate_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.PredictOperateRecord">
+    insert into predict_operate_record (id, lead_id, series_name, 
+      model_name, is_self, driving_license_url, 
+      driving_license, id_card_url, id_card, 
+      feedback, operate_time, operate_by, 
+      lead_status, address, cust_name, 
+      gender, operation_type)
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=INTEGER}, #{seriesName,jdbcType=VARCHAR}, 
+      #{modelName,jdbcType=VARCHAR}, #{isSelf,jdbcType=INTEGER}, #{drivingLicenseUrl,jdbcType=VARCHAR}, 
+      #{drivingLicense,jdbcType=VARCHAR}, #{idCardUrl,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
+      #{feedback,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{operateBy,jdbcType=INTEGER}, 
+      #{leadStatus,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{operationType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.PredictOperateRecord">
+    insert into predict_operate_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="leadId != null">
+        lead_id,
+      </if>
+      <if test="seriesName != null">
+        series_name,
+      </if>
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="isSelf != null">
+        is_self,
+      </if>
+      <if test="drivingLicenseUrl != null">
+        driving_license_url,
+      </if>
+      <if test="drivingLicense != null">
+        driving_license,
+      </if>
+      <if test="idCardUrl != null">
+        id_card_url,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="feedback != null">
+        feedback,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+      <if test="operateBy != null">
+        operate_by,
+      </if>
+      <if test="leadStatus != null">
+        lead_status,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="custName != null">
+        cust_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="operationType != null">
+        operation_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="leadId != null">
+        #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="seriesName != null">
+        #{seriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelf != null">
+        #{isSelf,jdbcType=INTEGER},
+      </if>
+      <if test="drivingLicenseUrl != null">
+        #{drivingLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicense != null">
+        #{drivingLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardUrl != null">
+        #{idCardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null">
+        #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateBy != null">
+        #{operateBy,jdbcType=INTEGER},
+      </if>
+      <if test="leadStatus != null">
+        #{leadStatus,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null">
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null">
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.PredictOperateRecord">
+    update predict_operate_record
+    <set>
+      <if test="leadId != null">
+        lead_id = #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="seriesName != null">
+        series_name = #{seriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null">
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelf != null">
+        is_self = #{isSelf,jdbcType=INTEGER},
+      </if>
+      <if test="drivingLicenseUrl != null">
+        driving_license_url = #{drivingLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicense != null">
+        driving_license = #{drivingLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardUrl != null">
+        id_card_url = #{idCardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null">
+        feedback = #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateBy != null">
+        operate_by = #{operateBy,jdbcType=INTEGER},
+      </if>
+      <if test="leadStatus != null">
+        lead_status = #{leadStatus,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null">
+        cust_name = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null">
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.PredictOperateRecord">
+    update predict_operate_record
+    set lead_id = #{leadId,jdbcType=INTEGER},
+      series_name = #{seriesName,jdbcType=VARCHAR},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      is_self = #{isSelf,jdbcType=INTEGER},
+      driving_license_url = #{drivingLicenseUrl,jdbcType=VARCHAR},
+      driving_license = #{drivingLicense,jdbcType=VARCHAR},
+      id_card_url = #{idCardUrl,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      feedback = #{feedback,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      operate_by = #{operateBy,jdbcType=INTEGER},
+      lead_status = #{leadStatus,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      cust_name = #{custName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      operation_type = #{operationType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

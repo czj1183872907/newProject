@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.LeadTaskMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.LeadTask">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="task_type" jdbcType="INTEGER" property="taskType" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="due_date_plan" jdbcType="TIMESTAMP" property="dueDatePlan" />
+    <result column="due_date_actual" jdbcType="TIMESTAMP" property="dueDateActual" />
+    <result column="task_result" jdbcType="INTEGER" property="taskResult" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="first_call_time" jdbcType="TIMESTAMP" property="firstCallTime" />
+    <result column="next_call_time" jdbcType="VARCHAR" property="nextCallTime" />
+    <result column="call_times" jdbcType="INTEGER" property="callTimes" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="cdr_stop_time" jdbcType="TIMESTAMP" property="cdrStopTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, task_type, owner, status, due_date_plan, due_date_actual, task_result, 
+    memo, first_call_time, next_call_time, call_times, modify_time, cdr_stop_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lead_task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lead_task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.LeadTask" useGeneratedKeys="true" keyProperty="id">
+    insert into lead_task (id, lead_id, task_type, 
+      owner, status, due_date_plan, 
+      due_date_actual, task_result, memo, 
+      first_call_time, next_call_time, call_times, 
+      modify_time, cdr_stop_time)
+    values (#{id,jdbcType=BIGINT}, #{leadId,jdbcType=INTEGER}, #{taskType,jdbcType=INTEGER}, 
+      #{owner,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{dueDatePlan,jdbcType=TIMESTAMP}, 
+      #{dueDateActual,jdbcType=TIMESTAMP}, #{taskResult,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, 
+      #{firstCallTime,jdbcType=TIMESTAMP}, #{nextCallTime,jdbcType=VARCHAR}, #{callTimes,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{cdrStopTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.LeadTask" useGeneratedKeys="true" keyProperty="id">
+    insert into lead_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="leadId != null">
+        lead_id,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="dueDatePlan != null">
+        due_date_plan,
+      </if>
+      <if test="dueDateActual != null">
+        due_date_actual,
+      </if>
+      <if test="taskResult != null">
+        task_result,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="firstCallTime != null">
+        first_call_time,
+      </if>
+      <if test="nextCallTime != null">
+        next_call_time,
+      </if>
+      <if test="callTimes != null">
+        call_times,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="cdrStopTime != null">
+        cdr_stop_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="leadId != null">
+        #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=INTEGER},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dueDatePlan != null">
+        #{dueDatePlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dueDateActual != null">
+        #{dueDateActual,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskResult != null">
+        #{taskResult,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCallTime != null">
+        #{firstCallTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextCallTime != null">
+        #{nextCallTime,jdbcType=VARCHAR},
+      </if>
+      <if test="callTimes != null">
+        #{callTimes,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cdrStopTime != null">
+        #{cdrStopTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.LeadTask">
+    update lead_task
+    <set>
+      <if test="leadId != null">
+        lead_id = #{leadId,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=INTEGER},
+      </if>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dueDatePlan != null">
+        due_date_plan = #{dueDatePlan,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dueDateActual != null">
+        due_date_actual = #{dueDateActual,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskResult != null">
+        task_result = #{taskResult,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCallTime != null">
+        first_call_time = #{firstCallTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextCallTime != null">
+        next_call_time = #{nextCallTime,jdbcType=VARCHAR},
+      </if>
+      <if test="callTimes != null">
+        call_times = #{callTimes,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cdrStopTime != null">
+        cdr_stop_time = #{cdrStopTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.LeadTask">
+    update lead_task
+    set lead_id = #{leadId,jdbcType=INTEGER},
+      task_type = #{taskType,jdbcType=INTEGER},
+      owner = #{owner,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      due_date_plan = #{dueDatePlan,jdbcType=TIMESTAMP},
+      due_date_actual = #{dueDateActual,jdbcType=TIMESTAMP},
+      task_result = #{taskResult,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=VARCHAR},
+      first_call_time = #{firstCallTime,jdbcType=TIMESTAMP},
+      next_call_time = #{nextCallTime,jdbcType=VARCHAR},
+      call_times = #{callTimes,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      cdr_stop_time = #{cdrStopTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

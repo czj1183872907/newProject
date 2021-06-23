@@ -1,0 +1,3364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.LeadSearchMapper">
+    <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.Lead">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_number" jdbcType="VARCHAR" property="leadNumber" />
+        <result column="lead_type" jdbcType="INTEGER" property="leadType" />
+        <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+        <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+        <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+        <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+        <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+        <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="province" jdbcType="INTEGER" property="province" />
+        <result column="city" jdbcType="INTEGER" property="city" />
+        <result column="sub_city" jdbcType="INTEGER" property="subCity" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+        <result column="rating" jdbcType="INTEGER" property="rating" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+        <result column="test_drive_plan" jdbcType="TIMESTAMP" property="testDrivePlan" />
+        <result column="budget" jdbcType="VARCHAR" property="budget" />
+        <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+        <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+        <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+        <result column="failure_reason" jdbcType="VARCHAR" property="failureReason" />
+        <result column="profile_url" jdbcType="VARCHAR" property="profileUrl" />
+        <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+        <result column="dealer_order_manager" jdbcType="VARCHAR" property="dealerOrderManager" />
+        <result column="product_experience_manager" jdbcType="VARCHAR" property="productExperienceManager" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+        <result column="owner" jdbcType="INTEGER" property="owner" />
+        <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+        <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+        <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+        <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+        <result column="marital_status" jdbcType="INTEGER" property="maritalStatus" />
+        <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+        <result column="education_level" jdbcType="INTEGER" property="educationLevel" />
+        <result column="revenue_level" jdbcType="INTEGER" property="revenueLevel" />
+        <result column="household_registration" jdbcType="INTEGER" property="householdRegistration" />
+        <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+        <result column="purchae_frequency" jdbcType="INTEGER" property="purchaeFrequency" />
+        <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+        <result column="driving_skill" jdbcType="INTEGER" property="drivingSkill" />
+        <result column="automotive_expertise" jdbcType="INTEGER" property="automotiveExpertise" />
+        <result column="communication_difficulty" jdbcType="INTEGER" property="communicationDifficulty" />
+        <result column="treasure_car_level" jdbcType="INTEGER" property="treasureCarLevel" />
+        <result column="vehicle_no" jdbcType="INTEGER" property="vehicleNo" />
+        <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+        <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+        <result column="industry" jdbcType="INTEGER" property="industry" />
+        <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+        <result column="is_special_customer" jdbcType="INTEGER" property="isSpecialCustomer" />
+        <result column="special_customer_type" jdbcType="VARCHAR" property="specialCustomerType" />
+        <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+
+        <result column="cust_id" jdbcType="INTEGER" property="custId" />
+        <result column="if_married" jdbcType="VARCHAR" property="ifMarried" />
+        <result column="family_size" jdbcType="VARCHAR" property="familySize" />
+        <result column="owning_car_age" jdbcType="VARCHAR" property="owningCarAge" />
+        <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+        <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+        <result column="recomender" jdbcType="VARCHAR" property="recomender" />
+        <result column="recomender_phone" jdbcType="VARCHAR" property="recomenderPhone" />
+        <result column="reject_reason_type" jdbcType="VARCHAR" property="rejectReasonType" />
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+        <result column="model_code" jdbcType="VARCHAR" property="modelCode" />
+    </resultMap>
+    <resultMap id="dtoResultMap" type="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_number" jdbcType="VARCHAR" property="leadNumber" />
+        <result column="lead_type" jdbcType="VARCHAR" property="leadType" />
+        <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+        <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+        <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+        <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+        <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+        <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="city" jdbcType="VARCHAR" property="city" />
+        <result column="sub_city" jdbcType="VARCHAR" property="subCity" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="gender" jdbcType="VARCHAR" property="gender" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+        <result column="rating" jdbcType="INTEGER" property="rating" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+        <result column="test_drive_plan" jdbcType="TIMESTAMP" property="testDrivePlan" />
+        <result column="budget" jdbcType="VARCHAR" property="budget" />
+        <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+        <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+        <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+        <result column="failure_reason" jdbcType="VARCHAR" property="failureReason" />
+        <result column="profile_url" jdbcType="VARCHAR" property="profileUrl" />
+        <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+        <result column="dealer_order_manager" jdbcType="VARCHAR" property="dealerOrderManager" />
+        <result column="product_experience_manager" jdbcType="VARCHAR" property="productExperienceManager" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+        <result column="owner" jdbcType="INTEGER" property="owner" />
+        <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+        <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+        <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+        <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+        <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+        <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+        <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+        <result column="revenue_level" jdbcType="VARCHAR" property="revenueLevel" />
+        <result column="household_registration" jdbcType="VARCHAR" property="householdRegistration" />
+        <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+        <result column="purchae_frequency" jdbcType="VARCHAR" property="purchaeFrequency" />
+        <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+        <result column="driving_skill" jdbcType="VARCHAR" property="drivingSkill" />
+        <result column="automotive_expertise" jdbcType="VARCHAR" property="automotiveExpertise" />
+        <result column="communication_difficulty" jdbcType="VARCHAR" property="communicationDifficulty" />
+        <result column="treasure_car_level" jdbcType="VARCHAR" property="treasureCarLevel" />
+        <result column="vehicle_no" jdbcType="VARCHAR" property="vehicleNo" />
+        <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+        <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+        <result column="industry" jdbcType="VARCHAR" property="industry" />
+        <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+        <result column="is_special_customer" jdbcType="INTEGER" property="isSpecialCustomer" />
+        <result column="special_customer_type" jdbcType="VARCHAR" property="specialCustomerType" />
+        <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+        <result column="sub_channel_name" jdbcType="VARCHAR" property="subChannelName" />
+        <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+        <result column="budgetName" jdbcType="VARCHAR" property="budgetName" />
+        <result column="custName" jdbcType="VARCHAR" property="custName" />
+        <result column="dealerName" jdbcType="VARCHAR" property="dealerName" />
+        <result column="ratingName" jdbcType="VARCHAR" property="ratingName" />
+        <result column="ownerName" jdbcType="VARCHAR" property="ownerName" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="over_date" jdbcType="INTEGER" property="overDate" />
+        <result column="cust_id" jdbcType="INTEGER" property="custId" />
+        <result column="if_married" jdbcType="VARCHAR" property="ifMarried" />
+        <result column="family_size" jdbcType="VARCHAR" property="familySize" />
+        <result column="owning_car_age" jdbcType="VARCHAR" property="owningCarAge" />
+        <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+        <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+        <result column="recomender" jdbcType="VARCHAR" property="recomender" />
+        <result column="recomender_phone" jdbcType="VARCHAR" property="recomenderPhone" />
+        <result column="channelName" jdbcType="VARCHAR" property="channelName"/>
+        <result column="occupation_type" jdbcType="VARCHAR" property="occupationType" />
+        <result column="occupation_phone" jdbcType="VARCHAR" property="occupationPhone" />
+        <result column="call_reason" jdbcType="VARCHAR" property="callReason" />
+        <result column="wechat_number" jdbcType="VARCHAR" property="wechatNumber" />
+        <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+        <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+        <result column="reject_reason_type" jdbcType="VARCHAR" property="rejectReasonType" />
+        <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+        <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+        <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+    </resultMap>
+
+    <resultMap id="dtoValueMap" type="com.chery.exeed.crm.lead.dto.LeadDTO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="lead_number" jdbcType="VARCHAR" property="leadNumber" />
+        <result column="lead_type" jdbcType="INTEGER" property="leadType" />
+        <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+        <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+        <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+        <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+        <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+        <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+        <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="province" jdbcType="INTEGER" property="province" />
+        <result column="city" jdbcType="INTEGER" property="city" />
+        <result column="sub_city" jdbcType="INTEGER" property="subCity" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+        <result column="rating" jdbcType="INTEGER" property="rating" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+        <result column="test_drive_plan" jdbcType="TIMESTAMP" property="testDrivePlan" />
+        <result column="budget" jdbcType="VARCHAR" property="budget" />
+        <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+        <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+        <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+        <result column="failure_reason" jdbcType="VARCHAR" property="failureReason" />
+        <result column="profile_url" jdbcType="VARCHAR" property="profileUrl" />
+        <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+        <result column="dealer_order_manager" jdbcType="VARCHAR" property="dealerOrderManager" />
+        <result column="product_experience_manager" jdbcType="VARCHAR" property="productExperienceManager" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+        <result column="owner" jdbcType="INTEGER" property="owner" />
+        <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+        <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+        <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+        <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+        <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+        <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+        <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+        <result column="revenue_level" jdbcType="VARCHAR" property="revenueLevel" />
+        <result column="household_registration" jdbcType="VARCHAR" property="householdRegistration" />
+        <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+        <result column="purchae_frequency" jdbcType="VARCHAR" property="purchaeFrequency" />
+        <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+        <result column="driving_skill" jdbcType="VARCHAR" property="drivingSkill" />
+        <result column="automotive_expertise" jdbcType="VARCHAR" property="automotiveExpertise" />
+        <result column="communication_difficulty" jdbcType="VARCHAR" property="communicationDifficulty" />
+        <result column="treasure_car_level" jdbcType="VARCHAR" property="treasureCarLevel" />
+        <result column="vehicle_no" jdbcType="VARCHAR" property="vehicleNo" />
+        <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+        <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+        <result column="industry" jdbcType="VARCHAR" property="industry" />
+        <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+        <result column="is_special_customer" jdbcType="INTEGER" property="isSpecialCustomer" />
+        <result column="special_customer_type" jdbcType="VARCHAR" property="specialCustomerType" />
+        <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+        <result column="leadStatusDesc" jdbcType="VARCHAR" property="leadStatusDesc" />
+        <result column="cust_id" jdbcType="INTEGER" property="custId" />
+        <result column="if_married" jdbcType="VARCHAR" property="ifMarried" />
+        <result column="family_size" jdbcType="VARCHAR" property="familySize" />
+        <result column="owning_car_age" jdbcType="VARCHAR" property="owningCarAge" />
+        <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+        <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+        <result column="recomender" jdbcType="VARCHAR" property="recomender" />
+        <result column="recomender_phone" jdbcType="VARCHAR" property="recomenderPhone" />
+        <result column="occupation_type" jdbcType="VARCHAR" property="occupationType" />
+        <result column="occupation_phone" jdbcType="VARCHAR" property="occupationPhone" />
+        <result column="call_reason" jdbcType="VARCHAR" property="callReason" />
+        <result column="wechat_number" jdbcType="VARCHAR" property="wechatNumber" />
+        <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+        <result column="reject_reason_type" jdbcType="VARCHAR" property="rejectReasonType" />
+        <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+        <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+    </resultMap>
+    <resultMap id="cityResultMap" type="com.chery.exeed.crm.lead.dto.CityDTO">
+        <result column="id" jdbcType="INTEGER" property="cityId" />
+        <result column="name" jdbcType="VARCHAR" property="cityName" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, lead_number, lead_type, lead_status, brand_name,series_name, model_name, color_name, last_name,
+    first_name, email, phone, province, city, sub_city, address, gender, age, description,
+    purchase_time, rating, level, test_drive_plan, budget, consulting_frequency,
+    wechat_openid, close_time, failure_reason, profile_url, dealer, dealer_order_manager,
+    product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+    modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+    household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+    driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+    vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+    special_customer_type, special_care_comments, cust_id, if_married, family_size, owning_car_age,
+    vehicle_purpose, recomender, recomender_phone
+    ,occupation_type,occupation_phone,call_reason,wechat_number, category_name, model_code
+  </sql>
+
+    <select id="listExportLead" parameterType="com.chery.exeed.crm.lead.dto.ExportLeadSearchDTO" resultMap="dtoResultMap">
+        select
+        id, lead_number,
+        first_name,last_name,
+        (select description from meta_lead meta where meta.meta_code=t.model_name and meta_name='lead_model') as model_name,
+        (select description from meta_common meta where meta.meta_code=t.lead_type and meta_name='lead_type') as lead_type,
+        (select description from meta_common meta where meta.meta_code=t.color_name and meta_name='lead_color') as color_name,
+        phone,province,city,sub_city,
+        (select description from meta_common meta where meta.meta_code=t.gender and meta_name='sex') gender,
+        (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+        test_drive_plan,
+        (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+        consulting_frequency,dealer,customer_car_date,
+        marital_status,hobby,
+        lead_status,address,description,rating,occupation_type,occupation_phone,call_reason,wechat_number
+        from `exeed_crm_lead`.lead t
+        where 1=1
+        <if test="dealer != null and dealer != ''">
+            and t.dealer = #{dealer,jdbcType=INTEGER}
+        </if>
+        <if test="leadStatus != null and leadStatus != ''">
+            and t.lead_status = #{leadStatus,jdbcType=INTEGER}
+        </if>
+        <if test="startDateStr != null and startDateStr != ''">
+            and t.customer_car_date &gt; DATE_FORMAT(#{startDateStr},'%Y-%m-%d')
+        </if>
+        <if test="endDateStr != null and endDateStr != ''">
+            and t.customer_car_date &lt; date_sub(DATE_FORMAT(#{endDateStr},'%Y-%m-%d'),interval -1 day)
+        </if>
+        order by t.customer_car_date desc
+    </select>
+
+    <select id="detailForUpdate" parameterType="java.lang.Integer" resultMap="dtoValueMap">
+      select
+    t.id, lead_number, lead_type, lead_status, brand_name, series_name, model_name, color_name, last_name,
+    first_name, email, phone, province, city, sub_city, address, gender, age, description,
+    purchase_time, rating, level, test_drive_plan, budget, consulting_frequency,t.follow_car,t.follow_info,t.follow_remarks,
+    wechat_openid, close_time, failure_reason, profile_url, dealer, dealer_order_manager,
+    product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+    modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+    household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+    driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+    vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+    special_customer_type, special_care_comments, cust_id, if_married, family_size, owning_car_age,
+    vehicle_purpose, recomender, recomender_phone,
+    (select count(1) from lead_task where lead_id=t.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+    (select description from meta_lead meta where meta.meta_code=t.reject_reason_type and meta_name='reject_reason_type') as reject_reason_type,
+    (select description from meta_lead meta where meta.meta_code=t.lead_status and meta_name='lead_status') leadStatusDesc
+    ,occupation_type,occupation_phone,call_reason,wechat_number,
+	(select count(1) from lead_followup tt WHERE  tt.lead_id =t.id and tt.status = 1 limit 1) as followupTimes,
+	(select follow_date from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 limit 1) as followPlan,
+	(select lead_frequency from customer c where c.id=t.cust_id) as  consultingFrequency
+      from `exeed_crm_lead`.lead t
+      where id = #{leadId,jdbcType=INTEGER}
+  </select>
+
+    <select id="searchLeadByPhoneNo" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where phone = #{phone,jdbcType=VARCHAR}
+        <if test="dealer!= null">
+            and dealer= #{dealer,jdbcType=VARCHAR}
+        </if>
+        and lead_status in (0,1,2,6,7,8,10,11,12,13,14,18)
+        <if test="time == 1">
+            and customer_car_date > DATE_SUB(NOW(),INTERVAL 48 HOUR)
+        </if>
+        <if test="time == 2">
+            and customer_car_date > DATE_SUB(NOW(),INTERVAL 1 MONTH)
+        </if>
+        order by customer_car_date asc
+    </select>
+
+    <select id="queryLeadList" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+        select
+        id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, test_drive_plan, (select lead_frequency from customer c where c.id=t.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select description from meta_lead meta where meta.meta_code=t.brand_name and meta_name='lead_brand') as brandName,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=t.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=t.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments,(select count(1) from lead_task where lead_id=t.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 limit 1) as followDate,
+        send_time,
+        if(send_time &lt; DATE_ADD(now(),INTERVAL -1 HOUR) and lead_status=2 , 1,0) as over_date,
+        (case when (select status from lead_task where lead_id=t.id and t.lead_status = 1) in (7) then 1 else 0 end ) as canTimeout
+        from lead t
+        where 1=1
+        <if test="custName != null and custName!=''">
+            and (first_name like concat('%',#{custName},'%')
+            or phone like concat('%',#{custName},'%'))
+        </if>
+        <if test="custId != null">
+            and cust_id = #{custId,jdbcType=INTEGER}
+        </if>
+        <if test="dealer != null and dealer!=''">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name like concat("%",#{modelName},"%")
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="customerCarDate != null">
+            and customer_car_date  = #{customerCarDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="haveTask == 1">
+            and exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="haveTask == 0">
+            and not exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="searchCode!=null">
+            <if test="searchCode=='3002'">
+                and lead_status=1
+            </if>
+            <if test="searchCode=='3003'">
+                and lead_status=2
+            </if>
+            <if test="searchCode=='3004'">
+                and lead_status in (7,8,10,11,12,13,14,18)
+            </if>
+            <if test="searchCode=='3005'">
+                and lead_status=15
+            </if>
+            <if test="searchCode=='3006'">
+                and lead_status=9
+            </if>
+            <if test="searchCode=='3007'">
+                and lead_status=6
+            </if>
+            <if test="searchCode=='3008'">
+                and lead_status=8
+            </if>
+            <if test="searchCode=='3009'">
+                and (exists (select 1 from v_call_summary tt where tt.TASK_ID in (select id from lead_task ttt where ttt.lead_id = t.id) and CALL_RESULT in (11)) or t.created_by = #{currentUserId})
+            </if>
+        </if>
+        order by
+        <if test="searchCode!=null and searchCode=='3009'">
+            lead_status asc,
+        </if>
+        send_time desc,modify_date desc
+    </select>
+
+    <select id="queryLeadListTodaycount" resultType="integer">
+        select
+        count(1)
+        from lead t
+        left join `exeed_crm_lead`.lead_history lh on lh.lead_id=t.id
+        where 1=1
+        <if test="dealer != null and dealer!=''">
+            and t.dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and t.lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        and lh.status=2
+        and to_days(lh.create_time) =to_days(now())
+    </select>
+
+    <select id="searchLeadByPhoneNoForSended" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where phone = #{phone,jdbcType=VARCHAR}
+        <if test="dealer!=null">
+            and dealer= #{dealer,jdbcType=VARCHAR}
+        </if>
+        and lead_status in (2,6,7,8,10,11,12,13,14,18)
+
+        order by customer_car_date asc
+    </select>
+
+    <select id="selectDefeatAndInvalidLead" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `exeed_crm_lead`.lead
+        where phone = #{phone,jdbcType=VARCHAR}
+        and dealer= #{dealer,jdbcType=VARCHAR}
+        <if test="status!=null and status != ''">
+            and lead_status in (4,9,15)
+        </if>
+        order by customer_car_date desc
+    </select>
+
+    <select id="selectDefeatAndInvalidLeadCount" resultType="integer">
+        select
+            count(1)
+        from `exeed_crm_lead`.lead
+        where phone = #{phone,jdbcType=VARCHAR}
+        and dealer= #{dealer,jdbcType=VARCHAR}
+        and lead_status in (2,4,6,7,8,9,10,11,12,13,14,16,18)
+    </select>
+
+    <select id="getLeadHeatingCount" resultType="integer">
+        select lead_heating_count from `exeed_crm_lead`.lead where id=#{leadId}
+    </select>
+
+    <update id="updateLeadToLeadHeatingCountById">
+        update `exeed_crm_lead`.lead set lead_heating_count=#{leadHeatingCount},is_red_or_black=1 where id=#{leadId}
+    </update>
+
+    <select id="getLeadById" parameterType="java.util.Map" resultMap="dtoResultMap">
+        select
+        id, lead_number,cust_id,cust_id, province, city, sub_city,dealer,reject_reason,
+        (select description from meta_common meta where meta.meta_code=t.lead_type and meta_name='lead_type') as lead_type
+        , lead_status, last_name,purchase_time as purchaseTimeCode,
+        first_name,email, phone,address, age, description,
+        rating, test_drive_plan,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select lead_frequency from customer c where c.id=t.cust_id) consulting_frequency,
+        (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=t.occupation_type and meta_name='occupation_type') as occupation_type,
+        (select description from meta_lead meta where meta.meta_code=t.color_name and meta_name='lead_color') as color_name,
+        (select description from v_mdm_meta_lead meta where meta.meta_code=t.`level` and meta_name='lead_level_edit') as `level`,
+        (select description from meta_lead meta where meta.meta_code=t.brand_name and meta_name='lead_brand') as brand_name,
+        series_name, model_name,
+        (select description from meta_lead meta where meta.meta_code=t.interior_yearly_budget and meta_name='interior_yearly_budget') as interior_yearly_budget,
+        (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+        (select description from v_mdm_meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        (select description from meta_common meta where meta.meta_code=t.gender and meta_name='sex') gender,
+        (select description from meta_lead meta where meta.meta_code=t.lead_status and meta_name='lead_status') status,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by,
+        <if test="dealer != null">
+            ifnull((select modify_by from v_all_sys_user where user_id=modify_by and dealer_id is not null),0) modify_by,
+        </if>
+        <if test="dealer == null">
+            modify_by,
+        </if>
+        modify_date, person_donotcall,
+        (select description from meta_lead meta where meta.meta_code=t.marital_status and meta_name='family_Size') marital_status,
+        (select description from meta_lead meta where meta.meta_code=t.hobby and meta_name='customer_hobby') hobby,
+        (select description from meta_lead meta where meta.meta_code=t.education_level and meta_name='lead_education_Level') education_level,
+        (select description from meta_lead meta where meta.meta_code=t.revenue_level and meta_name='lead_revenue_level') revenue_level,
+        (select description from meta_lead meta where meta.meta_code=t.household_registration and meta_name='household_registration') household_registration,
+        consumption_characteristics, purchae_frequency,
+        (select description from meta_lead meta where meta.meta_code=t.driving_skill and meta_name='driving_skill') driving_skill,
+        (select description from meta_lead meta where meta.meta_code=t.automotive_expertise and meta_name='automotive_expertise') automotive_expertise,
+        (select description from meta_lead meta where meta.meta_code=t.communication_difficulty and meta_name='communication_difficult') communication_difficulty,
+        (select description from meta_lead meta where meta.meta_code=t.treasure_car_level and meta_name='treasure_car_level') treasure_car_level,
+        (select description from meta_lead meta where meta.meta_code=t.reject_reason_type and meta_name='reject_reason_type') reject_reason_type,
+        vehicle_no,
+        customer_characteristics_des,
+        company_name,persontitle, is_special_customer,
+        special_care_comments,vehicle_purpose,
+        (select description from meta_lead meta where meta.meta_code=t.industry and meta_name='industry') industry,
+        (select description from meta_lead meta where meta.meta_code=t.special_customer_type and meta_name='special_customer_type') special_customer_type,
+        (select description from meta_lead meta where meta.meta_code=t.if_married and meta_name='if_married') if_married,
+        (select description from meta_lead meta where meta.meta_code=t.family_size and meta_name='family_size') family_size,
+        (select description from meta_lead meta where meta.meta_code=t.owning_car_age and meta_name='owning_car_age') owning_car_age,
+        recomender, recomender_phone,occupation_phone,call_reason,wechat_number,follow_car,follow_info,follow_remarks
+        from `exeed_crm_lead`.lead t
+        where id = #{leadId,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryLeadListByAssisant" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        id,
+        lead_number as leadNumber,
+        lead_status as leadStatus,
+        color_name as colorName,
+        last_name as lastName,
+        first_name as firstName,
+        email,
+        phone,
+        province,
+        city,
+        sub_city as subCity,
+        address,
+        gender,
+        age,
+        description,
+        rating,
+        test_drive_plan as testDrivePlan,
+        (select lead_frequency from customer c where c.id=lead.cust_id) consultingFrequency,
+        (select description from v_mdm_meta_lead where meta_code in (select customer_status from customer c where c.id=lead.cust_id) and meta_name = 'lead_customer_status' ) customerStatus,
+        close_time as closeTime,
+        failure_reason as failureReason,
+        profile_url as profileUrl,
+        dealer,
+        (select description from meta_lead meta where meta.meta_code=lead.brand_name and meta_name='lead_brand') as brandName,
+--         model_name as modelName,
+--         series_name as seriesName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        dealer_order_manager as dealerOrderManager ,
+        product_experience_manager as productExperienceManager,
+        account,
+        customer_car_date as customerCarDate,
+        owner,
+        created_by as createdBy,
+        modify_by as modifyBy,
+        modify_date as modifyDate,
+        hobby,
+        revenue_level as revenueLevel,
+        household_registration as householdRegistration,
+        consumption_characteristics as consumptionCharacteristics,
+        purchae_frequency as purchaeFrequency,
+        (select count(1) from lead_task where lead_id=`exeed_crm_lead`.lead.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = `exeed_crm_lead`.lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id =`exeed_crm_lead`. lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followDate,
+        (select count(1) from followup_history where followup_history.lead_id = `exeed_crm_lead`.lead.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id =`exeed_crm_lead`. lead.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = `exeed_crm_lead`.lead.id ) as predictTimes,
+        is_red_or_black as isRedOrBlack,
+        lead_heating_count as leadHeatingCount,
+        vcm.model_name as modelName,
+        vcs.series_name as seriesName
+        from `exeed_crm_lead`.lead
+        left join v_car_series vcs on vcs.series_code=lead.model_name
+        left join v_car_model vcm on vcm.model_code=lead.series_name and vcm.series_code=lead.model_name
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="seriesName != null">
+            and series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="createDate != null and createDate != ''">
+            <![CDATA[   and DATE_FORMAT(customer_car_date, '%Y-%m-%d')<=  DATE_FORMAT(#{createDate}, '%Y-%m-%d')   ]]>
+        </if>
+        <if test="keyword != null and keyword!= ''">
+            and (first_name like "%${keyword}%" or phone like "%${keyword}%")
+        </if>
+        order by isnull(followPlan),followPlan asc, FIELD('lead_status',18,7,10,11,12,13,14,8,9,15,16)
+    </select>
+
+    <select id="queryLeadListByAssisantTotal" resultType="integer">
+        select
+            count(1)
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="seriesName != null">
+            and series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="createDate != null and createDate != ''">
+            <![CDATA[   and DATE_FORMAT(customer_car_date, '%Y-%m-%d')<=  DATE_FORMAT(#{createDate}, '%Y-%m-%d')   ]]>
+        </if>
+        <if test="keyword != null and keyword!= ''">
+            and (first_name like "%${keyword}%" or phone like "%${keyword}%")
+        </if>
+    </select>
+    <select id="unAssignLead" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select count(1)
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="custName != null and custName!=''">
+            and first_name like concat(concat("%",#{custName}),"%")
+        </if>
+        <if test="leadStatus != null">
+            and lead_status = #{leadStatus,jdbcType=INTEGER}
+        </if>
+        <if test="custId != null">
+            and cust_id = #{custId,jdbcType=INTEGER}
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name like concat(concat("%",#{modelName}),"%")
+        </if>
+    </select>
+    <select id="getLeadListByCustId" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+    select
+  id, lead_number,  lead_status, color_name, last_name,
+  first_name, email, phone, province, city, sub_city, address, gender, age, description,
+  rating, level, test_drive_plan,  (select lead_frequency from customer where id=cust_id) as consulting_frequency,
+  wechat_openid, close_time, failure_reason, profile_url, dealer,
+      (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.brand_name and meta_name='lead_brand') as brand_name,
+     model_name,series_name,
+  (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budget,
+  (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+  (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+  dealer_order_manager,
+  product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+  modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+  household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+  driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+  vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+  special_customer_type, special_care_comments, cust_id, if_married, family_size, owning_car_age,
+    vehicle_purpose, recomender, recomender_phone,occupation_type,occupation_phone,call_reason,wechat_number
+    from `exeed_crm_lead`.lead
+    where cust_id=#{custId,jdbcType=INTEGER}
+      order by modify_date desc
+  </select>
+
+    <select id="getChannelNameByLeadId" parameterType="Integer" resultType="String">
+        select ch.name from chnnel ch left join lead_channel lch on ch.id=lch.sub_channel_id
+        where lch.lead_id=#{leadId,jdbcType=INTEGER}
+        LIMIT 1
+    </select>
+
+    <select id="getAllCustLeadList" parameterType="Integer" resultType="com.chery.exeed.crm.lead.model.Lead">
+    select id,cust_id as custId from `exeed_crm_lead`.lead where cust_id=#{custId}
+    </select>
+
+    <select id="searchFollowLeadCountByManager" parameterType="java.lang.String" resultType="com.chery.exeed.crm.lead.dto.LeadCountDTO">
+        select
+          a.owner AS owner,
+          a.dealer_order_manager AS dealerOrderManager,
+          a.lead_status AS leadStatus,
+          COUNT(a.id) AS totalCount
+        from `exeed_crm_lead`.lead a
+        group by a.owner, a.lead_status
+        having a.dealer_order_manager = #{dealerOrderManager,jdbcType=VARCHAR}
+    </select>
+
+    <select id="searchLeadCountByConsultant" resultType="com.chery.exeed.crm.lead.dto.ConsultantLeadCountDTO">
+        SELECT
+            `owner` AS consultantId,
+            COUNT(id) AS leadCount
+        FROM `exeed_crm_lead`.lead
+
+         where lead_status in (7,8,9,10,11,12,13,14,15,16,18) and dealer = #{dealer,jdbcType=VARCHAR}
+         GROUP BY `owner`
+        HAVING `owner` IN (${ownerIds})
+    </select>
+
+    <select id="searchDealerLeadCountOthers" resultType="com.chery.exeed.crm.lead.dto.ConsultantLeadCountDTO">
+        select count(pp.id) as leadCount from (
+        SELECT * FROM `exeed_crm_lead`.lead
+        WHERE
+        id IN ( SELECT id FROM `exeed_crm_lead`.`lead` WHERE  dealer = #{dealer,jdbcType=VARCHAR} AND OWNER IS NULL and lead_status > 6 and lead_status != 17)
+        <if test="userList != null and userList.size() > 0">
+            OR
+            id IN ( SELECT id FROM `exeed_crm_lead`.lead WHERE OWNER in
+            <foreach collection="userList" index="index" item="userId" separator="," open="(" close=")">
+                #{userId}
+            </foreach>
+            AND dealer =  #{dealer,jdbcType=VARCHAR})
+        </if>
+        GROUP BY id) as pp
+    </select>
+
+    <select id="searchDealerLeadOthers" resultMap="dtoResultMap">
+        select
+        pp.id, pp.lead_number,  pp.lead_status,  pp.color_name, pp.last_name,
+        pp.first_name,email, pp.phone, pp.province, pp.city, pp.sub_city, pp.address, pp.gender, pp.age, pp.description,
+        pp.rating, pp.test_drive_plan,
+        pp.wechat_openid, pp.close_time, pp.failure_reason, pp.profile_url, pp.dealer,
+        pp.model_name as modelName,pp.series_name as seriesName,
+        (select description from meta_lead meta where meta.meta_code=pp.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=pp.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=pp.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=pp.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=pp.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        pp.dealer_order_manager,
+        pp.account, pp.customer_car_date, pp.owner, pp.created_by, pp.modify_by,
+        pp.modify_date
+        from (
+        SELECT * FROM `exeed_crm_lead`.lead
+        WHERE
+        id IN ( SELECT id FROM `exeed_crm_lead`.`lead` WHERE  dealer = #{dealer,jdbcType=VARCHAR} AND OWNER IS NULL and lead_status > 6 and lead_status != 17)
+        <if test="userList != null and userList.size() > 0">
+            OR
+            id IN ( SELECT id FROM `exeed_crm_lead`.lead WHERE OWNER in
+            <foreach collection="userList" index="index" item="userId" separator="," open="(" close=")">
+                #{userId}
+            </foreach>
+            AND dealer =  #{dealer,jdbcType=VARCHAR} )
+        </if>
+        <if test="leadDTO.seriesName != null">
+            and series_name = #{leadDTO.seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="leadDTO.modelName != null">
+            and model_name = #{leadDTO.modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="leadDTO.level != null">
+            and level  = #{leadDTO.level,jdbcType=VARCHAR}
+        </if>
+        <if test="leadDTO.leadStatus != null">
+            and lead_status = #{leadDTO.leadStatus,jdbcType=INTEGER}
+        </if>
+        <if test="leadDTO.createDate != null and  leadDTO.createDate != ''">
+            <![CDATA[   and DATE_FORMAT(customer_car_date, '%Y-%m-%d')<=  DATE_FORMAT(#{leadDTO.createDate}, '%Y-%m-%d')   ]]>
+        </if>
+        GROUP BY id) as pp
+    </select>
+
+    <select id="searchLeadLevelCount" resultType="com.chery.exeed.crm.lead.dto.LevelCountDTO">
+        SELECT
+        a.`level` AS level,
+        COUNT(a.id) AS leadCount,
+        a.dealer,
+        a.lead_status,
+        a.`owner`,
+        a.customer_car_date
+        FROM `exeed_crm_lead`.lead a
+        GROUP BY a.`level`
+        HAVING a.dealer = #{dealer,jdbcType=VARCHAR} AND a.lead_status IN
+        <foreach collection="leadStatusList" index="index" item="leadStatus" separator="," open="(" close=")">
+            #{leadStatus}
+        </foreach>
+        <if test="owner != null">
+            AND a.`owner` = #{owner,jdbcType=INTEGER}
+        </if>
+        <if test="startTime != null">
+            AND a.customer_car_date >= DATE_FORMAT(#{startTime},'%Y-%m-%d %H:%i:%S')
+        </if>
+        <if test="endTime != null">
+            AND a.customer_car_date &lt;= DATE_FORMAT(#{endTime},'%Y-%m-%d %H:%i:%S')
+        </if>
+    </select>
+    <select id="selectByDealerIdAndPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where dealer = #{dealerId} and phone = #{phone}
+        and lead_status in (2,4,6,7,8,9,10,11,12,13,14,18)
+        order by update_record_time desc
+    </select>
+    <select id="selectSendedLeadByDealerId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where dealer = #{dealerId}
+        and lead_status=2
+        and `level` is not null
+        AND series_name IS NOT NULL
+        AND model_name IS NOT NULL
+        limit 0,#{num}
+    </select>
+
+
+    <select id="queryNewLeadList" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+        select
+        <include refid="Base_Column_List" />,
+        (select follow_plan from lead_followup tt where t.id = tt.lead_id and tt.status = 0 order by tt.create_time LIMIT 1) as followPlan
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 7
+        and not exists(
+        select 1 from lead_followup tt where tt.follow_date is not null and tt.lead_id=t.id
+        )
+
+    </select>
+
+    <select id="queryDeliveryLeadsList" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = #{leadStatus,jdbcType=INTEGER}
+        and exists(
+        select 1 from order_operate_record tt where tt.car_apply_date is not null and tt.lead_id=t.id
+        )
+    </select>
+
+    <select id="queryUndistributedLeadList" resultMap="dtoResultMap">
+        select
+        t.id,
+        t.lead_number,
+        t.lead_type,
+        t.lead_status,
+        t.brand_name,
+        t.series_name,
+        t.model_name,
+        t.color_name,
+        t.last_name,
+        t.first_name,
+        t.email,
+        t.phone,
+        t.province,
+        t.city,
+        t.sub_city,
+        t.address,
+        t.gender,
+        t.age,
+        t.description,
+        t.purchase_time,
+        t.rating,
+        t.level,
+        t.test_drive_plan,
+        t.budget,
+        t.consulting_frequency,
+        t.wechat_openid,
+        t.close_time,
+        t.failure_reason,
+        t.profile_url,
+        t.dealer,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.account,
+        t.customer_car_date,
+        t.owner,
+        t.created_by,
+        t.modify_by,
+        t.modify_date,
+        t.marital_status,
+        t.revenue_level,
+        t.household_registration,
+        t.consumption_characteristics,
+        t.purchae_frequency,
+        t.driving_skill,
+        t.treasure_car_level,
+        tt.sub_channel_id,
+        tt.channel_id,
+        t.cust_id
+        from lead t left join pre_lead tt on t.id = tt.lead_id
+        where 1=1
+        <if test="seriesName != null and seriesName!=''">
+            and t.series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null and modelName!=''">
+            and t.model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="subChannel != null">
+            and 1 = 2
+        </if>
+        and t.dealer = #{dealerId,jdbcType=VARCHAR}
+        and t.dealer_order_manager in
+        <foreach collection="invailUserId" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and t.lead_status in
+        <foreach collection="rstList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY tt.lead_id
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <select id="queryUndistributedLeadCount" resultType="integer">
+        select
+        count(1)
+        from lead t
+        left join `exeed_crm_lead`.lead_history lh on lh.lead_id=t.id
+        where 1=1
+        and t.dealer = #{dealerId,jdbcType=VARCHAR}
+        and t.dealer_order_manager = #{userId,jdbcType=INTEGER}
+        and t.owner is null
+        and t.lead_status in
+        <foreach collection="rstList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and lh.status=6
+        and to_days(lh.create_time) =to_days(now())
+    </select>
+
+    <select id="queryLevelDistributionOnThisMonth" resultType="com.chery.exeed.crm.lead.dto.LevelDistributionDTO">
+        select
+        (select description from meta_lead meta where meta.meta_code=lead.level and meta_name='lead_level') as level,
+        count(*) as thisMonth
+        from `exeed_crm_lead`.lead
+        where DATE_FORMAT(customer_car_date,'%Y%m') = DATE_FORMAT(NOW(),'%Y%m')
+        <if test="dealerId != null and dealerId!=''">
+            and dealer = #{dealerId,jdbcType=VARCHAR}
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=VARCHAR}
+        </if>
+        and lead_status in (6,7,8,9,10,11,12,13,14,15,16,18)
+        group by level
+    </select>
+
+    <select id="queryLevelDistributionOnLastMonth" resultType="com.chery.exeed.crm.lead.dto.LevelDistributionDTO">
+        select
+        (select description from meta_lead meta where meta.meta_code=lead.level and meta_name='lead_level') as level,
+        count(*) as lastMonth
+        from `exeed_crm_lead`.lead
+        where <![CDATA[ DATE_FORMAT(customer_car_date,'%Y%m') < DATE_FORMAT(NOW(),'%Y%m') ]]>
+        <if test="dealerId != null and dealerId!=''">
+            and dealer = #{dealerId,jdbcType=VARCHAR}
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=VARCHAR}
+        </if>
+        and lead_status in (6,7,8,9,10,11,12,13,14,15,16,18)
+        group by level
+    </select>
+
+    <select id="queryByPhoneAndCustName" resultMap="dtoResultMap">
+        select
+        id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, `level`, test_drive_plan, (select lead_frequency from customer c where c.id=lead.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select head_image from customer where `exeed_crm_lead`.lead.cust_id = customer.id) as custHeadImage,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.brand_name and meta_name='lead_brand') as brand_name,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments,
+        (select follow_plan from lead_followup where lead_followup.lead_id = `exeed_crm_lead`.lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,
+        (select count(1) from followup_history where followup_history.lead_id = `exeed_crm_lead`.lead.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = `exeed_crm_lead`.lead.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = `exeed_crm_lead`.lead.id ) as predictTimes
+        from `exeed_crm_lead`.lead
+        where  dealer = #{dealer,jdbcType=VARCHAR}
+        <if test ="owner != null ">
+            and owner = #{owner,jdbcType=INTEGER}
+        </if>
+        <if test="key != null">
+            and (first_name like "%${key}%" or phone like "%${key}%")
+        </if>
+        and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        order by modify_date desc
+    </select>
+
+    <select id="queryTaskLeadList" resultMap="dtoResultMap">
+        select
+        id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, `level`, test_drive_plan, (select lead_frequency from customer c where c.id=lead.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select head_image from customer where `exeed_crm_lead`.lead.cust_id = customer.id) as custHeadImage,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.brand_name and meta_name='lead_brand') as brand_name,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="status != null">
+                and lead_status in
+                <foreach collection="status" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+        </if>
+        order by modify_date desc
+    </select>
+
+    <select id="queryFollowupLeadList" resultMap="dtoResultMap">
+        select
+        id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, `level`, test_drive_plan, (select lead_frequency from customer c where c.id=`exeed_crm_lead`.lead.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select head_image from customer where `exeed_crm_lead`.lead.cust_id = customer.id) as custHeadImage,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.brand_name and meta_name='lead_brand') as brand_name,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="status != null">
+                and lead_status not in
+                <foreach collection="status" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+        </if>
+        and exists (select 1 from lead_followup tt where tt.follow_date is not null and tt.lead_id=`exeed_crm_lead`.lead.id)
+        and not exists(select 1 from order_operate_record tt where tt.car_apply_date is not null and tt.lead_id=`exeed_crm_lead`.lead.id)
+        order by modify_date desc
+    </select>
+
+    <select id="queryDefeatLeadList" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+        select
+        id, lead_number, lead_status, color_name, last_name,first_name, phone, close_time, failure_reason, profile_url, dealer,
+        (select head_image from customer where `exeed_crm_lead`.lead.cust_id = customer.id) as custHeadImage,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.brand_name and meta_name='lead_brand') as brand_name,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+        dealer_order_manager, account, customer_car_date, owner, created_by
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        order by modify_date desc
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <select id="queryDefeatLeadCount"  parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        left join `exeed_crm_lead`.lead_history lh on lh.lead_id=t.id
+        where 1=1
+        <if test="dealer != null">
+            and t.dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and t.lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        and lh.status=8
+        and to_days(lh.create_time) =to_days(now())
+    </select>
+
+    <select id="queryDefeatLeadApprovalList"  parameterType="java.lang.String" resultMap="dtoResultMap">
+        select
+            t.id, t.lead_number, t.lead_status, t.color_name, t.last_name,t.first_name, t.phone, t.close_time, t.failure_reason, t.profile_url, t.dealer,
+            (select head_image from customer where t.cust_id = customer.id) as custHeadImage,
+            (select description from meta_lead meta where meta.meta_code=t.brand_name and meta_name='lead_brand') as brand_name,
+            model_name,series_name,
+            (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+            (select description from meta_lead meta where meta.meta_code=t.`level` and meta_name='lead_level') as `level`,
+            (select description from meta_lead meta where meta.meta_code=t.`lead_status` and meta_name='lead_status') as `status`,
+            (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+            (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+            t.dealer_order_manager, t.account, t.customer_car_date, t.owner, t.created_by
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and exists(
+        select 1 from followup_history tt where t.id = tt.lead_id and tt.biz_type = 6
+        )
+
+        order by modify_date desc
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+
+    <select id="queryNewLeadListCount" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 7
+    </select>
+
+    <select id="queryTodayCount"  parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        left join `exeed_crm_lead`.lead_history lh on lh.lead_id=t.id
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 7
+        and lh.status = 7
+        and to_days(lh.create_time) =to_days(now())
+    </select>
+
+    <select id="queryNotPredictAndNotArrivalLeadCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+        </if>
+        and lead_status in (10,11)
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="queryOrderLeadCount" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead
+        where dealer = #{dealer,jdbcType=VARCHAR}  and lead_status = #{leadStatus,jdbcType=INTEGER} and owner = #{owner,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryDeliveryLeadCount" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = #{leadStatus,jdbcType=INTEGER}
+        and exists(
+        select 1 from order_operate_record tt where tt.car_apply_date is not null and tt.lead_id=t.id
+        )
+    </select>
+
+    <select id="queryExpiredLeadCount" resultType="java.lang.Integer">
+       select
+       count(1)
+       from lead_followup tt left join `exeed_crm_lead`.lead t on t.id = tt.lead_id
+       WHERE  t.dealer = #{dealer,jdbcType=VARCHAR}
+       AND t.owner = #{owner,jdbcType=INTEGER}
+       and tt.status = 0
+       and t.lead_status not in (1,2,3,4,5,6,9,15,16,17)
+       and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(tt.follow_plan, '%Y-%m-%d %H:%i:%s')
+    </select>
+
+    <select id="queryFollowupLeadCount" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead
+        where
+        dealer = #{dealer,jdbcType=VARCHAR}
+        and lead_status in (8,12,13,18)
+        and owner = #{owner,jdbcType=INTEGER}
+        and exists (select 1 from lead_followup tt where tt.follow_date is not null and tt.lead_id=lead.id)
+        order by modify_date desc
+    </select>
+
+    <select id="queryWinLeadCount" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 15
+        and DATE_FORMAT( t.customer_car_date, '%Y%m' ) = DATE_FORMAT( CURDATE( ), '%Y%m' )
+    </select>
+
+    <select id="queryLoseLeadCount" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 9
+    </select>
+
+    <select id="queryNewTaskLeadList"  resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        t.id as id,
+        t.lead_number as leadNumber,
+        t.lead_status as leadStatus,
+        t.color_name as colorName,
+        t.last_name,
+        t.first_name as firstName,
+        t.email,
+        t.phone as phone,
+        t.gender as gender,
+        t.age,
+        t.description,
+        t.rating,
+        t.`level` as level,
+        t.close_time,
+        t.failure_reason,
+        t.profile_url,
+        t.dealer,
+        ( SELECT lead_frequency FROM customer c WHERE c.id = t.cust_id ) consulting_frequency,
+        ( SELECT head_image FROM customer WHERE t.cust_id = customer.id ) AS custHeadImage,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.brand_name AND meta_name = 'lead_brand' ) AS brandName,
+--         t.series_name as seriesName,
+--         t.model_name as modelName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.budget AND meta_name = 'lead_budget' ) AS budgetName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.rating AND meta_name = 'lead_rating' ) AS ratingName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.purchase_time AND meta_name = 'lead_purchase_time' ) AS purchaseTime,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.account,
+        t.customer_car_date as customerCarDate,
+        t.OWNER as owner,
+        t.created_by as createBy,
+        t.modify_by as modifyBy,
+        t.modify_date as modifyDate,
+        t.revenue_level,
+        (select count(1) from followup_history where followup_history.lead_id = t.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = t.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = t.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = t.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus,
+        t.lead_heating_count as leadHeatingCount,t.is_red_or_black as isRedOrBlack,
+        vcs.series_code as seriesCode,vcs.series_name as seriesName,
+        vcm.model_code as modelCode,vcm.model_name as modelName
+        from `exeed_crm_lead`.lead t
+        left join v_car_series vcs on vcs.series_code=t.series_name
+        left join v_car_model vcm on vcm.model_code=t.model_name and vcm.series_code=t.series_name
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 7
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="seriesName != null and seriesName !=''">
+            and t.series_name = #{seriesName,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(t.follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="queryNewTaskLeadListTotal" resultType="integer">
+        select
+            count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status = 7
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="seriesName != null and seriesName !=''">
+            and t.series_name = #{seriesName,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(t.follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+    </select>
+
+    <select id="queryFollowLeadListByCondition"  resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        t.id as id,
+        t.lead_number as leadNumber,
+        t.lead_status as leadStatus,
+        t.color_name as color_name,
+        t.last_name,
+        t.first_name as firstName,
+        t.email,
+        t.phone as phone,
+        t.gender as gender,
+        t.age,
+        t.description,
+        t.rating,
+        t.`level` as level,
+        t.close_time,
+        t.failure_reason,
+        t.profile_url,
+        t.dealer,
+        ( SELECT lead_frequency FROM customer c WHERE c.id = t.cust_id ) consulting_frequency,
+        ( SELECT head_image FROM customer WHERE t.cust_id = customer.id ) AS custHeadImage,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.brand_name AND meta_name = 'lead_brand' ) AS brandName,
+--         t.series_name as seriesName,
+--         t.model_name as modelName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.budget AND meta_name = 'lead_budget' ) AS budgetName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.rating AND meta_name = 'lead_rating' ) AS ratingName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.purchase_time AND meta_name = 'lead_purchase_time' ) AS purchaseTime,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.account,
+        t.customer_car_date as customerCarDate,
+        t.OWNER as owner,
+        t.created_by as createBy,
+        t.modify_by as modifyBy,
+        t.modify_date as modifyDate,
+        t.revenue_level,
+        (select count(1) from followup_history where followup_history.lead_id = t.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = t.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = t.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = t.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus,
+        t.lead_heating_count as leadHeatingCount,
+        t.is_red_or_black as isRedOrBlack,
+        vcs.series_code as seriesCode,vcs.series_name as seriesName,
+        vcm.model_code as modelCode,vcm.model_name as modelName
+        from `exeed_crm_lead`.lead t
+        left join v_car_series vcs on vcs.series_code=t.series_name
+        left join v_car_model vcm on vcm.model_code=t.model_name and vcm.series_code=t.series_name
+        where
+        t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.lead_status in (8,12,13,18)
+        and t.owner = #{owner,jdbcType=INTEGER}
+
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(t.follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+        and exists (select 1 from lead_followup tt where tt.follow_date is not null and tt.lead_id=t.id)
+        order by modify_date desc
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="queryFollowLeadListByConditionTotal" resultType="integer">
+        select
+            count(1)
+        from `exeed_crm_lead`.lead t
+        where
+        t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.lead_status in (8,12,13,18)
+        and t.owner = #{owner,jdbcType=INTEGER}
+
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+        and exists (select 1 from lead_followup tt where tt.follow_date is not null and tt.lead_id=t.id)
+    </select>
+
+    <select id="queryTaskLeadListByCondition" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        t.id as id,
+        t.lead_number as leadNumber,
+        t.lead_status as leadStatus,
+        t.color_name as color_name,
+        t.last_name,
+        t.first_name as firstName,
+        t.email,
+        t.phone as phone,
+        t.gender as gender,
+        t.age,
+        t.description,
+        t.rating,
+        t.`level` as level,
+        t.close_time,
+        t.failure_reason,
+        t.profile_url,
+        t.dealer,
+        ( SELECT lead_frequency FROM customer c WHERE c.id = t.cust_id ) consulting_frequency,
+        ( SELECT head_image FROM customer WHERE t.cust_id = customer.id ) AS custHeadImage,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.brand_name AND meta_name = 'lead_brand' ) AS brandName,
+--         t.series_name as seriesName,
+--         t.model_name as modelName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.budget AND meta_name = 'lead_budget' ) AS budgetName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.rating AND meta_name = 'lead_rating' ) AS ratingName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.purchase_time AND meta_name = 'lead_purchase_time' ) AS purchaseTime,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.account,
+        t.customer_car_date as customerCarDate,
+        t.OWNER as owner,
+        t.created_by as createBy,
+        t.modify_by as modifyBy,
+        t.modify_date as modifyDate,
+        t.revenue_level,
+        (select count(1) from followup_history where followup_history.lead_id = t.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = t.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = t.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = t.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus,
+        t.lead_heating_count as leadHeatingCount,
+        t.is_red_or_black as isRedOrBlack,
+        vcs.series_code as seriesCode,vcs.series_name as seriesName,
+        vcm.model_code as modelCode,vcm.model_name as modelName
+        from `exeed_crm_lead`.lead t
+        left join v_car_series vcs on vcs.series_code=t.series_name
+        left join v_car_model vcm on vcm.model_code=t.model_name and vcm.series_code=t.series_name
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(t.follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+        <if test="taskStatus == 2">
+            and t.lead_status in (10,11)
+        </if>
+        <if test="taskStatus == 3">
+            and t.lead_status = 14
+        </if>
+        <if test="taskStatus == 4">
+            and t.lead_status = 14
+            and exists(
+            select 1 from order_operate_record ttt where ttt.car_apply_date is not null and ttt.lead_id=t.id
+            )
+        </if>
+        <if test="taskStatus == 6" >
+            and t.lead_status = 15
+        </if>
+        <if test="taskStatus == 8" >
+            and t.lead_status = 9
+        </if>
+        order by t.modify_date desc
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="queryTaskLeadListByConditionTotal" resultType="integer">
+        select
+            count(1)
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        <if test="level != null and level != ''">
+            and t.level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="modelName != null and modelName !=''">
+            and t.model_name = #{modelName,jdbcType=INTEGER}
+        </if>
+        <if test="end != null">
+            and DATE_FORMAT(t.follow_time,'%Y-%m-%d %H:%i:%S') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d %H:%i:%S')
+        </if>
+        <if test="taskStatus == 2">
+            and t.lead_status in (10,11)
+        </if>
+        <if test="taskStatus == 3">
+            and t.lead_status = 14
+        </if>
+        <if test="taskStatus == 4">
+            and t.lead_status = 14
+            and exists(
+            select 1 from order_operate_record ttt where ttt.car_apply_date is not null and ttt.lead_id=t.id
+            )
+        </if>
+        <if test="taskStatus == 6" >
+            and t.lead_status = 15
+        </if>
+        <if test="taskStatus == 8" >
+            and t.lead_status = 9
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKeyAndDealer" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where cust_id = #{custId}
+        <if test="dealer!=null">
+            and dealer= #{dealer}
+        </if>
+        and lead_status in (2,6,7,8,10,11,12,13,14,18)
+        order by update_record_time desc
+        limit 1
+    </select>
+
+    <select id="advancedQueryLeadList" parameterType="com.chery.exeed.crm.lead.dto.AdvancedQueryDTO" resultMap="dtoResultMap">
+        select
+        t.id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, test_drive_plan, (select lead_frequency from customer c where c.id=t.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select description from meta_lead meta where meta.meta_code=t.brand_name and meta_name='lead_brand') as brandName,
+        model_name,
+        (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=t.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=t.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments,(select count(1) from lead_task where lead_id=t.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 LIMIT 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 LIMIT 1) as followDate,
+        send_time,
+        if(send_time &lt; DATE_ADD(now(),INTERVAL -1 DAY) and lead_status=2 , 1,0) as over_date,
+        (select series_name from v_car_series where series_code = t.series_name limit 1) as series_name,
+        (select dealerName from v_mdmdealer where dealerCode = t.dealer limit 1) as dealerName
+        from `exeed_crm_lead`.lead t
+        <if test="channels != null and channels.size > 0">
+            inner join lead_channel lco on lco.lead_id = t.id
+        </if>
+        <where>
+            <if test="leadNumber != null">
+                AND t.lead_number LIKE concat('%',#{leadNumber},'%')
+            </if>
+            <if test="isArrival != null and isArrival != '' ">
+                AND exists (select 1 from arrival_operate_record tt where tt.lead_id = t.id)
+            </if>
+            <if test="keyword != null">
+                AND t.phone LIKE concat('%',#{keyword},'%')
+            </if>
+            <if test="channels != null and channels.size > 0">
+                AND lco.channel_code IN
+                <foreach collection="channels" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="createName != null">
+                AND t.created_by IN (
+                SELECT user_id FROM v_all_sys_user vsu WHERE vsu.nick_name LIKE concat('%',#{createName},'%')
+                )
+            </if>
+            <if test="currentDealer != null">
+                AND t.lead_status IN (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+            </if>
+            <if test="dealers != null and dealers.size > 0">
+                AND t.dealer IN
+                <foreach collection="dealers" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="leadStatus != null and leadStatus.size > 0">
+                AND t.lead_status IN
+                <foreach collection="leadStatus" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="startTime != null">
+                AND t.customer_car_date >= DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+            </if>
+            <if test="endTime != null">
+                AND t.customer_car_date &lt;= DATE_SUB(DATE_FORMAT(#{endTime}, '%Y-%m-%d'),INTERVAL -1 DAY)
+            </if>
+            <if test="modifyStartTime != null">
+                AND t.modify_date >= DATE_FORMAT(#{modifyStartTime}, '%Y-%m-%d')
+            </if>
+            <if test="modifyEndTime != null">
+                AND t.modify_date &lt;= DATE_SUB(DATE_FORMAT(#{modifyEndTime}, '%Y-%m-%d'),INTERVAL -1 DAY)
+            </if>
+            <if test="description != null">
+                AND t.description LIKE concat('%',#{description},'%')
+            </if>
+            <if test="sendStart != null or sendEnd != null">
+                AND EXISTS (
+                SELECT 1 FROM lead_history lh WHERE lh.lead_id = t.id AND lh.`status` = 2 AND lh.dealer IS NOT NULL
+                <if test="sendStart != null">
+                    AND create_time >= DATE_FORMAT(#{sendStart}, '%Y-%m-%d')
+                </if>
+                <if test="sendEnd != null">
+                    AND create_time &lt;= DATE_SUB(DATE_FORMAT(#{sendEnd}, '%Y-%m-%d'), INTERVAL -1 DAY)
+                </if>
+                LIMIT 1)
+            </if>
+            <if test="winStart != null or winEnd != null">
+                AND EXISTS (
+                SELECT 1 FROM lead_history lh WHERE lh.lead_id = t.id AND lh.`status` = 15 AND lh.dealer IS NOT NULL
+                <if test="winStart != null">
+                    AND create_time >= DATE_FORMAT(#{winStart}, '%Y-%m-%d')
+                </if>
+                <if test="winEnd != null">
+                    AND create_time &lt;= DATE_SUB(DATE_FORMAT(#{winEnd}, '%Y-%m-%d'), INTERVAL -1 DAY)
+                </if>
+                LIMIT 1)
+            </if>
+            <if test="seriesName != null and seriesName.size > 0">
+                AND t.series_name IN
+                <foreach collection="seriesName" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="level != null and level.size > 0">
+                AND t.`level` IN
+                <foreach collection="level" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="actCode != null and actCode.size > 0">
+                AND EXISTS (SELECT 1 FROM pre_lead WHERE lead_id = t.id AND activity_code IN
+                <foreach collection="actCode" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach> )
+            </if>
+        </where>
+        order by modify_date desc
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="advancedQueryLeadListCount" resultType="int">
+        select
+        count(1)
+        from `exeed_crm_lead`.lead t
+        <if test="channels != null and channels.size > 0">
+            inner join  lead_channel lco on lco.lead_id = t.id
+        </if>
+        <where>
+            <if test="leadNumber != null">
+                AND t.lead_number LIKE concat('%',#{leadNumber},'%')
+            </if>
+            <if test="isArrival != null and isArrival != '' ">
+                AND exists (select 1 from arrival_operate_record tt where tt.lead_id = t.id)
+            </if>
+            <if test="keyword != null">
+                AND t.phone LIKE concat('%',#{keyword},'%')
+            </if>
+            <if test="channels != null and channels.size > 0">
+                AND lco.channel_code IN
+                <foreach collection="channels" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="createName != null">
+                AND t.created_by IN (
+                SELECT user_id FROM v_all_sys_user vsu WHERE vsu.nick_name LIKE concat('%',#{createName},'%')
+                )
+            </if>
+            <if test="currentDealer != null">
+                AND t.lead_status IN (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+            </if>
+            <if test="dealers != null and dealers.size > 0">
+                AND t.dealer IN
+                <foreach collection="dealers" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="leadStatus != null and leadStatus.size > 0">
+                AND t.lead_status IN
+                <foreach collection="leadStatus" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="startTime != null">
+                AND t.customer_car_date >= DATE_FORMAT(#{startTime}, '%Y-%m-%d')
+            </if>
+            <if test="endTime != null">
+                AND t.customer_car_date &lt;= DATE_SUB(DATE_FORMAT(#{endTime}, '%Y-%m-%d'),INTERVAL -1 DAY)
+            </if>
+            <if test="modifyStartTime != null">
+                AND t.modify_date >= DATE_FORMAT(#{modifyStartTime}, '%Y-%m-%d')
+            </if>
+            <if test="modifyEndTime != null">
+                AND t.modify_date &lt;= DATE_SUB(DATE_FORMAT(#{modifyEndTime}, '%Y-%m-%d'),INTERVAL -1 DAY)
+            </if>
+            <if test="description != null">
+                AND t.description LIKE concat('%',#{description},'%')
+            </if>
+            <if test="sendStart != null or sendEnd != null">
+                AND EXISTS (
+                SELECT 1 FROM lead_history lh WHERE lh.lead_id = t.id AND lh.`status` = 2 AND lh.dealer IS NOT NULL
+                <if test="sendStart != null">
+                    AND create_time >= DATE_FORMAT(#{sendStart}, '%Y-%m-%d')
+                </if>
+                <if test="sendEnd != null">
+                    AND create_time &lt;= DATE_SUB(DATE_FORMAT(#{sendEnd}, '%Y-%m-%d'), INTERVAL -1 DAY)
+                </if>
+                LIMIT 1)
+            </if>
+            <if test="winStart != null or winEnd != null">
+                AND EXISTS (
+                SELECT 1 FROM lead_history lh WHERE lh.lead_id = t.id AND lh.`status` = 15 AND lh.dealer IS NOT NULL
+                <if test="winStart != null">
+                    AND create_time >= DATE_FORMAT(#{winStart}, '%Y-%m-%d')
+                </if>
+                <if test="winEnd != null">
+                    AND create_time &lt;= DATE_SUB(DATE_FORMAT(#{winEnd}, '%Y-%m-%d'), INTERVAL -1 DAY)
+                </if>
+                LIMIT 1)
+            </if>
+            <if test="seriesName != null and seriesName.size > 0">
+                AND t.series_name IN
+                <foreach collection="seriesName" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="level != null and level.size > 0">
+                AND t.`level` IN
+                <foreach collection="level" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="actCode != null and actCode.size > 0">
+                AND EXISTS (SELECT 1 FROM pre_lead WHERE lead_id = t.id AND activity_code IN
+                <foreach collection="actCode" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach> )
+            </if>
+        </where>
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.Lead">
+        update `exeed_crm_lead`.lead
+        <set>
+            <if test="leadNumber != null">
+                lead_number = #{leadNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="leadType != null">
+                lead_type = #{leadType,jdbcType=INTEGER},
+            </if>
+            <if test="leadStatus != null">
+                lead_status = #{leadStatus,jdbcType=INTEGER},
+            </if>
+            <if test="brandName != null">
+                brand_name = #{brandName,jdbcType=VARCHAR},
+            </if>
+            <if test="seriesName != null">
+                series_name = #{seriesName,jdbcType=VARCHAR},
+            </if>
+            <if test="modelName != null">
+                model_name = #{modelName,jdbcType=VARCHAR},
+            </if>
+            <if test="colorName != null">
+                color_name = #{colorName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastName != null">
+                last_name = #{lastName,jdbcType=VARCHAR},
+            </if>
+            <if test="firstName != null">
+                first_name = #{firstName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            province = #{province,jdbcType=VARCHAR},
+            city = #{city,jdbcType=VARCHAR},
+            sub_city = #{subCity,jdbcType=VARCHAR},
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseTime != null">
+                purchase_time = #{purchaseTime,jdbcType=VARCHAR},
+            </if>
+            <if test="rating != null">
+                rating = #{rating,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="testDrivePlan != null">
+                test_drive_plan = #{testDrivePlan,jdbcType=TIMESTAMP},
+            </if>
+            <if test="budget != null">
+                budget = #{budget,jdbcType=VARCHAR},
+            </if>
+            <if test="consultingFrequency != null">
+                consulting_frequency = #{consultingFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="wechatOpenid != null">
+                wechat_openid = #{wechatOpenid,jdbcType=VARCHAR},
+            </if>
+            <if test="closeTime != null">
+                close_time = #{closeTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="failureReason != null">
+                failure_reason = #{failureReason,jdbcType=VARCHAR},
+            </if>
+            <if test="profileUrl != null">
+                profile_url = #{profileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="dealer != null">
+                dealer = #{dealer,jdbcType=VARCHAR},
+            </if>
+            <if test="dealerOrderManager != null">
+                dealer_order_manager = #{dealerOrderManager,jdbcType=VARCHAR},
+            </if>
+            <if test="productExperienceManager != null">
+                product_experience_manager = #{productExperienceManager,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="customerCarDate != null">
+                customer_car_date = #{customerCarDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="owner != null">
+                owner = #{owner,jdbcType=INTEGER},
+            </if>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy,jdbcType=INTEGER},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="personDonotcall != null">
+                person_donotcall = #{personDonotcall,jdbcType=INTEGER},
+            </if>
+            <if test="maritalStatus != null">
+                marital_status = #{maritalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="hobby != null">
+                hobby = #{hobby,jdbcType=VARCHAR},
+            </if>
+            <if test="educationLevel != null">
+                education_level = #{educationLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="revenueLevel != null">
+                revenue_level = #{revenueLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="householdRegistration != null">
+                household_registration = #{householdRegistration,jdbcType=VARCHAR},
+            </if>
+            <if test="consumptionCharacteristics != null">
+                consumption_characteristics = #{consumptionCharacteristics,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaeFrequency != null">
+                purchae_frequency = #{purchaeFrequency,jdbcType=VARCHAR},
+            </if>
+            <if test="interiorYearlyBudget != null">
+                interior_yearly_budget = #{interiorYearlyBudget,jdbcType=VARCHAR},
+            </if>
+            <if test="drivingSkill != null">
+                driving_skill = #{drivingSkill,jdbcType=VARCHAR},
+            </if>
+            <if test="automotiveExpertise != null">
+                automotive_expertise = #{automotiveExpertise,jdbcType=VARCHAR},
+            </if>
+            <if test="communicationDifficulty != null">
+                communication_difficulty = #{communicationDifficulty,jdbcType=VARCHAR},
+            </if>
+            <if test="treasureCarLevel != null">
+                treasure_car_level = #{treasureCarLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="vehicleNo != null">
+                vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+            </if>
+            <if test="customerCharacteristicsDes != null">
+                customer_characteristics_des = #{customerCharacteristicsDes,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="persontitle != null">
+                persontitle = #{persontitle,jdbcType=VARCHAR},
+            </if>
+            <if test="isSpecialCustomer != null">
+                is_special_customer = #{isSpecialCustomer,jdbcType=INTEGER},
+            </if>
+            <if test="specialCustomerType != null">
+                special_customer_type = #{specialCustomerType,jdbcType=VARCHAR},
+            </if>
+            <if test="specialCareComments != null">
+                special_care_comments = #{specialCareComments,jdbcType=VARCHAR},
+            </if>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="ifMarried != null">
+                if_married = #{ifMarried,jdbcType=VARCHAR},
+            </if>
+            <if test="familySize != null">
+                family_size = #{familySize,jdbcType=VARCHAR},
+            </if>
+            <if test="owningCarAge != null">
+                owning_car_age = #{owningCarAge,jdbcType=VARCHAR},
+            </if>
+            <if test="officePhone != null">
+                office_phone = #{officePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="vehiclePurpose != null">
+                vehicle_purpose = #{vehiclePurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="recomender != null">
+                recomender = #{recomender,jdbcType=VARCHAR},
+            </if>
+            <if test="recomenderPhone != null">
+                recomender_phone = #{recomenderPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="occupationType != null">
+                occupation_type = #{occupationType,jdbcType=VARCHAR},
+            </if>
+            <if test="occupationPhone != null">
+                occupation_phone = #{occupationPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="callReason != null">
+                call_reason = #{callReason,jdbcType=VARCHAR},
+            </if>
+            <if test="wechatNumber != null">
+                wechat_number = #{wechatNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectReason != null">
+                reject_reason = #{rejectReason,jdbcType=VARCHAR},
+            </if>
+            <if test="campaignId != null">
+                campaign_id = #{campaignId,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                resource_id = #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="followCar != null">
+                follow_car = #{followCar,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectReasonType != null">
+                reject_reason_type = #{rejectReasonType,jdbcType=VARCHAR},
+            </if>
+            <if test="collectTime != null">
+                collect_time = #{collectTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="followTime != null">
+                follow_time = #{followTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="followBy != null">
+                follow_by = #{followBy,jdbcType=INTEGER},
+            </if>
+            <if test="followInfo != null">
+                follow_info = #{followInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="followRemarks != null">
+                follow_remarks = #{followRemarks,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                send_time = #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKeySelectiveForTask" parameterType="com.chery.exeed.crm.lead.model.Lead">
+        update `exeed_crm_lead`.lead
+        <set>
+            <if test="leadNumber != null">
+                lead_number = #{leadNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="leadType != null">
+                lead_type = #{leadType,jdbcType=INTEGER},
+            </if>
+            <if test="leadStatus != null">
+                lead_status = #{leadStatus,jdbcType=INTEGER},
+            </if>
+            <if test="brandName != null">
+                brand_name = #{brandName,jdbcType=VARCHAR},
+            </if>
+            <if test="seriesName != null">
+                series_name = #{seriesName,jdbcType=VARCHAR},
+            </if>
+            <if test="modelName != null">
+                model_name = #{modelName,jdbcType=VARCHAR},
+            </if>
+            <if test="colorName != null">
+                color_name = #{colorName,jdbcType=VARCHAR},
+            </if>
+            <if test="lastName != null">
+                last_name = #{lastName,jdbcType=VARCHAR},
+            </if>
+            <if test="firstName != null">
+                first_name = #{firstName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            province = #{province,jdbcType=VARCHAR},
+            city = #{city,jdbcType=VARCHAR},
+            sub_city = #{subCity,jdbcType=VARCHAR},
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaseTime != null">
+                purchase_time = #{purchaseTime,jdbcType=VARCHAR},
+            </if>
+            <if test="rating != null">
+                rating = #{rating,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="testDrivePlan != null">
+                test_drive_plan = #{testDrivePlan,jdbcType=TIMESTAMP},
+            </if>
+            <if test="budget != null">
+                budget = #{budget,jdbcType=VARCHAR},
+            </if>
+            <if test="consultingFrequency != null">
+                consulting_frequency = #{consultingFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="wechatOpenid != null">
+                wechat_openid = #{wechatOpenid,jdbcType=VARCHAR},
+            </if>
+            <if test="closeTime != null">
+                close_time = #{closeTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="failureReason != null">
+                failure_reason = #{failureReason,jdbcType=VARCHAR},
+            </if>
+            <if test="profileUrl != null">
+                profile_url = #{profileUrl,jdbcType=VARCHAR},
+            </if>
+            dealer = #{dealer,jdbcType=VARCHAR},
+            <if test="dealerOrderManager != null">
+                dealer_order_manager = #{dealerOrderManager,jdbcType=VARCHAR},
+            </if>
+            <if test="productExperienceManager != null">
+                product_experience_manager = #{productExperienceManager,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="customerCarDate != null">
+                customer_car_date = #{customerCarDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="owner != null">
+                owner = #{owner,jdbcType=INTEGER},
+            </if>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy,jdbcType=INTEGER},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="personDonotcall != null">
+                person_donotcall = #{personDonotcall,jdbcType=INTEGER},
+            </if>
+            <if test="maritalStatus != null">
+                marital_status = #{maritalStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="hobby != null">
+                hobby = #{hobby,jdbcType=VARCHAR},
+            </if>
+            <if test="educationLevel != null">
+                education_level = #{educationLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="revenueLevel != null">
+                revenue_level = #{revenueLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="householdRegistration != null">
+                household_registration = #{householdRegistration,jdbcType=VARCHAR},
+            </if>
+            <if test="consumptionCharacteristics != null">
+                consumption_characteristics = #{consumptionCharacteristics,jdbcType=VARCHAR},
+            </if>
+            <if test="purchaeFrequency != null">
+                purchae_frequency = #{purchaeFrequency,jdbcType=VARCHAR},
+            </if>
+            <if test="interiorYearlyBudget != null">
+                interior_yearly_budget = #{interiorYearlyBudget,jdbcType=VARCHAR},
+            </if>
+            <if test="drivingSkill != null">
+                driving_skill = #{drivingSkill,jdbcType=VARCHAR},
+            </if>
+            <if test="automotiveExpertise != null">
+                automotive_expertise = #{automotiveExpertise,jdbcType=VARCHAR},
+            </if>
+            <if test="communicationDifficulty != null">
+                communication_difficulty = #{communicationDifficulty,jdbcType=VARCHAR},
+            </if>
+            <if test="treasureCarLevel != null">
+                treasure_car_level = #{treasureCarLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="vehicleNo != null">
+                vehicle_no = #{vehicleNo,jdbcType=VARCHAR},
+            </if>
+            <if test="customerCharacteristicsDes != null">
+                customer_characteristics_des = #{customerCharacteristicsDes,jdbcType=VARCHAR},
+            </if>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="persontitle != null">
+                persontitle = #{persontitle,jdbcType=VARCHAR},
+            </if>
+            <if test="isSpecialCustomer != null">
+                is_special_customer = #{isSpecialCustomer,jdbcType=INTEGER},
+            </if>
+            <if test="specialCustomerType != null">
+                special_customer_type = #{specialCustomerType,jdbcType=VARCHAR},
+            </if>
+            <if test="specialCareComments != null">
+                special_care_comments = #{specialCareComments,jdbcType=VARCHAR},
+            </if>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=INTEGER},
+            </if>
+            <if test="ifMarried != null">
+                if_married = #{ifMarried,jdbcType=VARCHAR},
+            </if>
+            <if test="familySize != null">
+                family_size = #{familySize,jdbcType=VARCHAR},
+            </if>
+            <if test="owningCarAge != null">
+                owning_car_age = #{owningCarAge,jdbcType=VARCHAR},
+            </if>
+            <if test="officePhone != null">
+                office_phone = #{officePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="vehiclePurpose != null">
+                vehicle_purpose = #{vehiclePurpose,jdbcType=VARCHAR},
+            </if>
+            <if test="recomender != null">
+                recomender = #{recomender,jdbcType=VARCHAR},
+            </if>
+            <if test="recomenderPhone != null">
+                recomender_phone = #{recomenderPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="occupationType != null">
+                occupation_type = #{occupationType,jdbcType=VARCHAR},
+            </if>
+            <if test="occupationPhone != null">
+                occupation_phone = #{occupationPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="callReason != null">
+                call_reason = #{callReason,jdbcType=VARCHAR},
+            </if>
+            <if test="wechatNumber != null">
+                wechat_number = #{wechatNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectReason != null">
+                reject_reason = #{rejectReason,jdbcType=VARCHAR},
+            </if>
+            <if test="campaignId != null">
+                campaign_id = #{campaignId,jdbcType=VARCHAR},
+            </if>
+            <if test="resourceId != null">
+                resource_id = #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="followCar != null">
+                follow_car = #{followCar,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectReasonType != null">
+                reject_reason_type = #{rejectReasonType,jdbcType=VARCHAR},
+            </if>
+            <if test="collectTime != null">
+                collect_time = #{collectTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="followTime != null">
+                follow_time = #{followTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="followBy != null">
+                follow_by = #{followBy,jdbcType=INTEGER},
+            </if>
+            <if test="followInfo != null">
+                follow_info = #{followInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="followRemarks != null">
+                follow_remarks = #{followRemarks,jdbcType=VARCHAR},
+            </if>
+            <if test="sendTime != null">
+                send_time = #{sendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="categoryName != null">
+                category_name = #{categoryName,jdbcType=VARCHAR},
+            </if>
+            <if test="modelCode != null">
+                model_code = #{modelCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryExpiredLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        t.id as id,
+        t.lead_number as leadNumber,
+        t.lead_status as leadStatus,
+        t.first_name as firstName,
+        t.phone as phone,
+        t.gender as gender,
+        t.`level` as level,
+        t.close_time,
+        t.failure_reason,
+        t.dealer,
+        ( SELECT lead_frequency FROM customer c WHERE c.id = t.cust_id ) consulting_frequency,
+        t.series_name as seriesName,
+        t.model_name as modelName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.budget AND meta_name = 'lead_budget' ) AS budgetName,
+        ( SELECT description FROM meta_lead meta WHERE meta.meta_code = t.purchase_time AND meta_name = 'lead_purchase_time' ) AS purchaseTime,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.customer_car_date as customerCarDate,
+        t.OWNER as owner,
+        t.created_by as createBy,
+        t.modify_date as modifyDate,
+        (select count(1) from followup_history where followup_history.lead_id = t.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = t.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = t.id ) as predictTimes,
+        (select description from v_mdm_meta_lead where  meta_code in (select customer_status from customer where customer.id = t.cust_id) and meta_name = 'lead_customer_status_mobile') as customerStatus,
+        t.lead_heating_count as leadHeatingCount,
+        t.is_red_or_black as isRedOrBlack,
+        vcs.series_code as seriesCode,vcs.series_name as seriesName,
+        vcm.model_code as modelCode,vcm.model_name as modelName
+        from lead t right join lead_followup tt on t.id = tt.lead_id
+        left join v_car_series vcs on vcs.series_code=t.series_name
+        left join v_car_model vcm on vcm.model_code=t.model_name and vcm.series_code=t.series_name
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status not in (1,2,3,4,5,6,9,15,16,17)
+        and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(tt.follow_plan, '%Y-%m-%d %H:%i:%s')
+        order by t.customer_car_date desc
+        limit #{pageNo},#{pageSize}
+    </select>
+
+    <select id="queryExpiredLeadListTotal" resultType="integer">
+        select
+            count(1)
+        from lead t right join lead_followup tt on t.id = tt.lead_id
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and t.owner = #{owner,jdbcType=INTEGER}
+        and t.lead_status not in (1,2,3,4,5,6,9,15,16,17)
+        and  DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(tt.follow_plan, '%Y-%m-%d %H:%i:%s')
+    </select>
+
+    <select id="getConsultantSalesPerformance" resultType="com.chery.exeed.crm.lead.dto.ConsultantSalesPerformanceDTO">
+        select
+        (select user_id from v_all_sys_user u where u.user_id = m.owner ) as userId,
+        (select nick_name from v_all_sys_user u where u.user_id = m.owner ) as userName,
+        (select status from v_all_sys_user u where u.user_id = m.owner ) as userStatus,
+        sum(newLead) as newLead,
+        sum(followed) as followedLead,
+        sum(arrival) as arrival,
+        sum(predict) as predict,
+        sum(order1) as 'order',
+        sum(win) as win,
+        sum(lose) as lose
+        from (
+        select
+        t.dealer as dealer,
+        t.owner as owner,
+        (case when EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type= 7
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) then 1 else 0 end) as newLead,
+        (case when EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type in (1,2,3,4,5,6,8)
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) then 1 else 0 end) as followed,
+        (select count(1) from arrival_operate_record c where c.lead_id = t.id
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) as arrival,
+        (select count(1) from predict_operate_record c where c.lead_id = t.id
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) as predict,
+        (case when t.lead_status = 14 then 1 else 0 end) as order1,
+        (case when t.lead_status = 15 then 1 else 0 end) as win,
+        (case when t.lead_status = 9 then 1 else 0 end) as lose
+        from (
+        select a.id,a.lead_status,a.dealer,a.owner as owner from `exeed_crm_lead`.lead a left join followup_history b on a.id = b.lead_id where a.owner = #{userId} and a.dealer = #{dealerId}
+        <if test="timeStamp == 3">
+            and date_format(b.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(b.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(b.operate_time) = TO_DAYS(now())
+        </if>
+        group by a.id
+        ) t
+        where t.lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        ) m;
+    </select>
+
+    <select id="getDealerSalesPerformance" resultType="com.chery.exeed.crm.lead.dto.ConsultantSalesPerformanceDTO">
+        select
+        (select user_id from v_all_sys_user u where u.user_id = m.owner ) as userId,
+        (select nick_name from v_all_sys_user u where u.user_id = m.owner ) as userName,
+        (select status from v_all_sys_user u where u.user_id = m.owner ) as userStatus,
+        sum(newLead) as newLead,
+        sum(followed) as followedLead,
+        sum(arrival) as arrival,
+        sum(predict) as predict,
+        sum(order1) as 'order',
+        sum(win) as win,
+        sum(lose) as lose
+        from
+        (
+        select
+        t.dealer as dealer,
+        t.owner as owner,
+        (case when EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type= 7
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) then 1 else 0 end) as newLead,
+        (case when EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type in (1,2,3,4,5,6,8)
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) then 1 else 0 end) as followed,
+        (select count(1) from arrival_operate_record c where c.lead_id = t.id
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) as arrival,
+        (select count(1) from predict_operate_record c where c.lead_id = t.id
+        <if test="timeStamp == 3">
+            and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(c.operate_time) = TO_DAYS(now())
+        </if>
+        ) as predict,
+        (case when t.lead_status = 14 then 1 else 0 end) as order1,
+        (case when t.lead_status = 15 then 1 else 0 end) as win,
+        (case when t.lead_status = 9 then 1 else 0 end) as lose
+        from
+        (select a.id,a.lead_status,a.dealer,a.owner as owner from `exeed_crm_lead`.lead a left join followup_history b on a.id = b.lead_id where a.dealer = #{dealerId,jdbcType=VARCHAR}
+        <if test="timeStamp == 3">
+            and date_format(b.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(b.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(b.operate_time) = TO_DAYS(now())
+        </if>
+        group by a.id
+        ) t
+        where t.lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        )
+        m  group by owner;
+    </select>
+
+    <select id="getArrivalInfoForPredict" resultType="java.lang.Integer">
+      select count(1) from arrival_operate_record where is_arrival = 1 and lead_id =  #{leadId,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryDashboardLeadList" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+
+        select
+        *
+        from
+        (select
+        a.id,
+        a.lead_number as leadNumber,
+        a.lead_status as leadStatus,
+        a.color_name as colorName,
+        a.last_name as lastName,
+        a.first_name as firstName,
+        a.email,
+        a.phone as phone,
+        a.province as province,
+        a.city as city,
+        a.sub_city as subCity,
+        a.address as address,
+        a.gender as gender,
+        a.age as age,
+        a.description as description,
+        a.rating as rating,
+        a.test_drive_plan as testDrivePlan,
+        (select lead_frequency from customer c where c.id=a.cust_id) consultingFrequency,
+        (select description from v_mdm_meta_lead where meta_code in (select customer_status from customer c where c.id=a.cust_id) and meta_name = 'lead_customer_status_mobile' ) customerStatus,
+        a.close_time as closeTime,
+        a.failure_reason as failureReason,
+        a.profile_url as profileUrl,
+        a.dealer,
+        (select description from meta_lead meta where meta.meta_code=a.brand_name and meta_name='lead_brand') as brandName,
+        a.model_name as modelName,
+        a.series_name as seriesName,
+        (select description from meta_lead meta where meta.meta_code=a.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=a.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=a.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=a.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=a.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        a.dealer_order_manager as dealerOrderManager ,
+        a.product_experience_manager as productExperienceManager,
+        a.account,
+        a.customer_car_date as customerCarDate,
+        a.owner,
+        a.created_by as createdBy,
+        a.modify_by as modifyBy,
+        a.modify_date as modifyDate,
+        a.revenue_level as revenueLevel,
+        a.purchae_frequency as purchaeFrequency,
+        (select count(1) from lead_task where lead_id=a.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = a.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id = a.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followDate,
+        (select count(1) from followup_history where followup_history.lead_id = a.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = a.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from followup_history where followup_history.lead_id = a.id and biz_type = 2) as predictTimes
+        from `exeed_crm_lead`.lead a left join followup_history b on a.id = b.lead_id where a.dealer = #{dealerId,jdbcType=VARCHAR} and owner = #{owner,jdbcType=INTEGER}
+        <if test="timeStamp == 3">
+            and date_format(b.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(b.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(b.operate_time) = TO_DAYS(now())
+        </if>
+        group by a.id
+        ) t
+        where t.leadStatus in (7,8,9,10,11,12,13,14,15,16,18)
+        <if test="queryType == 1">
+            and EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type = 7
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 2">
+            and EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type in (1,2,3,4,5,6,8)
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 3">
+            and EXISTS(select 1 from arrival_operate_record c where c.lead_id = t.id
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 4">
+            and EXISTS(select 1 from predict_operate_record c where c.lead_id = t.id
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 5">
+            and t.leadStatus = 14
+        </if>
+        <if test="queryType == 6">
+            and t.leadStatus = 15
+        </if>
+        <if test="queryType == 7">
+            and t.leadStatus = 9
+        </if>
+    </select>
+
+    <select id="queryDashboardLeadListByLeadStatus" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+
+        select
+        *
+        from
+        (select
+        a.id,
+        a.lead_number as leadNumber,
+        a.lead_status as leadStatus,
+        a.color_name as colorName,
+        a.last_name as lastName,
+        a.first_name as firstName,
+        a.email,
+        a.phone as phone,
+        a.province as province,
+        a.city as city,
+        a.sub_city as subCity,
+        a.address as address,
+        a.gender as gender,
+        a.age as age,
+        a.description as description,
+        a.rating as rating,
+        a.test_drive_plan as testDrivePlan,
+        (select lead_frequency from customer c where c.id=a.cust_id) consultingFrequency,
+        (select description from v_mdm_meta_lead where meta_code in (select customer_status from customer c where c.id=a.cust_id) and meta_name = 'lead_customer_status_mobile' ) customerStatus,
+        a.close_time as closeTime,
+        a.failure_reason as failureReason,
+        a.profile_url as profileUrl,
+        a.dealer,
+        (select description from meta_lead meta where meta.meta_code=a.brand_name and meta_name='lead_brand') as brandName,
+        a.model_name as modelName,
+        a.series_name as seriesName,
+        (select description from meta_lead meta where meta.meta_code=a.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=a.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=a.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=a.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=a.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        a.dealer_order_manager as dealerOrderManager ,
+        a.product_experience_manager as productExperienceManager,
+        a.account,
+        a.customer_car_date as customerCarDate,
+        a.owner,
+        a.created_by as createdBy,
+        a.modify_by as modifyBy,
+        a.modify_date as modifyDate,
+        a.revenue_level as revenueLevel,
+        a.purchae_frequency as purchaeFrequency,
+        (select count(1) from lead_task where lead_id=a.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = a.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id = a.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followDate,
+        (select count(1) from followup_history where followup_history.lead_id = a.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id = a.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from followup_history where followup_history.lead_id = a.id and biz_type = 2) as predictTimes
+        from `exeed_crm_lead`.lead a left join followup_history b on a.id = b.lead_id where a.dealer = #{dealerId,jdbcType=VARCHAR} and owner = #{owner,jdbcType=INTEGER}
+        <if test="timeStamp == 3">
+            and date_format(b.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+        </if>
+        <if test="timeStamp == 2">
+            and YEARWEEK(date_format(b.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+        </if>
+        <if test="timeStamp == 1">
+            and TO_DAYS(b.operate_time) = TO_DAYS(now())
+        </if>
+        <if test="leadResource == 1">
+            and exists (select 1 from followup_history b where b.lead_id = a.id and b.biz_type = 0)
+        </if>
+        <if test="leadResource == 2">
+            and exists (select 1 from lead_history b where b.lead_id = a.id and b.status = 2)
+        </if>
+        group by a.id
+        ) t
+        where t.leadStatus in (7,8,9,10,11,12,13,14,15,16,18)
+        <if test="queryType == 1">
+            and EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type = 7
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 2">
+            and EXISTS(select 1 from followup_history c where c.lead_id = t.id and c.biz_type in (1,2,3,4,5,6,8)
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 3">
+            and EXISTS(select 1 from arrival_operate_record c where c.lead_id = t.id
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 4">
+            and EXISTS(select 1 from predict_operate_record c where c.lead_id = t.id
+            <if test="timeStamp == 3">
+                and date_format(c.operate_time,'%Y-%m')=date_format(now(),'%Y-%m')
+            </if>
+            <if test="timeStamp == 2">
+                and YEARWEEK(date_format(c.operate_time,'%Y-%m-%d') - INTERVAL 1 DAY) = YEARWEEK(now())
+            </if>
+            <if test="timeStamp == 1">
+                and TO_DAYS(c.operate_time) = TO_DAYS(now())
+            </if>
+            )
+        </if>
+        <if test="queryType == 5">
+            and t.leadStatus = 14
+        </if>
+        <if test="queryType == 6">
+            and t.leadStatus = 15
+        </if>
+        <if test="queryType == 7">
+            and t.leadStatus = 9
+        </if>
+    </select>
+
+    <select id="queryLeadListByPage" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultMap="dtoResultMap">
+        select
+        id, lead_number,  lead_status,  color_name, last_name,
+        first_name,email, phone, province, city, sub_city, address, gender, age, description,
+        rating, test_drive_plan, (select lead_frequency from customer c where c.id=t.cust_id) consulting_frequency,
+        wechat_openid, close_time, failure_reason, profile_url, dealer,
+        (select description from meta_lead meta where meta.meta_code=t.brand_name and meta_name='lead_brand') as brandName,
+        model_name,series_name,
+        (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=t.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=t.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        dealer_order_manager,
+        product_experience_manager, account, customer_car_date, owner, created_by, modify_by,
+        modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+        household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+        driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+        vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+        special_customer_type, special_care_comments,(select count(1) from lead_task where lead_id=t.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id = t.id and lead_followup.status = 0 limit 1) as followDate,
+        send_time,
+        if(send_time &lt; DATE_ADD(now(),INTERVAL -1 HOUR) and lead_status=2 , 1,0) as over_date,
+        (case when (select status from lead_task where lead_id=t.id and t.lead_status = 1) in (7) then 1 else 0 end ) as canTimeout
+        from lead t
+        where 1=1
+        <if test="custName != null and custName!=''">
+            and (first_name like concat('%',#{custName},'%')
+            or phone like concat('%',#{custName},'%'))
+        </if>
+        <if test="custId != null">
+            and cust_id = #{custId,jdbcType=INTEGER}
+        </if>
+        <if test="dealer != null and dealer!=''">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name like concat("%",#{modelName},"%")
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="customerCarDate != null">
+            and customer_car_date  = #{customerCarDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="haveTask == 1">
+            and exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="haveTask == 0">
+            and not exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="searchCode!=null">
+            <if test="searchCode=='3002'">
+                and lead_status=1
+            </if>
+            <if test="searchCode=='3003'">
+                and lead_status=2
+            </if>
+            <if test="searchCode=='3004'">
+                and lead_status in (7,8,10,11,12,13,14,18)
+            </if>
+            <if test="searchCode=='3005'">
+                and lead_status=15
+            </if>
+            <if test="searchCode=='3006'">
+                and lead_status=9
+            </if>
+            <if test="searchCode=='3007'">
+                and lead_status=6
+            </if>
+            <if test="searchCode=='3008'">
+                and lead_status=8
+            </if>
+            <if test="searchCode=='3009'">
+                and (exists (select 1 from v_call_summary tt where tt.TASK_ID in (select id from lead_task ttt where ttt.lead_id = t.id) and CALL_RESULT in (11)) or t.created_by = #{currentUserId})
+            </if>
+        </if>
+        order by
+        <if test="searchCode!=null and searchCode=='3009'">
+            lead_status asc,
+        </if>
+        send_time desc,modify_date desc
+        limit #{pageStart}, #{pageSize}
+    </select>
+
+    <select id="countLead" parameterType="com.chery.exeed.crm.lead.dto.LeadDTO" resultType="java.lang.Long">
+        select
+        COUNT(1)
+        from lead t
+        where 1=1
+        <if test="custName != null and custName!=''">
+            and (first_name like concat('%',#{custName},'%')
+            or phone like concat('%',#{custName},'%'))
+        </if>
+        <if test="custId != null">
+            and cust_id = #{custId,jdbcType=INTEGER}
+        </if>
+        <if test="dealer != null and dealer!=''">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="budget != null">
+            and budget = #{budget,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name like concat("%",#{modelName},"%")
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="customerCarDate != null">
+            and customer_car_date  = #{customerCarDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="haveTask == 1">
+            and exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="haveTask == 0">
+            and not exists (select 1 from lead_task tt where lead_id=t.id and status in (1,2,3,4,5,6,11,12))
+        </if>
+        <if test="searchCode!=null">
+            <if test="searchCode=='3002'">
+                and lead_status=1
+            </if>
+            <if test="searchCode=='3003'">
+                and lead_status=2
+            </if>
+            <if test="searchCode=='3004'">
+                and lead_status in (7,8,10,11,12,13,14,18)
+            </if>
+            <if test="searchCode=='3005'">
+                and lead_status=15
+            </if>
+            <if test="searchCode=='3006'">
+                and lead_status=9
+            </if>
+            <if test="searchCode=='3007'">
+                and lead_status=6
+            </if>
+            <if test="searchCode=='3008'">
+                and lead_status=8
+            </if>
+            <if test="searchCode=='3009'">
+                and (exists (select 1 from v_call_summary tt where tt.TASK_ID in (select id from lead_task ttt where ttt.lead_id = t.id) and CALL_RESULT in (11)) or t.created_by = #{currentUserId})
+            </if>
+        </if>
+    </select>
+    <update id="updateLeadGenderById">
+        update `exeed_crm_lead`.lead set gender = #{gender} , modify_date = now() where cust_id = #{custId}
+    </update>
+
+    <insert id="insertReturnPK" parameterType="com.chery.exeed.crm.lead.model.Lead" useGeneratedKeys="true" keyProperty="id">
+    insert into `exeed_crm_lead`.lead (id, lead_number, lead_type,
+      lead_status, brand_name, series_name,
+      model_name, color_name, last_name,
+      first_name, email, phone,
+      province, city, sub_city,
+      address, gender, age,
+      description, purchase_time, rating,
+      level, test_drive_plan, budget,
+      consulting_frequency, wechat_openid, close_time,
+      failure_reason, profile_url, dealer,
+      dealer_order_manager, product_experience_manager,
+      account, customer_car_date, owner,
+      created_by, modify_by, modify_date,
+      person_donotcall, marital_status, hobby,
+      education_level, revenue_level, household_registration,
+      consumption_characteristics, purchae_frequency,
+      interior_yearly_budget, driving_skill, automotive_expertise,
+      communication_difficulty, treasure_car_level,
+      vehicle_no, customer_characteristics_des,
+      company_name, industry, persontitle,
+      is_special_customer, special_customer_type,
+      special_care_comments, cust_id, if_married,
+      family_size, owning_car_age, office_phone,
+      vehicle_purpose, recomender, recomender_phone,
+      occupation_type, occupation_phone, call_reason,
+      wechat_number, reject_reason, campaign_id,
+      resource_id, follow_car, reject_reason_type,
+      collect_time, follow_time, follow_by,
+      follow_info, follow_remarks, send_time,
+      category_name, model_code, product_code,lead_heating_count,is_red_or_black
+      )
+    values (#{id,jdbcType=INTEGER}, #{leadNumber,jdbcType=VARCHAR}, #{leadType,jdbcType=INTEGER},
+      #{leadStatus,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, #{seriesName,jdbcType=VARCHAR},
+      #{modelName,jdbcType=VARCHAR}, #{colorName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR},
+      #{firstName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{subCity,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER},
+      #{description,jdbcType=VARCHAR}, #{purchaseTime,jdbcType=VARCHAR}, #{rating,jdbcType=INTEGER},
+      #{level,jdbcType=VARCHAR}, #{testDrivePlan,jdbcType=TIMESTAMP}, #{budget,jdbcType=VARCHAR},
+      #{consultingFrequency,jdbcType=INTEGER}, #{wechatOpenid,jdbcType=VARCHAR}, #{closeTime,jdbcType=TIMESTAMP},
+      #{failureReason,jdbcType=VARCHAR}, #{profileUrl,jdbcType=VARCHAR}, #{dealer,jdbcType=VARCHAR},
+      #{dealerOrderManager,jdbcType=VARCHAR}, #{productExperienceManager,jdbcType=VARCHAR},
+      #{account,jdbcType=VARCHAR}, #{customerCarDate,jdbcType=TIMESTAMP}, #{owner,jdbcType=INTEGER},
+      #{createdBy,jdbcType=INTEGER}, #{modifyBy,jdbcType=INTEGER}, #{modifyDate,jdbcType=TIMESTAMP},
+      #{personDonotcall,jdbcType=INTEGER}, #{maritalStatus,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR},
+      #{educationLevel,jdbcType=VARCHAR}, #{revenueLevel,jdbcType=VARCHAR}, #{householdRegistration,jdbcType=VARCHAR},
+      #{consumptionCharacteristics,jdbcType=VARCHAR}, #{purchaeFrequency,jdbcType=VARCHAR},
+      #{interiorYearlyBudget,jdbcType=VARCHAR}, #{drivingSkill,jdbcType=VARCHAR}, #{automotiveExpertise,jdbcType=VARCHAR},
+      #{communicationDifficulty,jdbcType=VARCHAR}, #{treasureCarLevel,jdbcType=VARCHAR},
+      #{vehicleNo,jdbcType=VARCHAR}, #{customerCharacteristicsDes,jdbcType=VARCHAR},
+      #{companyName,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{persontitle,jdbcType=VARCHAR},
+      #{isSpecialCustomer,jdbcType=INTEGER}, #{specialCustomerType,jdbcType=VARCHAR},
+      #{specialCareComments,jdbcType=VARCHAR}, #{custId,jdbcType=INTEGER}, #{ifMarried,jdbcType=VARCHAR},
+      #{familySize,jdbcType=VARCHAR}, #{owningCarAge,jdbcType=VARCHAR}, #{officePhone,jdbcType=VARCHAR},
+      #{vehiclePurpose,jdbcType=VARCHAR}, #{recomender,jdbcType=VARCHAR}, #{recomenderPhone,jdbcType=VARCHAR},
+      #{occupationType,jdbcType=VARCHAR}, #{occupationPhone,jdbcType=VARCHAR}, #{callReason,jdbcType=VARCHAR},
+      #{wechatNumber,jdbcType=VARCHAR}, #{rejectReason,jdbcType=VARCHAR}, #{campaignId,jdbcType=VARCHAR},
+      #{resourceId,jdbcType=VARCHAR}, #{followCar,jdbcType=VARCHAR}, #{rejectReasonType,jdbcType=VARCHAR},
+      #{collectTime,jdbcType=TIMESTAMP}, #{followTime,jdbcType=TIMESTAMP}, #{followBy,jdbcType=INTEGER},
+      #{followInfo,jdbcType=VARCHAR}, #{followRemarks,jdbcType=VARCHAR}, #{sendTime,jdbcType=TIMESTAMP},
+      #{categoryName,jdbcType=VARCHAR}, #{modelCode,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR},0,1
+      )
+  </insert>
+    <select id="queryLeadlistByBigManagent" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        id,
+        lead_number as leadNumber,
+        lead_status as leadStatus,
+        color_name as colorName,
+        last_name as lastName,
+        first_name as firstName,
+        email,
+        phone,
+        province,
+        city,
+        sub_city as subCity,
+        address,
+        gender,
+        age,
+        description,
+        rating,
+        test_drive_plan as testDrivePlan,
+        (select lead_frequency from customer c where c.id=lead.cust_id) consultingFrequency,
+        (select description from v_mdm_meta_lead where meta_code in (select customer_status from customer c where c.id=lead.cust_id) and meta_name = 'lead_customer_status' ) customerStatus,
+        close_time as closeTime,
+        failure_reason as failureReason,
+        profile_url as profileUrl,
+        dealer,
+        (select description from meta_lead meta where meta.meta_code=lead.brand_name and meta_name='lead_brand') as brandName,
+        model_name as modelName,
+        series_name as seriesName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.budget and meta_name='lead_budget') as budgetName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`level` and meta_name='lead_level') as `level`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.`lead_status` and meta_name='lead_status') as `status`,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.rating and meta_name='lead_rating') as ratingName,
+        (select description from meta_lead meta where meta.meta_code=`exeed_crm_lead`.lead.purchase_time and meta_name='lead_purchase_time') as purchaseTime,
+        dealer_order_manager as dealerOrderManager ,
+        product_experience_manager as productExperienceManager,
+        account,
+        customer_car_date as customerCarDate,
+        owner,
+        created_by as createdBy,
+        modify_by as modifyBy,
+        modify_date as modifyDate,
+        hobby,
+        revenue_level as revenueLevel,
+        household_registration as householdRegistration,
+        consumption_characteristics as consumptionCharacteristics,
+        purchae_frequency as purchaeFrequency,
+        (select count(1) from lead_task where lead_id=`exeed_crm_lead`.lead.id and status in (1,2,3,4,5,6,11,12)) as haveTask,
+        (select follow_plan from lead_followup where lead_followup.lead_id = `exeed_crm_lead`.lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,
+        (select follow_date from lead_followup where lead_followup.lead_id =`exeed_crm_lead`. lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followDate,
+        (select count(1) from followup_history where followup_history.lead_id = `exeed_crm_lead`.lead.id and biz_type = 1 ) as followupTimes,
+        (select count(1) from arrival_operate_record where arrival_operate_record.lead_id =`exeed_crm_lead`. lead.id and arrival_operate_record.is_arrival = 1) as arrivalTimes,
+        (select count(1) from predict_operate_record where predict_operate_record.lead_id = `exeed_crm_lead`.lead.id ) as predictTimes,
+        update_record_time as updateRecordTime,
+        send_time as sendTime,
+        lead_heating_count as leadHeatingCount,
+        is_red_or_black as isRedOrBlack
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,3,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="dealer == null">
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+        </if>
+        <if test="owner != null">
+            and owner = #{owner,jdbcType=INTEGER}
+            and lead_status in (7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        <if test="seriesName != null">
+            and series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null">
+            and model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="level != null">
+            and level  = #{level,jdbcType=VARCHAR}
+        </if>
+        <if test="keyword != null and keyword!= ''">
+            and (first_name like "%${keyword}%" or phone like "%${keyword}%")
+        </if>
+        order by isnull(followPlan),followPlan asc, FIELD('lead_status',18,7,10,11,12,13,14,8,9,15,16)
+        <if test="pageNo!=null and pageSize!=null">
+            limit #{pageNo},#{pageSize}
+        </if>
+    </select>
+    <select id="selectInvalidManage" resultType="java.lang.Integer">
+        select user_id from v_all_sys_user
+        where `status` = 9 and is_order_manager = 1
+        and  dealer_id =  #{dealerId,jdbcType=VARCHAR}
+    </select>
+    <select id="queryUndistributedLeadLists" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select
+        t.id,
+        t.lead_number,
+        t.lead_type,
+        t.lead_status,
+        t.brand_name,
+        t.series_name,
+        t.model_name,
+        t.color_name,
+        t.last_name,
+        t.first_name,
+        t.email,
+        t.phone,
+        t.province,
+        t.city,
+        t.sub_city,
+        t.address,
+        t.gender,
+        t.age,
+        t.description,
+        t.purchase_time,
+        t.rating,
+        t.level,
+        t.test_drive_plan,
+        t.budget,
+        t.consulting_frequency,
+        t.wechat_openid,
+        t.close_time,
+        t.failure_reason,
+        t.profile_url,
+        t.dealer,
+        t.dealer_order_manager,
+        t.product_experience_manager,
+        t.account,
+        t.customer_car_date,
+        t.owner,
+        t.created_by,
+        t.modify_by,
+        t.modify_date,
+        t.marital_status,
+        t.revenue_level,
+        t.household_registration,
+        t.consumption_characteristics,
+        t.purchae_frequency,
+        t.driving_skill,
+        t.treasure_car_level,
+        tt.sub_channel_id,
+        tt.channel_id,
+        t.cust_id
+        from lead t left join pre_lead tt on t.id = tt.lead_id
+        where 1=1
+        <if test="seriesName != null and seriesName!=''">
+            and t.series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null and modelName!=''">
+            and t.model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="subChannel != null">
+            and 1 = 2
+        </if>
+        and t.dealer = #{dealerId,jdbcType=VARCHAR}
+        and t.dealer_order_manager = #{userId,jdbcType=INTEGER}
+        and t.owner is null
+        and t.lead_status in
+        <foreach collection="rstList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY tt.lead_id
+        limit 500
+    </select>
+
+    <select id="leadUpdateRecordTime" resultType="com.chery.exeed.crm.lead.dto.LeadResultDTO">
+        select a.id AS id,a.update_record_time AS updateRecordTime,operate_time AS operateTime
+        from (
+            lead a
+            left join
+            (
+                select lead_id AS lead_id,min(operate_time) AS operate_time from followup_history
+                group by lead_id
+            ) b
+            on a.id = b.lead_id
+        )
+    </select>
+
+    <select id="queryLeadHistoryByLeadId" resultType="com.chery.exeed.crm.lead.dto.LeadHistoryDTO">
+         SELECT
+            lead_id AS leadId,
+            `status` AS `status`
+        FROM
+          lead_history
+        WHERE status IN (2, 4)
+        AND lead_id = #{leadId}
+    </select>
+    <select id="selectFollowByDealerIdAndPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where dealer = #{dealerId} and phone = #{phone}
+        and lead_status in (2,6,7,8,10,11,12,13,14,18)
+        order by update_record_time desc
+        limit 1
+    </select>
+    <select id="selectFailDealerIdAndPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from `exeed_crm_lead`.lead
+        where dealer = #{dealerId} and phone = #{phone}
+        and lead_status in (4,9)
+        order by update_record_time desc
+        limit 1
+    </select>
+    <select id="queryDefeatLeadApprovalCount" resultType="java.lang.Integer">
+         select
+        count(1) as total
+        from `exeed_crm_lead`.lead t
+        where t.dealer = #{dealer,jdbcType=VARCHAR}
+        and exists(
+        select 1 from followup_history tt where t.id = tt.lead_id and tt.biz_type = 6
+        )
+    </select>
+    <select id="queryDefeatLeadCounts" resultType="java.lang.Integer">
+        select
+        count(1) as total
+        from `exeed_crm_lead`.lead
+        where 1=1
+        <if test="dealer != null">
+            and dealer = #{dealer,jdbcType=VARCHAR}
+            <if test="leadStatus != null">
+                and lead_status = #{leadStatus,jdbcType=INTEGER}
+            </if>
+            and lead_status in (2,4,6,7,8,9,10,11,12,13,14,15,16,18)
+        </if>
+        order by modify_date desc
+    </select>
+    <select id="queryUndistributedCount" resultType="java.lang.Integer">
+        select count(1) as total  from  (select
+        count(1)
+        from lead t left join pre_lead tt on t.id = tt.lead_id
+        where 1=1
+        <if test="seriesName != null and seriesName!=''">
+            and t.series_name = #{seriesName,jdbcType=VARCHAR}
+        </if>
+        <if test="modelName != null and modelName!=''">
+            and t.model_name = #{modelName,jdbcType=VARCHAR}
+        </if>
+        <if test="subChannel != null">
+            and 1 = 2
+        </if>
+        and t.dealer = #{dealerId,jdbcType=VARCHAR}
+        and t.dealer_order_manager in
+        <foreach collection="invailUserId" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and t.lead_status in
+        <foreach collection="rstList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY tt.lead_id) AS A
+    </select>
+
+
+
+
+    <select id="selectFlag" resultType="java.lang.Integer">
+        select count(1) from exeed_crm_lead.followup_history as fh
+        left join exeed_crm_lead.lead  as l
+        on  l.id = fh.lead_id
+        where fh.biz_type in (9,11)
+        and l.lead_status = 2
+        and  fh.lead_id = #{id}
+    </select>
+
+
+    <!--<select id="queryLeadlistByBigManagentCount" resultType="java.lang.Integer">-->
+        <!--select-->
+        <!--count(1) as total-->
+        <!--(select follow_plan from lead_followup where lead_followup.lead_id = `exeed_crm_lead`.lead.id and lead_followup.status = 0 order by lead_followup.create_time desc limit 1) as followPlan,-->
+        <!--from `exeed_crm_lead`.lead-->
+        <!--where 1=1-->
+        <!--<if test="dealer != null">-->
+            <!--and dealer = #{dealer,jdbcType=VARCHAR}-->
+            <!--<if test="leadStatus != null">-->
+                <!--and lead_status = #{leadStatus,jdbcType=INTEGER}-->
+            <!--</if>-->
+            <!--and lead_status in (2,3,4,6,7,8,9,10,11,12,13,14,15,16,18)-->
+        <!--</if>-->
+        <!--<if test="dealer == null">-->
+            <!--<if test="leadStatus != null">-->
+                <!--and lead_status = #{leadStatus,jdbcType=INTEGER}-->
+            <!--</if>-->
+        <!--</if>-->
+        <!--<if test="owner != null">-->
+            <!--and owner = #{owner,jdbcType=INTEGER}-->
+            <!--and lead_status in (7,8,9,10,11,12,13,14,15,16,18)-->
+        <!--</if>-->
+        <!--<if test="seriesName != null">-->
+            <!--and series_name = #{seriesName,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <!--<if test="modelName != null">-->
+            <!--and model_name = #{modelName,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <!--<if test="level != null">-->
+            <!--and level  = #{level,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <!--<if test="keyword != null and keyword!= ''">-->
+            <!--and (first_name like "%${keyword}%" or phone like "%${keyword}%")-->
+        <!--</if>-->
+    <!--</select>-->
+</mapper>

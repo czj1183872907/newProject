@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.MetaSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.dto.MetaDataDTO">
+    <result column="meta_code" jdbcType="INTEGER" property="metaCode" />
+    <result column="meta_name" jdbcType="VARCHAR" property="metaName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap id="MbmResultMap" type="com.chery.exeed.crm.lead.model.MetaMbm">
+    <id column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <id column="brand" jdbcType="VARCHAR" property="brand" />
+    <id column="model" jdbcType="VARCHAR" property="model" />
+    <result column="manufacturer_name" jdbcType="VARCHAR" property="manufacturerName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+  </resultMap>
+  <sql id="Mbm_Column_List">
+    manufacturer, brand, model, manufacturer_name, brand_name, model_name
+  </sql>
+
+  <resultMap id="ChooseReasonResultMap" type="com.chery.exeed.crm.lead.model.MetaChooseReason">
+    <id column="choose_reason" jdbcType="VARCHAR" property="chooseReason" />
+    <id column="choose_reason_detail" jdbcType="VARCHAR" property="chooseReasonDetail" />
+    <result column="choose_reason_desc" jdbcType="VARCHAR" property="chooseReasonDesc" />
+    <result column="choose_reason_detail_desc" jdbcType="VARCHAR" property="chooseReasonDetailDesc" />
+  </resultMap>
+  <sql id="ChooseReason_Column_List">
+    choose_reason, choose_reason_detail, choose_reason_desc, choose_reason_detail_desc
+  </sql>
+
+  <resultMap id="KnowChannelResultMap" type="com.chery.exeed.crm.lead.model.MetaKnowChannel">
+    <result column="know_channel" jdbcType="VARCHAR" property="knowChannel" />
+    <result column="know_channel_desc" jdbcType="VARCHAR" property="knowChannelDesc" />
+    <result column="know_channel_detail" jdbcType="VARCHAR" property="knowChannelDetail" />
+    <result column="know_channel_detail_desc" jdbcType="VARCHAR" property="knowChannelDetailDesc" />
+  </resultMap>
+  <sql id="KnowChannel_Column_List">
+    know_channel, know_channel_desc, know_channel_detail, know_channel_detail_desc
+  </sql>
+
+
+  <select id="getCommonMetaList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select meta_code,meta_name,description from meta_common
+    where 1=1
+    <if test="metaName !=null">
+      and meta_name=#{metaName,jdbcType=VARCHAR}
+      <if test="metaCode != null">
+        and meta_code=#{metaCode,jdbcType=INTEGER}
+      </if>
+    </if>
+  </select>
+
+  <select id="getLeadMetaList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select meta_code,meta_name,description from meta_lead
+    where 1=1
+    <if test="metaName !=null">
+      and meta_name=#{metaName,jdbcType=VARCHAR}
+      <if test="metaCode != null">
+        and meta_code=#{metaCode,jdbcType=INTEGER}
+      </if>
+    </if>
+  </select>
+
+  <select id="getMetaList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select meta_code,meta_name,description from meta_lead
+    where 1=1
+    <if test="metaNameList!=null">
+    and meta_name in
+    <foreach collection="metaNameList" item="metaName" index="index"
+             open="(" close=")" separator=",">
+      <if test="metaName!=null">
+        #{metaName,jdbcType=VARCHAR}
+      </if>
+    </foreach>
+    </if>
+  </select>
+
+  <select id="getMetaLeadByMetaName" parameterType="java.lang.String" resultType="com.chery.exeed.crm.lead.dto.MetaDataDTO">
+      SELECT
+        meta_code AS metaCode,
+        description AS description
+      FROM meta_lead
+      WHERE meta_name = #{metaName}
+  </select>
+
+  <select id="getMdmMetaLeadByMetaName" parameterType="java.lang.String" resultType="com.chery.exeed.crm.lead.dto.MetaDataDTO">
+      SELECT
+        meta_code AS metaCode,
+        description AS description
+      FROM v_mdm_meta_lead
+      WHERE meta_name = #{metaName}
+  </select>
+
+  <select id="getAllMetaMbm" resultMap="MbmResultMap">
+    select
+    <include refid="Mbm_Column_List" />
+    from meta_mbm
+    order by model asc
+  </select>
+
+  <select id="getAllMetaChooseReason" resultMap="ChooseReasonResultMap">
+    select
+    <include refid="ChooseReason_Column_List" />
+    from meta_choose_reason
+  </select>
+
+  <select id="getAllMetaKnowChannel" resultMap="KnowChannelResultMap">
+    select
+    <include refid="KnowChannel_Column_List" />
+    from meta_know_channel
+  </select>
+</mapper>

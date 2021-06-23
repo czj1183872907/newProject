@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.CallHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.model.CallHistory">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="call_category" jdbcType="INTEGER" property="callCategory" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="contact_information" jdbcType="VARCHAR" property="contactInformation" />
+    <result column="call_time" jdbcType="TIMESTAMP" property="callTime" />
+    <result column="call_content" jdbcType="VARCHAR" property="callContent" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+    <result column="call_duration" jdbcType="INTEGER" property="callDuration" />
+    <result column="sms_content" jdbcType="VARCHAR" property="smsContent" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="case_id" jdbcType="INTEGER" property="caseId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, call_category, contact, contact_information, call_time, call_content, create_by, 
+    call_duration, sms_content, comment, task_id, case_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from call_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from call_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.chery.exeed.crm.lead.model.CallHistory" useGeneratedKeys="true" keyProperty="id">
+    insert into call_history (id, call_category, contact, 
+      contact_information, call_time, call_content, 
+      create_by, call_duration, sms_content, 
+      comment, task_id, case_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{callCategory,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR}, 
+      #{contactInformation,jdbcType=VARCHAR}, #{callTime,jdbcType=TIMESTAMP}, #{callContent,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=TIMESTAMP}, #{callDuration,jdbcType=INTEGER}, #{smsContent,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR}, #{taskId,jdbcType=INTEGER}, #{caseId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chery.exeed.crm.lead.model.CallHistory" useGeneratedKeys="true" keyProperty="id">
+    insert into call_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="callCategory != null">
+        call_category,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="contactInformation != null">
+        contact_information,
+      </if>
+      <if test="callTime != null">
+        call_time,
+      </if>
+      <if test="callContent != null">
+        call_content,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="callDuration != null">
+        call_duration,
+      </if>
+      <if test="smsContent != null">
+        sms_content,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="caseId != null">
+        case_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="callCategory != null">
+        #{callCategory,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactInformation != null">
+        #{contactInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null">
+        #{callTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callContent != null">
+        #{callContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null">
+        #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="smsContent != null">
+        #{smsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chery.exeed.crm.lead.model.CallHistory">
+    update call_history
+    <set>
+      <if test="callCategory != null">
+        call_category = #{callCategory,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactInformation != null">
+        contact_information = #{contactInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null">
+        call_time = #{callTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callContent != null">
+        call_content = #{callContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null">
+        call_duration = #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="smsContent != null">
+        sms_content = #{smsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chery.exeed.crm.lead.model.CallHistory">
+    update call_history
+    set call_category = #{callCategory,jdbcType=INTEGER},
+      contact = #{contact,jdbcType=VARCHAR},
+      contact_information = #{contactInformation,jdbcType=VARCHAR},
+      call_time = #{callTime,jdbcType=TIMESTAMP},
+      call_content = #{callContent,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=TIMESTAMP},
+      call_duration = #{callDuration,jdbcType=INTEGER},
+      sms_content = #{smsContent,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=INTEGER},
+      case_id = #{caseId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

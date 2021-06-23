@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chery.exeed.crm.lead.mapper.LeadTaskSearchMapper">
+  <resultMap id="BaseResultMap" type="com.chery.exeed.crm.lead.dto.LeadTaskDTO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="due_date_plan" jdbcType="TIMESTAMP" property="dueDatePlan" />
+    <result column="due_date_actual" jdbcType="TIMESTAMP" property="dueDateActual" />
+    <result column="task_type" jdbcType="INTEGER" property="taskType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="task_result" jdbcType="INTEGER" property="taskResult" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="first_call_time" jdbcType="TIMESTAMP" property="firstCallTime" />
+    <result column="next_call_time" jdbcType="VARCHAR" property="nextCallTime" />
+    <result column="call_times" jdbcType="INTEGER" property="callTimes" />
+    <result column="statusDesc" jdbcType="VARCHAR" property="statusDesc" />
+    <result column="taskResultDesc" jdbcType="VARCHAR" property="taskResultDesc" />
+    <result column="taskTypeDesc" jdbcType="VARCHAR" property="taskTypeDesc" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="custName" jdbcType="VARCHAR" property="custName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="is_special_customer" jdbcType="VARCHAR" property="isSpecialCustomer" />
+    <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="cust_id" jdbcType="INTEGER" property="custId" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="sub_city" jdbcType="VARCHAR" property="subCity" />
+    <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+    <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+    <result column="rating" jdbcType="INTEGER" property="rating" />
+    <result column="test_drive_plan" jdbcType="TIMESTAMP" property="testDrivePlan" />
+    <result column="budget" jdbcType="VARCHAR" property="budget" />
+    <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+    <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+    <result column="dealerName" jdbcType="VARCHAR" property="dealerName" />
+    <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+    <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="cdr_stop_time" jdbcType="TIMESTAMP" property="cdrStopTime" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+  </resultMap>
+  <resultMap id="detailResultMap" type="com.chery.exeed.crm.lead.dto.LeadTaskDetailDTO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="lead_id" jdbcType="INTEGER" property="leadId" />
+    <result column="due_date_plan" jdbcType="TIMESTAMP" property="dueDatePlan" />
+    <result column="due_date_actual" jdbcType="TIMESTAMP" property="dueDateActual" />
+    <result column="task_type" jdbcType="INTEGER" property="taskType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="task_result" jdbcType="INTEGER" property="taskResult" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="statusDesc" jdbcType="VARCHAR" property="statusDesc" />
+    <result column="taskResultDesc" jdbcType="VARCHAR" property="taskResultDesc" />
+    <result column="taskTypeDesc" jdbcType="VARCHAR" property="taskTypeDesc" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="first_call_time" jdbcType="TIMESTAMP" property="firstCallTime" />
+    <result column="next_call_time" jdbcType="VARCHAR" property="nextCallTime" />
+    <result column="call_times" jdbcType="INTEGER" property="callTimes" />
+    <result column="lead_number" jdbcType="VARCHAR" property="leadNumber" />
+    <result column="lead_type" jdbcType="VARCHAR" property="leadType" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="persontitle" jdbcType="VARCHAR" property="persontitle" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="lead_status" jdbcType="INTEGER" property="leadStatus" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="series_name" jdbcType="VARCHAR" property="seriesName" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="sub_city" jdbcType="VARCHAR" property="subCity" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="purchase_time" jdbcType="VARCHAR" property="purchaseTime" />
+    <result column="rating" jdbcType="INTEGER" property="rating" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="test_drive_plan" jdbcType="TIMESTAMP" property="testDrivePlan" />
+    <result column="budget" jdbcType="VARCHAR" property="budget" />
+    <result column="consulting_frequency" jdbcType="INTEGER" property="consultingFrequency" />
+    <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid" />
+    <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+    <result column="failure_reason" jdbcType="VARCHAR" property="failureReason" />
+    <result column="profile_url" jdbcType="VARCHAR" property="profileUrl" />
+    <result column="dealer" jdbcType="VARCHAR" property="dealer" />
+    <result column="dealer_order_manager" jdbcType="VARCHAR" property="dealerOrderManager" />
+    <result column="product_experience_manager" jdbcType="VARCHAR" property="productExperienceManager" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="customer_car_date" jdbcType="TIMESTAMP" property="customerCarDate" />
+    <result column="owner" jdbcType="INTEGER" property="owner" />
+    <result column="created_by" jdbcType="INTEGER" property="createdBy" />
+    <result column="modify_by" jdbcType="INTEGER" property="modifyBy" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="person_donotcall" jdbcType="INTEGER" property="personDonotcall" />
+    <result column="marital_status" jdbcType="INTEGER" property="maritalStatus" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="education_level" jdbcType="INTEGER" property="educationLevel" />
+    <result column="revenue_level" jdbcType="INTEGER" property="revenueLevel" />
+    <result column="household_registration" jdbcType="INTEGER" property="householdRegistration" />
+    <result column="consumption_characteristics" jdbcType="VARCHAR" property="consumptionCharacteristics" />
+    <result column="purchae_frequency" jdbcType="INTEGER" property="purchaeFrequency" />
+    <result column="interior_yearly_budget" jdbcType="VARCHAR" property="interiorYearlyBudget" />
+    <result column="driving_skill" jdbcType="INTEGER" property="drivingSkill" />
+    <result column="automotive_expertise" jdbcType="INTEGER" property="automotiveExpertise" />
+    <result column="communication_difficulty" jdbcType="INTEGER" property="communicationDifficulty" />
+    <result column="treasure_car_level" jdbcType="INTEGER" property="treasureCarLevel" />
+    <result column="vehicle_no" jdbcType="INTEGER" property="vehicleNo" />
+    <result column="customer_characteristics_des" jdbcType="VARCHAR" property="customerCharacteristicsDes" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="industry" jdbcType="INTEGER" property="industry" />
+    <result column="is_special_customer" jdbcType="INTEGER" property="isSpecialCustomer" />
+    <result column="special_customer_type" jdbcType="INTEGER" property="specialCustomerType" />
+    <result column="special_care_comments" jdbcType="VARCHAR" property="specialCareComments" />
+
+    <result column="vehicle_purpose" jdbcType="VARCHAR" property="vehiclePurpose" />
+    <result column="cust_id" jdbcType="INTEGER" property="custId" />
+    <result column="budgetName" jdbcType="VARCHAR" property="budgetName" />
+    <result column="custName" jdbcType="VARCHAR" property="custName" />
+    <result column="dealerName" jdbcType="VARCHAR" property="dealerName" />
+    <result column="ratingName" jdbcType="VARCHAR" property="ratingName" />
+    <result column="ownerName" jdbcType="VARCHAR" property="ownerName" />
+    <result column="leadStatusDesc" jdbcType="VARCHAR" property="leadStatusDesc" />
+    <result column="follow_car" jdbcType="VARCHAR" property="followCar" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="cdr_stop_time" jdbcType="TIMESTAMP" property="cdrStopTime" />
+    <result column="follow_info" jdbcType="VARCHAR" property="followInfo" />
+    <result column="follow_remarks" jdbcType="VARCHAR" property="followRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lead_id, task_type, owner, status, due_date_plan, due_date_actual, task_result,
+    memo, first_call_time, next_call_time, call_times
+  </sql>
+  <select id="getMyTaskList" parameterType="com.chery.exeed.crm.lead.dto.LeadTaskParamDTO" resultMap="BaseResultMap">
+    select t.id, t.lead_id, t.task_type, t.owner, t.status, t.due_date_plan, t.due_date_actual, t.task_result,
+    t.memo, t.first_call_time, t.next_call_time, t.call_times,tt.customer_car_date,
+    tt.cust_id,
+    tt.first_name,tt.phone,
+    (select description from meta_lead meta where meta.meta_code=tt.is_special_customer and meta_name='lead_task_status') is_special_customer,
+    (select description from meta_lead meta where meta.meta_code=t.status and meta_name='lead_task_status') statusDesc,
+    (select description from meta_lead meta where meta.meta_code=t.task_type and meta_name='lead_task_type') taskTypeDesc,
+    (select description from meta_lead meta where meta.meta_code=t.task_result and meta_name='lead_task_result') taskResultDesc,
+    (select channel_code from pre_lead p where p.lead_id=t.lead_id limit 1) channel,cdr_stop_time,
+    modify_time
+    from lead_task t,`exeed_crm_lead`.lead tt
+    where 1=1 and t.lead_id=tt.id
+    <if test="leadId != null">
+      and t.lead_id = #{leadId,jdbcType=INTEGER}
+    </if>
+    <if test="owner != null">
+      and t.owner = #{owner,jdbcType=INTEGER}
+    </if>
+    <if test="status!=null">
+      and t.status=#{status,jdbcType=INTEGER}
+    </if>
+    <if test="searchCode != null and searchCode!=''">
+      <if test="searchCode =='2002'">
+        and t.status in (1,2,3,4,5,6,11,12,13,14,15,16,17)
+      </if>
+      <if test="searchCode =='2003'">
+        and t.status = 7
+      </if>
+      <if test="searchCode =='2004'">
+        and t.status in (1,2,3,4,5,6,11,12,13,14,15,16,17)
+      </if>
+      <if test="searchCode =='2005'">
+        and (due_date_plan &lt; now() or next_call_time &lt; DATE_FORMAT(now(),'%Y-%m-%dT%H:%i:%s.000Z'))
+      </if>
+    </if>
+    <if test="searchCode =='2002'">
+      <if test="updateTimeStart != null and updateTimeStart!=''">
+        and date_format(t.modify_time,'%Y-%m-%d') <![CDATA[>=]]> #{updateTimeStart,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTimeEnd != null and updateTimeEnd!=''">
+        and date_format(t.modify_time,'%Y-%m-%d') <![CDATA[<=]]> #{updateTimeEnd,jdbcType=VARCHAR}
+      </if>
+      <if test="phoneResult != null">
+        and t.id in (
+        select vc.taskId from v_call_result vc where vc.callResult in
+        <foreach collection="phoneResult" index="index" item="item" separator="," open="(" close=")">
+          #{item}
+        </foreach>
+        )
+      </if>
+    </if>
+    <if test="searchCode =='2007'">
+      and (
+      (due_date_plan &gt; date_format(now(),'%Y-%m-%d')
+      and due_date_plan &lt; date_format(DATE_ADD(now(),INTERVAL 1 DAY),'%Y-%m-%d'))
+      or (
+      next_call_time &gt; date_format(now(),'%Y-%m-%dT00:00:00.000Z')
+      and next_call_time &lt; date_format(DATE_ADD(now(),INTERVAL 1 DAY),'%Y-%m-%dT00:00:00.000Z')
+      ))
+    </if>
+    <if test="phone != null">
+      and tt.phone=#{phone,jdbcType=VARCHAR}
+    </if>
+    <if test="searchValue != null and searchValue!=''">
+      and (tt.phone=#{searchValue,jdbcType=VARCHAR} or tt.first_name like concat("%",#{searchValue},"%")
+      or tt.lead_number=#{searchValue,jdbcType=VARCHAR}
+      )
+    </if>
+    <if test="gender != null">
+      and tt.gender=#{gender,jdbcType=INTEGER}
+    </if>
+    <if test="province != null">
+      and tt.province=#{province,jdbcType=VARCHAR}
+    </if>
+    <if test="city != null">
+      and tt.city=#{city,jdbcType=VARCHAR}
+    </if>
+    <if test="createTimeStart != null and createTimeEnd!=''">
+      and date_format(tt.customer_car_date,'%Y-%m-%d') <![CDATA[>=]]> #{createTimeStart,jdbcType=VARCHAR}
+    </if>
+    <if test="createTimeEnd != null and createTimeEnd!=''">
+      and date_format(tt.customer_car_date,'%Y-%m-%d') <![CDATA[<=]]> #{createTimeEnd,jdbcType=VARCHAR}
+    </if>
+    <if test="cdrStopTimeStart != null and cdrStopTimeStart!=''">
+      and date_format(t.cdr_stop_time,'%Y-%m-%d') <![CDATA[>=]]> #{cdrStopTimeStart,jdbcType=VARCHAR}
+    </if>
+    <if test="cdrStopTimeEnd != null and cdrStopTimeEnd!=''">
+      and date_format(t.cdr_stop_time,'%Y-%m-%d') <![CDATA[<=]]> #{cdrStopTimeEnd,jdbcType=VARCHAR}
+    </if>
+    <if test="channels != null">
+      and tt.id in (
+      select pre.lead_id from pre_lead pre where pre.channel_code in
+      <foreach collection="channels" index="index" item="item" separator="," open="(" close=")">
+        #{item}
+      </foreach>
+      )
+    </if>
+    <if test="callTimeSort == 1 ">
+      order by t.cdr_stop_time desc
+    </if>
+    <if test="callTimeSort == null or callTimeSort == 0">
+    order by t.status asc,due_date_plan desc
+    </if>
+  </select>
+
+  <select id="getLeadTaskDetailForUpdate" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id, t.lead_id, t.task_type, t.owner, t.status, t.due_date_plan, t.due_date_actual, t.task_result,
+    t.memo, t.first_call_time, t.next_call_time, t.call_times,
+    tt.cust_id,
+    (select description from meta_lead meta where meta.meta_code=t.status and meta_name='lead_task_status') statusDesc,
+    (select description from meta_lead meta where meta.meta_code=t.task_type and meta_name='lead_task_type') taskTypeDesc,
+    (select description from meta_lead meta where meta.meta_code=t.task_result and meta_name='lead_task_result') taskResultDesc,
+    tt.brand_name,tt.series_name, tt.model_name,tt.color_name,tt.last_name,tt.first_name,tt.province,tt.city,tt.sub_city,tt.purchase_time,tt.rating,
+    tt.test_drive_plan,tt.budget,tt.consulting_frequency,tt.dealer,tt.interior_yearly_budget,tt.gender,
+    tt.vehicle_purpose,tt.age,tt.persontitle,tt.hobby,tt.follow_car,tt.follow_info,tt.follow_remarks
+    from lead_task t,`exeed_crm_lead`.lead tt
+    where 1=1 and t.lead_id=tt.id
+      and t.id = #{taskId,jdbcType=BIGINT}
+  </select>
+
+  <select id="getLeadTaskByLeadId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select t.id, t.lead_id, t.task_type, t.owner, t.status, t.due_date_plan, t.due_date_actual, t.task_result,
+    t.memo, t.first_call_time, t.next_call_time, t.call_times,modify_time
+    from lead_task t
+    where 1=1
+    and t.lead_id = #{leadId,jdbcType=INTEGER}
+    and t.status in (1,2,3,4,5,6,11,12,13,14,15,16,17)
+    limit 0,1
+  </select>
+
+  <select id="getLeadTask" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select t.id, t.lead_id, t.task_type, t.owner, t.status, t.due_date_plan, t.due_date_actual, t.task_result,
+    t.memo, t.first_call_time, t.next_call_time, t.call_times,modify_time
+    from lead_task t
+    where 1=1
+    and t.lead_id = #{leadId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getTaskById" parameterType="java.lang.Long" resultMap="detailResultMap">
+    select tt.id, tt.lead_id, tt.task_type, tt.owner, tt.status, tt.due_date_plan, tt.due_date_actual, tt.task_result,
+    tt.memo, tt.first_call_time, tt.next_call_time, tt.call_times,modify_time,
+    t.province,t.city,t.cust_id,
+    (select description from meta_lead meta where meta.meta_code=tt.status and meta_name='lead_task_status') statusDesc,
+    (select description from meta_lead meta where meta.meta_code=tt.task_type and meta_name='lead_task_type') taskTypeDesc,
+    (select description from meta_lead meta where meta.meta_code=tt.task_result and meta_name='lead_task_result') taskResultDesc,
+    lead_number,
+    (select description from meta_lead meta where meta.meta_code=t.hobby and meta_name='customer_hobby') hobby,
+  (select description from meta_common meta where meta.meta_code=t.lead_type and meta_name='lead_type') as lead_type
+  , lead_status, brand_name,  last_name,
+  series_name, model_name,
+  (select description from meta_lead meta where meta.meta_code=t.color_name and meta_name='lead_color') as color_name,
+  first_name, email, phone,address, age, description,
+  rating, level, test_drive_plan,
+  wechat_openid, close_time, failure_reason, profile_url, dealer,
+  (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budgetName,
+  (select description from meta_lead meta where meta.meta_code=t.budget and meta_name='lead_budget') as budget,
+  (select description from meta_lead meta where meta.meta_code=t.rating and meta_name='lead_rating') as ratingName,
+  (select description from meta_lead meta where meta.meta_code=t.purchase_time and meta_name='lead_purchase_time') as purchase_time,
+  (select description from meta_lead meta where meta.meta_code=t.gender and meta_name='sex') gender,
+  (select description from meta_lead meta where meta.meta_code=t.lead_status and meta_name='lead_status') leadStatusDesc,
+  dealer_order_manager,t.persontitle,t.age,
+  product_experience_manager, account, customer_car_date,
+  (select lead_frequency from customer where id=t.cust_id) as consulting_frequency,
+  t.modify_date, person_donotcall, marital_status, hobby, education_level, revenue_level,
+  household_registration, consumption_characteristics, purchae_frequency, interior_yearly_budget,
+  driving_skill, automotive_expertise, communication_difficulty, treasure_car_level,
+  vehicle_no, customer_characteristics_des, company_name, industry, persontitle, is_special_customer,
+  special_customer_type, special_care_comments,t.vehicle_purpose,t.follow_car,t.follow_info,t.follow_remarks
+    from lead_task tt,`exeed_crm_lead`.lead t
+    where 1=1
+    and t.id=tt.lead_id
+      and tt.id = #{taskId,jdbcType=BIGINT}
+  </select>
+  <update id="assignTask" parameterType="com.chery.exeed.crm.lead.dto.LeadTaskAssignDTO">
+    update lead_task
+    set
+    owner = #{owner,jdbcType=INTEGER},
+    status = (case when status=1 then 2 else status end)
+    where 1=1
+    <if test="status != null">
+      and status=#{status,jdbcType=INTEGER}
+    </if>
+    <if test="status == null">
+      and status in (1,2,3,4,5,6,11,12,13,14,15,16,17)
+    </if>
+    <if test="fromUserId != null">
+      and owner=#{fromUserId,jdbcType=INTEGER}
+    </if>
+    <if test="updateTimeStart != null and updateTimeStart!=''">
+      and date_format(modify_time,'%Y-%m-%d') <![CDATA[>=]]> #{updateTimeStart,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTimeEnd != null and updateTimeEnd!=''">
+      and date_format(modify_time,'%Y-%m-%d') <![CDATA[<=]]> #{updateTimeEnd,jdbcType=VARCHAR}
+    </if>
+    <if test="createTimeStart != null and createTimeEnd!=''">
+      and lead_id in (
+        select tt.id from `exeed_crm_lead`.lead tt where date_format(tt.customer_car_date,'%Y-%m-%d') <![CDATA[>=]]> #{createTimeStart,jdbcType=VARCHAR}
+      )
+    </if>
+    <if test="createTimeEnd != null and createTimeEnd!=''">
+      and lead_id in (
+      select tt.id from `exeed_crm_lead`.lead tt where date_format(tt.customer_car_date,'%Y-%m-%d') <![CDATA[<=]]> #{createTimeEnd,jdbcType=VARCHAR}
+      )
+    </if>
+    <if test="channels != null">
+      and lead_id in (
+      select pre.lead_id from pre_lead pre where pre.channel_code in
+      <foreach collection="channels" index="index" item="item" separator="," open="(" close=")">
+        #{item}
+      </foreach>
+      )
+    </if>
+    <if test="phoneResult != null">
+      and id in (
+      select vc.taskId from v_call_result vc where vc.callResult in
+      <foreach collection="phoneResult" index="index" item="item" separator="," open="(" close=")">
+        #{item}
+      </foreach>
+      )
+    </if>
+    <if test="(searchValue != null and searchValue!='') or gender != null or province != null or city != null">
+      and exists (select 1 from lead tt where lead_id=tt.id
+      <if test="searchValue != null and searchValue!=''">
+        and (tt.phone=#{searchValue,jdbcType=VARCHAR} or tt.first_name like concat("%",#{searchValue},"%"))
+      </if>
+      <if test="gender != null">
+        and tt.gender=#{gender,jdbcType=INTEGER}
+      </if>
+      <if test="province != null">
+        and tt.province=#{province,jdbcType=VARCHAR}
+      </if>
+      <if test="city != null">
+        and tt.city=#{city,jdbcType=VARCHAR}
+      </if>
+      )
+    </if>
+    limit #{assignTaskCount,jdbcType=INTEGER}
+  </update>
+  <!--<select id="isBigManager" resultType="java.lang.Integer">-->
+	 <!--select count(1)-->
+			 <!--from ( select count(su.user_id)-->
+			        <!--from  exeed_crm_sys.sys_user as su-->
+			        <!--left join  exeed_crm_sys.sys_user_role as sur-->
+			        <!--on su.user_id= sur.user_id-->
+			        <!--where su.dealer_id = #{dealerId,jdbcType=INTEGER}-->
+							<!--and sur.role_id = 6-->
+			        <!--and su.is_exp_specialists = 1-->
+			        <!--group by su.mobile) as a-->
+  <!--</select>-->
+  <!--<select id="selectManager" resultType="java.util.List">-->
+						<!--select su.user_id-->
+			        <!--from  exeed_crm_sys.sys_user as su-->
+			        <!--left join  exeed_crm_sys.sys_user_role as sur-->
+			        <!--on su.user_id= sur.user_id-->
+			        <!--where su.dealer_id = #{dealerId,jdbcType=INTEGER}-->
+							<!--and sur.role_id = 7-->
+			        <!--and su.is_order_manager = 1-->
+			        <!--group by su.mobile-->
+  <!--</select>-->
+
+</mapper>
